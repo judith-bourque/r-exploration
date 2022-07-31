@@ -12,7 +12,11 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
-### Wikipedia pageviews
+### Wikipedia pageviews by article FEQ
+
+![alt text](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_by_article_feq.gif)
+
+### Wikipedia pageviews for Category:Musicians from New Brunswick
 
 ![alt text](https://github.com/judith-bourque/r-exploration/blob/main/graph/gganim.gif)
 
