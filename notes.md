@@ -414,7 +414,7 @@ Resources
 -   [Learn to
     purrr](https://www.rebeccabarter.com/blog/2019-08-19_purrr/#:~:text=Purrr%20is%20one%20of%20those,purrr%20is%20all%20about%20iteration.)
 
-## Data import
+# Data import
 
 Resources
 
@@ -423,7 +423,7 @@ Resources
     SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
 
-## Data analysis
+# Data analysis
 
 Resources
 
@@ -432,7 +432,7 @@ Resources
 -   [Geocomputation with R](https://geocompr.robinlovelace.net/):
     geographic data analysis
 
-## Text mining
+# Text mining
 
 -   [Welcome to Text Mining with
     R](https://www.tidytextmining.com/index.html)
@@ -446,11 +446,12 @@ Resources
     Encodings And Character Sets To Work With
     Text](https://kunststube.net/encoding/)
 
-## Data visualization
+# Data visualization
 
--   gganimate: animate plot
 -   ggplot2: plot
+-   gganimate: animate plot
 -   ggrepel: repel labels from overlap
+-   ggridges: create ridges
 
 Resources
 
@@ -458,8 +459,11 @@ Resources
 -   [Data Visualization](https://socviz.co/index.html#preface)
 -   [Fundamentals of Data
     Visualization](https://clauswilke.com/dataviz/)
+-   [R graph gallery](https://r-graph-gallery.com/index.html): overview
+    of R graphs and code
+-   [ggridges](https://wilkelab.org/ggridges/index.html)
 
-### Interactive graphs
+## Interactive graphs
 
 -   leaflet: interactive maps
 -   plotly: make any ggplot2 interactive
@@ -468,9 +472,7 @@ Resources
 -   highcharter: show and hide graph elements (and option to download
     graph)
 
-# Other resources
-
-Art
+## Data art
 
 -   [Creating Generative Art with
     R](https://cpastem.caltech.edu/documents/18024/ARt.nb.html)
@@ -480,6 +482,8 @@ Art
     R](https://fronkonstin.com/2018/09/06/tweetable-mathematical-art-with-r/)
 -   [making memes in
     R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
+
+# Other resources
 
 Other
 

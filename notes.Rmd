@@ -301,7 +301,7 @@ Resources
 -   [The Tidyverse Cookbook](https://rstudio-education.github.io/tidyverse-cookbook/index.html)
 -   [Learn to purrr](https://www.rebeccabarter.com/blog/2019-08-19_purrr/#:~:text=Purrr%20is%20one%20of%20those,purrr%20is%20all%20about%20iteration.)
 
-## Data import
+# Data import
 
 Resources
 
@@ -309,14 +309,14 @@ Resources
 -   [10 Easy Steps to a Complete Understanding of SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
 
-## Data analysis
+# Data analysis
 
 Resources
 
 -   [Exploratory Data Analysis](https://mgimond.github.io/ES218/Week01.html)
 -   [Geocomputation with R](https://geocompr.robinlovelace.net/): geographic data analysis
 
-## Text mining
+# Text mining
 
 -   [Welcome to Text Mining with R](https://www.tidytextmining.com/index.html)
 -   [Notes for "Text Mining with R: A Tidy Approach"](https://bookdown.org/Maxine/tidy-text-mining/)
@@ -324,7 +324,7 @@ Resources
 -   [Stringr](https://stringr.tidyverse.org/) (see cheat sheet for regex)
 -   [What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text](https://kunststube.net/encoding/)
 
-## Data visualization
+# Data visualization
 
 - ggplot2: plot
 - gganimate: animate plot
@@ -339,21 +339,21 @@ Resources
 - [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
 - [ggridges](https://wilkelab.org/ggridges/index.html)
 
-### Interactive graphs
+## Interactive graphs
 
 - leaflet: interactive maps
 - plotly: make any ggplot2 interactive
 - rCharts: switch graph format with one click (ex: grouped vs. stacked barchart)
 - highcharter: show and hide graph elements (and option to download graph)
 
-# Other resources
-
-Art
+## Data art
 
 -   [Creating Generative Art with R](https://cpastem.caltech.edu/documents/18024/ARt.nb.html)
 -   [Tiny Art with R (R studio)](https://alinastepanova.medium.com/tiny-art-with-r-d6d93d110619)
 -   [Tweetable Mathematical Art With R](https://fronkonstin.com/2018/09/06/tweetable-mathematical-art-with-r/)
 -   [making memes in R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
+
+# Other resources
 
 Other
 
