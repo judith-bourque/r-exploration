@@ -30,6 +30,7 @@ library(jsonlite) # Read API response
 library(tidyjson) # Clean json
 library(ggplot2)
 library(gganimate) # Create animated ggplot
+library(ggrepel) # repel labels and text
 
 # Load data ----
 
@@ -39,7 +40,7 @@ library(gganimate) # Create animated ggplot
 # End of FEQ: July 16
 # 2 weeks after end of FEQ: July 30
 
-my_user_agent <- "" # E-mail for API user agent
+my_user_agent <- "judith.bourque.2@ulaval.ca" # E-mail for API user agent
 
 project <- "fr.wikipedia.org"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
@@ -130,27 +131,46 @@ refined_data <- data %>%
   mutate(rank = min_rank(-views) * 1) %>%
   ungroup()
 
-# Create graph ----
+# Create static graph ----
+
+graph <- refined_data %>% 
+  ggplot(aes(x = date, y = views, group = article)) +
+  geom_line(aes(color = article)) +
+  scale_color_viridis_d() +
+  labs(title = "Wikipédia pageviews des artistes de la FEQ",
+       x = "Date", y = "Pageviews") +
+  # Line start FEQ
+  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-06"))), linetype="dotted") +
+  # Line end FEQ
+  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted")
+
+print(graph)
+
+# ggsave
+
+# Create animated graph ----
 static_graph <- refined_data %>% 
   ggplot(aes(x = date, y = views, group = article)) +
   geom_line(aes(color = article)) +
   scale_color_viridis_d() +
-  labs(x = "date", y = "pageviews") #+
+  labs(title = "Wikipédia pageviews des artistes de la FEQ",
+    x = "Date", y = "Pageviews")#+
   #theme(legend.position = "none")
+  
 
 animated_graph <- static_graph + geom_point() +
   # Line start FEQ
-  geom_vline(aes(xintercept = as.numeric(date("2022-07-06"))), linetype="dotted") +
+  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-06"))), linetype="dotted") +
   # Line end FEQ
-  geom_vline(aes(xintercept = as.numeric(date("2022-07-17"))), linetype="dotted") +
+  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted") +
   # Titre des lignes
-  geom_text(
+  geom_label_repel(
     data=refined_data %>% filter(rank == 1), # Filter data first
-    aes(label=name), check_overlap = TRUE) +
+    aes(label=name)) +
   transition_reveal(date)
 
 print(animated_graph)
 
 # Save graph as gif
-gganimate::animate(animated_graph, height = 512, width = 1024,#width = 1200, height = 1000, 
+gganimate::animate(animated_graph, height = 256, width = 512,#width = 1200, height = 1000, 
                    renderer = gifski_renderer("graph/wikipedia_pageviews_by_article_feq.gif"))
