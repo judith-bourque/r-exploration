@@ -6,6 +6,9 @@
 #
 # It was created in order to experiment with the Wikimedia API.
 #
+# Please note the Wikipedia timestamps are in UTC and the article for Luke Combs
+# was created on July 10th 2022.
+#
 # Date: 2022-07-31
 # Author: Judith Bourque (https://github.com/judith-bourque)
 #
@@ -142,16 +145,19 @@ refined_data <- data %>%
 
 graph <- refined_data %>% 
   ggplot(aes(x = pageviews_date, y = views, group = name)) +
-  geom_line(aes(color = "red")) +
+  geom_line(color = "blue") +
   labs(title = "Wikipédia pageviews des artistes de la FEQ",
        x = "Date", y = "Pageviews",
        linetype = "Lignes") +
   # Line start FEQ
-  geom_vline(data = refined_data, aes(xintercept = festival_start), linetype = "dotted") +
+  geom_vline(data = refined_data, aes(xintercept = festival_start), linetype = "dotted", show.legend = TRUE) +
   # Line end FEQ
-  geom_vline(data = refined_data, aes(xintercept = festival_end), linetype = "dotted") +
+  geom_vline(data = refined_data, aes(xintercept = festival_end), linetype = "dotted", show.legend = TRUE) +
   # Concert date
-  geom_vline(data = refined_data, aes(xintercept = concert_date), linetype = "longdash") +
+  geom_vline(data = refined_data, aes(xintercept = concert_date), show.legend = TRUE) +
+  # Legend
+  scale_linetype_manual(name = "Dates", values = c("festival" = "dotted", "concert" = "longdash")) +
+  theme(legend.position="bottom") +
   # Shaded area
   #geom_rect(data = combined, aes(xmin = date-.5, xmax = date+.5,
   #                               ymin = -Inf, ymax = Inf, fill = day), alpha = 0.4) +
