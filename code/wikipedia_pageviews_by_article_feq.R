@@ -135,14 +135,17 @@ refined_data <- data %>%
 
 graph <- refined_data %>% 
   ggplot(aes(x = date, y = views, group = article)) +
-  geom_line(aes(color = article)) +
-  scale_color_viridis_d() +
+  geom_line(aes(color = "red")) +
   labs(title = "Wikipédia pageviews des artistes de la FEQ",
-       x = "Date", y = "Pageviews") +
+       x = "Date", y = "Pageviews",
+       linetype = "Lignes") +
   # Line start FEQ
   geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-06"))), linetype="dotted") +
   # Line end FEQ
-  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted")
+  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted")+
+  facet_wrap(~name, ncol = 3) +
+  # Set theme
+  theme_classic()
 
 print(graph)
 
