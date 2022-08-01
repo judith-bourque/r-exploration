@@ -450,6 +450,7 @@ Resources
 
 -   gganimate: animate plot
 -   ggplot2: plot
+-   ggrepel: repel labels from overlap
 
 Resources
 
@@ -457,6 +458,15 @@ Resources
 -   [Data Visualization](https://socviz.co/index.html#preface)
 -   [Fundamentals of Data
     Visualization](https://clauswilke.com/dataviz/)
+
+### Interactive graphs
+
+-   leaflet: interactive maps
+-   plotly: make any ggplot2 interactive
+-   rCharts: switch graph format with one click (ex: grouped vs. stacked
+    barchart)
+-   highcharter: show and hide graph elements (and option to download
+    graph)
 
 # Other resources
 
