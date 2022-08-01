@@ -50,19 +50,7 @@ start <- "2022062200" # YYYYMMDDHH
 end <- "2022073000" # YYYYMMDDHH
 
 ## Create dataframe of articles ----
-articles <- data.frame(date = c("2022-07-06",
-                                "2022-07-07",
-                                "2022-07-08",
-                                "2022-07-09",
-                                "2022-07-10",
-                                "2022-07-11",
-                                "2022-07-12",
-                                "2022-07-13",
-                                "2022-07-14",
-                                "2022-07-15",
-                                "2022-07-16",
-                                "2022-07-17"),
-                       name = c("Charlotte Cardin",
+articles <- data.frame(name = c("Charlotte Cardin",
                                 "Jack Johnson",
                                 "Luke Combs",
                                 "Maroon 5",
@@ -85,7 +73,19 @@ articles <- data.frame(date = c("2022-07-06",
                                    "Luis_Fonsi",
                                    "Alanis_Morissette",
                                    "Rage_Against_the_Machine",
-                                   "Half_Moon_Run"))
+                                   "Half_Moon_Run"),
+                       concert_date = c("2022-07-06",
+                                        "2022-07-07",
+                                        "2022-07-08",
+                                        "2022-07-09",
+                                        "2022-07-10",
+                                        "2022-07-11",
+                                        "2022-07-12",
+                                        "2022-07-13",
+                                        "2022-07-14",
+                                        "2022-07-15",
+                                        "2022-07-16",
+                                        "2022-07-17"))
 
 ## Create dataframe of pageviews ----
 
@@ -126,15 +126,22 @@ for (i in 1:nrow(articles)) {
 # Refine data ----
 
 refined_data <- data %>% 
-  # top
-  group_by(date) %>% 
+  # Change column name
+  rename(pageviews_date = date) %>% 
+  # Add concert date
+  left_join(., articles) %>%
+  # Add festival start and end dates
+  mutate(festival_start = "2022-07-06") %>% 
+  mutate(festival_end = "2022-07-17") %>% 
+  # Rank top articles per day
+  group_by(pageviews_date) %>% 
   mutate(rank = min_rank(-views) * 1) %>%
   ungroup()
 
 # Create static graph ----
 
 graph <- refined_data %>% 
-  ggplot(aes(x = date, y = views, group = article)) +
+  ggplot(aes(x = pageviews_date, y = views, group = article)) +
   geom_line(aes(color = "red")) +
   labs(title = "Wikipédia pageviews des artistes de la FEQ",
        x = "Date", y = "Pageviews",
@@ -142,7 +149,12 @@ graph <- refined_data %>%
   # Line start FEQ
   geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-06"))), linetype="dotted") +
   # Line end FEQ
-  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted")+
+  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted") +
+  # Shaded area
+  #geom_rect(data = combined, aes(xmin = date-.5, xmax = date+.5,
+  #                               ymin = -Inf, ymax = Inf, fill = day), alpha = 0.4) +
+  # Shaded area legend
+  #scale_fill_manual(values = c("red", "blue")) +
   facet_wrap(~name, ncol = 3) +
   # Set theme
   theme_classic()
@@ -153,7 +165,7 @@ print(graph)
 
 # Create animated graph ----
 static_graph <- refined_data %>% 
-  ggplot(aes(x = date, y = views, group = article)) +
+  ggplot(aes(x = pageviews_date, y = views, group = article)) +
   geom_line(aes(color = article)) +
   scale_color_viridis_d() +
   labs(title = "Wikipédia pageviews des artistes de la FEQ",
