@@ -336,6 +336,7 @@ Resources
 -   [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 -   [Data Visualization](https://socviz.co/index.html#preface)
 -   [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+- [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
 - [ggridges](https://wilkelab.org/ggridges/index.html)
 
 ### Interactive graphs
