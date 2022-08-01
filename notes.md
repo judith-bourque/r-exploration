@@ -413,6 +413,7 @@ Resources
     Cookbook](https://rstudio-education.github.io/tidyverse-cookbook/index.html)
 -   [Learn to
     purrr](https://www.rebeccabarter.com/blog/2019-08-19_purrr/#:~:text=Purrr%20is%20one%20of%20those,purrr%20is%20all%20about%20iteration.)
+-   [Forcats](https://forcats.tidyverse.org/reference/fct_reorder.html)
 
 # Data import
 
