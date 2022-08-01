@@ -143,6 +143,15 @@ refined_data <- data %>%
 
 # Create static graph ----
 
+## Ridge plot ----
+
+ggplot() +
+  geom_density_ridges(data = refined_data, mapping = aes(x = pageviews_date, y = name, 
+                              fill = name), alpha = 0.7)
+
+print(graph)
+
+## Facet graph ----
 graph <- refined_data %>% 
   ggplot(aes(x = pageviews_date, y = views, group = name)) +
   geom_line(color = "blue") +
