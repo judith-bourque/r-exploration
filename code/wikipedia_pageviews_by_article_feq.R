@@ -147,7 +147,7 @@ refined_data <- data %>%
 
 ggplot() +
   geom_density_ridges(data = refined_data, mapping = aes(x = pageviews_date, y = name, 
-                              fill = name), alpha = 0.7)
+                              fill = name, height = views), stat = "identity", scale = 1, alpha = 0.7)
 
 print(graph)
 
