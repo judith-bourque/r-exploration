@@ -74,7 +74,7 @@ articles <- data.frame(name = c("Charlotte Cardin",
                                    "Alanis_Morissette",
                                    "Rage_Against_the_Machine",
                                    "Half_Moon_Run"),
-                       concert_date = c("2022-07-06",
+                       concert_date = as.Date(c("2022-07-06",
                                         "2022-07-07",
                                         "2022-07-08",
                                         "2022-07-09",
@@ -85,7 +85,7 @@ articles <- data.frame(name = c("Charlotte Cardin",
                                         "2022-07-14",
                                         "2022-07-15",
                                         "2022-07-16",
-                                        "2022-07-17"))
+                                        "2022-07-17")))
 
 ## Create dataframe of pageviews ----
 
@@ -131,8 +131,8 @@ refined_data <- data %>%
   # Add concert date
   left_join(., articles) %>%
   # Add festival start and end dates
-  mutate(festival_start = "2022-07-06") %>% 
-  mutate(festival_end = "2022-07-17") %>% 
+  mutate(festival_start = as.Date("2022-07-06")) %>% 
+  mutate(festival_end = as.Date("2022-07-17")) %>% 
   # Rank top articles per day
   group_by(pageviews_date) %>% 
   mutate(rank = min_rank(-views) * 1) %>%
@@ -141,18 +141,21 @@ refined_data <- data %>%
 # Create static graph ----
 
 graph <- refined_data %>% 
-  ggplot(aes(x = pageviews_date, y = views, group = article)) +
+  ggplot(aes(x = pageviews_date, y = views, group = name)) +
   geom_line(aes(color = "red")) +
   labs(title = "Wikipédia pageviews des artistes de la FEQ",
        x = "Date", y = "Pageviews",
        linetype = "Lignes") +
   # Line start FEQ
-  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-06"))), linetype="dotted") +
+  geom_vline(data = refined_data, aes(xintercept = festival_start), linetype = "dotted") +
   # Line end FEQ
-  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted") +
+  geom_vline(data = refined_data, aes(xintercept = festival_end), linetype = "dotted") +
+  # Concert date
+  geom_vline(data = refined_data, aes(xintercept = concert_date), linetype = "longdash") +
   # Shaded area
   #geom_rect(data = combined, aes(xmin = date-.5, xmax = date+.5,
   #                               ymin = -Inf, ymax = Inf, fill = day), alpha = 0.4) +
+  
   # Shaded area legend
   #scale_fill_manual(values = c("red", "blue")) +
   facet_wrap(~name, ncol = 3) +
