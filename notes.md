@@ -448,6 +448,9 @@ Resources
 
 ## Data visualization
 
+-   gganimate: animate plot
+-   ggplot2: plot
+
 Resources
 
 -   [Data Visualization with R](https://rkabacoff.github.io/datavis/)
