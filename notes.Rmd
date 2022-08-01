@@ -339,6 +339,7 @@ Resources
 -   [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
 - [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
 - [ggridges](https://wilkelab.org/ggridges/index.html)
+- [from Data to Vis](https://www.data-to-viz.com/): choose data visualization format based on data type
 
 ## Interactive graphs
 
