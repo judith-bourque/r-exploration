@@ -40,7 +40,7 @@ library(ggrepel) # repel labels and text
 # End of FEQ: July 16
 # 2 weeks after end of FEQ: July 30
 
-my_user_agent <- "judith.bourque.2@ulaval.ca" # E-mail for API user agent
+my_user_agent <- "" # E-mail for API user agent
 
 project <- "fr.wikipedia.org"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
