@@ -34,6 +34,7 @@ library(tidyjson) # Clean json
 library(ggplot2)
 library(gganimate) # Create animated ggplot
 library(ggrepel) # repel labels and text
+library(viridis) # colorblind friendly colors
 
 # Load data ----
 
@@ -143,18 +144,12 @@ refined_data <- data %>%
 
 # Create static graph ----
 
-## Ridge plot ----
-
-ggplot() +
-  geom_density_ridges(data = refined_data, mapping = aes(x = pageviews_date, y = name, 
-                              fill = name, height = views), stat = "identity", scale = 1, alpha = 0.7)
-
-print(graph)
-
 ## Facet graph ----
+
 graph <- refined_data %>% 
-  ggplot(aes(x = pageviews_date, y = views, group = name)) +
-  geom_line(color = "blue") +
+  ggplot(aes(x = pageviews_date, y = views, group = name, fill = name)) +
+  geom_area() +
+  scale_fill_viridis(discrete = TRUE) +
   labs(title = "Wikipédia pageviews des artistes de la FEQ",
        x = "Date", y = "Pageviews",
        linetype = "Lignes") +
@@ -165,21 +160,33 @@ graph <- refined_data %>%
   # Concert date
   geom_vline(data = refined_data, aes(xintercept = concert_date), show.legend = TRUE) +
   # Legend
-  scale_linetype_manual(name = "Dates", values = c("festival" = "dotted", "concert" = "longdash")) +
-  theme(legend.position="bottom") +
-  # Shaded area
-  #geom_rect(data = combined, aes(xmin = date-.5, xmax = date+.5,
-  #                               ymin = -Inf, ymax = Inf, fill = day), alpha = 0.4) +
-  
-  # Shaded area legend
-  #scale_fill_manual(values = c("red", "blue")) +
-  facet_wrap(~name, ncol = 3) +
+  #scale_linetype_manual(name = "Dates", values = c("festival" = "dotted", "concert" = "longdash")) +
+  #theme(legend.position="bottom") +
+  facet_wrap(~fct_reorder(name, concert_date), ncol = 3) +
   # Set theme
-  theme_classic()
+  theme_ipsum() +
+  theme(
+    legend.position="none",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    plot.title = element_text(size=14),
+    axis.text.x = element_text(angle=90)
+  )
 
 print(graph)
 
 # ggsave
+
+## Ridge plot ----
+
+graph <- ggplot() +
+  geom_density_ridges(data = refined_data, mapping = aes(x = pageviews_date,
+                                                         y = fct_reorder(name, concert_date, .desc = TRUE), 
+                              fill = name, height = views), stat = "identity", scale = 1, alpha = 0.7) +
+  theme_ridges() +
+  theme(legend.position="none")
+
+print(graph)
 
 # Create animated graph ----
 static_graph <- refined_data %>% 
