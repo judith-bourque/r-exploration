@@ -327,10 +327,13 @@ Resources
 
 # Data visualization
 
+Packages
+
 - ggplot2: plot
 - gganimate: animate plot
 - ggrepel: repel labels from overlap
 - ggridges: create ridges
+- viridis: colour-blind friendly color maps for R
 
 Resources
 
