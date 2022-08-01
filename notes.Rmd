@@ -1,0 +1,294 @@
+---
+title: "r_exploration_notes"
+author: "Judith Bourque"
+date: "`r Sys.Date()`"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Description
+
+A collection of notes and resources for personal use.
+
+# R
+
+## R file types
+
+- R script `.R` - analysis mode and want a report as a side effect
+- R Markdown `.Rmd` - writing a report with a lot of R code in it
+- R Notebook - R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneauth the input.
+
+# R Markdown
+
+Resources
+
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+- [R Markdown from RStudio](https://rmarkdown.rstudio.com/lesson-1.html)
+- [Pandoc User's Guide](https://pandoc.org/MANUAL.html)
+- [R Markdown Reference guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.164587583.1800627063.1648159135-864680125.1644240072)
+- [R Markdown Formats](https://rmarkdown.rstudio.com/formats.html)
+- [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+- [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+- [Bookdown](https://github.com/rstudio/bookdown)
+- [Citation Management and Writing Tools: LaTeX and BibTex](https://libguides.mit.edu/cite-write/bibtex)
+- [RMarkdown how to](http://www.ece.ualberta.ca/~terheide/rmarkdown-how-to/markdown.html#more_information)
+
+## YAML
+
+Optional header surrounded by `---`
+
+```{r eval = FALSE}
+---
+title: "Title of my Document"
+subtitle: "Subtitle of my Document"
+author: "Judith Bourque"
+# Date updates automatically
+date: '`r Sys.Date()`'
+output: 
+  github_document:
+  # Table of contents
+    toc: true
+    number_sections: true
+# Parameters set values automatically
+params:
+  data: "data"
+---
+```
+
+When you put output as github_document, you will knit a .md. Useful as it is a GitHub friendly markdown document and quite pleasant to look at.
+
+Parameters are values you can set when you render the report. They help to re-render the same report with distinct values for various key inputs.
+
+To access a parameter in code, call `params$<parameter name>`.
+
+## Output formats
+
+Documents
+
+- `github_document` - GitHub Flavored Markdown document
+- `md_document`
+- `pdf_document` - PDF document (via LaTeX template)
+- `word_document` Mirosoft Word document (docx)
+- `context_document`
+- `html_document`
+- `latex_document`
+- `odt_document` - OpenDocument Text document
+- `rtf_document`
+
+Interactive documents
+
+- `htmlwidgets` package
+- `shiny` package
+- `html_notebook` - Interactive R Notebooks
+
+Presentations
+
+- `powerpoint_presentation`
+- `beamer_presentation` - PDF presentation with LaTeX Beamer
+- `slidy_presentation`
+
+Other
+
+- `flexdashboard::flex_dashboard` - interactive dashboards
+
+
+Resource
+
+- [Output formats](https://rmarkdown.rstudio.com/lesson-9.html)
+
+## Render output
+
+If you don't want to knit, run the `render` command
+
+```{r eval = FALSE}
+library(rmarkdown)
+render("example.Rmd")
+```
+
+## Headers
+
+```{md}
+# Numbered header
+# Unnumbered header {-}
+# Also unnumbered header {.unnumbered}
+```
+
+## Blockquotes
+
+Code
+
+```{md}
+> "This is a quote that can be long and go until another line."
+>
+> --- Author
+```
+
+Output
+
+> "This is a quote that can be long and go until another line."
+>
+> --- Author
+## Markdown Syntax Basics
+
+Pandoc's Markdown
+
+- Images - `![alt text or image title](path/to/image)`
+- Footnotes - `^[This is a footnote.]`
+- Horizontal rules - three or more of *, -, _
+
+Resource
+
+- [Pandoc User's Guide](https://pandoc.org/MANUAL.html)
+
+## Citations
+
+BibTeX databases - plain-texte file with filename extension `.bib`
+
+```{r eval = FALSE}
+@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2017},
+  url = {https://www.R-project.org/},
+}
+```
+
+## Tables
+
+Display options for data frames and matrixes
+
+- Default - like in the R terminal
+- `knitr::kable` - pretty
+
+```{r eval = FALSE}
+library(knitr)
+kable(mtcars[1:5, ], caption = "A knitr kable.")
+```
+
+## Code chunks
+
+Code chunks can be run individually in RStudio by clicking the green arrow pointing right. 
+
+Code chunks start with ```` ```{}```` and ends with ```` ``` ````.
+
+```{r eval = FALSE}
+# Code displayed without running
+# How to put a code chunk in a code chunk?
+``` 
+
+Code chunk options
+
+- `include = FALSE` - prevents code and results from appearing in the output file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.
+- `echo = FALSE` -  prevents code, but not the results from appearing in the finished file. Good to embed figures.
+- `message = FALSE` - prevents messages that are generated by code from appearing in the finished file.
+- `warning = FALSE` - prevents warnings that are generated by code from appearing in the finished.
+- `fig.cap = "..."` - adds a caption to graphical results.
+- `eval = FALSE`
+
+Global options
+
+To set global options that apply to every chunk in your file, call `knitr::opts_chunk$set` in a code chunk. Knitr will treat each option that you pass to `knitr::opts_chunk$set` as a global default that can be overwritten in individual chunk headers.
+
+## Inline code
+
+Insert code results directly by enclosing the code with `` `r ` ``
+
+Example
+
+`There are 10 individuals.` becomes ``There are `nrow(my_data)` individuals.``
+
+To include *n* literal backticks, use at least *n + 1* backticks outside, e.g., you can use four backticks to preserve three backtick inside ````` ```` ```code``` ```` `````, which is rendered as ```` ```code``` ````.
+
+# R for data science
+
+Resources
+
+- [R for Data Science](https://r4ds.had.co.nz/index.html)
+- [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/)
+- [R for Data Science: Exercice Solutions](https://jrnold.github.io/r4ds-exercise-solutions/)
+- [R for Graduate Students](https://bookdown.org/yih_huynh/Guide-to-R-Book/)
+- [thesisdown](https://github.com/ismayc/thesisdown)
+
+## Tidyverse package
+
+`library(tidyverse)`
+
+`tidyverse` is a collection of R packages designed for data science.
+
+Core packages loaded automatically with `library(tidyverse)`
+
+- `ggplot2` - create graphics
+- `dplyr` - manipulate data
+- `tidyr` - tidy data
+- `readr` - read rectangular data (csv, tsv)
+- `purrr` - loops
+- `tibble` - data frame 2.0, they do less and complain more forcing you to adress problems earlier
+- `stringr` - functions to work with strings
+- `forcats` - tools to work with factors
+
+Resources
+
+- [Tidyverse](https://www.tidyverse.org/)
+- [The Tidyverse Cookbook](https://rstudio-education.github.io/tidyverse-cookbook/index.html)
+
+# Resources
+
+- [Introduction to R](http://r.sund.ku.dk/index.html)
+- [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+- [Using R and RStudio for Data Management, Statistical Analysis, and Graphics](https://englianhu.files.wordpress.com/2016/01/using-r-and-rstudio-for-data-management-statistical-analysis-and-graphics-2nd-edit.pdf)
+- [ProgrammingR](https://www.programmingr.com/)
+- [Advanced R](https://adv-r.hadley.nz/index.html)
+
+Course documents
+
+- [STAT 545 Data wrangling, exploration, and analysis with R](https://stat545.com/index.html)
+- [Happy Git and GitHub for the useR: Installation](https://happygitwithr.com/install-intro.html)
+
+Data analysis
+
+- [Exploratory Data Analysis](https://mgimond.github.io/ES218/Week01.html)
+- [Geocomputation with R](https://geocompr.robinlovelace.net/) - geographic data analysis
+
+Data Visualization
+
+- [Data Visualization with R](https://rkabacoff.github.io/datavis/)
+- [Data Visualization](https://socviz.co/index.html#preface)
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+
+Text mining
+
+- [Welcome to Text Mining with R](https://www.tidytextmining.com/index.html)
+- [Notes for “Text Mining with R: A Tidy Approach”](https://bookdown.org/Maxine/tidy-text-mining/)
+- [Work with strings with stringr cheat sheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf)
+- [Stringr](https://stringr.tidyverse.org/) (see cheat sheet for regex)
+
+Databases
+
+- [Databases using R](https://db.rstudio.com/getting-started/)
+- [10 Easy Steps to a Complete Understanding of SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
+- [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
+
+Art
+
+- [Creating Generative Art with R](https://cpastem.caltech.edu/documents/18024/ARt.nb.html)
+- [Tiny Art with R (R studio)](https://alinastepanova.medium.com/tiny-art-with-r-d6d93d110619)
+- [Tweetable Mathematical Art With R](https://fronkonstin.com/2018/09/06/tweetable-mathematical-art-with-r/)
+
+Miscellaneous
+
+- [What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text](https://kunststube.net/encoding/)
+- [making memes in R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
+- [WikipediR](https://github.com/Ironholds/WikipediR)
+- [Learn to purrr](https://www.rebeccabarter.com/blog/2019-08-19_purrr/#:~:text=Purrr%20is%20one%20of%20those,purrr%20is%20all%20about%20iteration.)
+- [Statistical Inference via Data Science](https://moderndive.com/)
+- [Introduction to Data Science](https://rafalab.github.io/dsbook/)
+- [Efficient R programming](https://csgillespie.github.io/efficientR/)
+- [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/)
+- [R Packages](https://r-pkgs.org/index.html)
+- [Reader expectations approach](https://georgegopen.com/litigation-articles)
