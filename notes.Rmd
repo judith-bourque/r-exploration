@@ -71,20 +71,21 @@ Credentials can be stored in .Renviron, or can be set in your R session through 
 
 If you require custom authentication for different packages (for example, your project makes use of packages available on different GitHub enterprise servers), you can use the renv.auth R option to provide package-specific authentication settings. renv.auth can either be a a named list associating package names with environment variables, or a function accepting a package name + record, and returning a list of environment variables. For example:
 
-    # define a function providing authentication
-    options(renv.auth = function(package, record) {
+```{}
+# define a function providing authentication
+options(renv.auth = function(package, record) {
       if (package == "MyPackage")
         return(list(GITHUB_PAT = "<pat>"))
     })
 
-    # use a named list directly
+# use a named list directly
     options(renv.auth = list(
       MyPackage = list(GITHUB_PAT = "<pat>")
     ))
 
     # alternatively, set package-specific option
     options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
-
+```
 
 ## .Rprofile
 
@@ -180,6 +181,13 @@ To ignore a currently tracked file, use this command:
 References
 
 -   [gitignore](https://git-scm.com/docs/gitignore): official documentation
+
+## GitHub Flavored Markdown
+
+References
+
+- [Writing on GitHub](https://docs.github.com/en/get-started/writing-on-github): tips for GitHub flavored markdown and other writing formats
+- [Github Flavored Markdown cheatsheet](https://gist.github.com/stevenyap/7038119)
 
 # R Markdown
 

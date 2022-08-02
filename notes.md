@@ -98,17 +98,17 @@ environment variables. For example:
 
     # define a function providing authentication
     options(renv.auth = function(package, record) {
-      if (package == "MyPackage")
-        return(list(GITHUB_PAT = "<pat>"))
-    })
+          if (package == "MyPackage")
+            return(list(GITHUB_PAT = "<pat>"))
+        })
 
     # use a named list directly
-    options(renv.auth = list(
-      MyPackage = list(GITHUB_PAT = "<pat>")
-    ))
+        options(renv.auth = list(
+          MyPackage = list(GITHUB_PAT = "<pat>")
+        ))
 
-    # alternatively, set package-specific option
-    options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
+        # alternatively, set package-specific option
+        options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
 
 ## .Rprofile
 
@@ -274,6 +274,16 @@ References
 
 -   [gitignore](https://git-scm.com/docs/gitignore): official
     documentation
+
+## GitHub Flavored Markdown
+
+References
+
+-   [Writing on
+    GitHub](https://docs.github.com/en/get-started/writing-on-github):
+    tips for GitHub flavored markdown and other writing formats
+-   [Github Flavored Markdown
+    cheatsheet](https://gist.github.com/stevenyap/7038119)
 
 # R Markdown
 
