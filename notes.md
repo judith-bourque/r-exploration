@@ -56,8 +56,49 @@ References
 
 # Workflow
 
--   GitHub
--   Renv
+New project setup
+
+1.  Clone repository from GitHub
+2.  Create R project
+3.  Use `renv::init()` to initialize renv with a new or existing
+    project. Enter autorisations needed.
+
+## Renv
+
+Your project may make use of packages which are available from remote
+sources requiring some form of authentication to access. Usually, either
+a personal access token (PAT) or username + password combination is
+required for authentication. renv is able to authenticate when
+downloading from such sources.
+
+Credentials can be stored in e.g. .Renviron, or can be set in your R
+session through other means as appropriate.
+
+If you require custom authentication for different packages (for
+example, your project makes use of packages available on different
+GitHub enterprise servers), you can use the renv.auth R option to
+provide package-specific authentication settings. renv.auth can either
+be a a named list associating package names with environment variables,
+or a function accepting a package name + record, and returning a list of
+environment variables. For example:
+
+    # define a function providing authentication
+    options(renv.auth = function(package, record) {
+      if (package == "MyPackage")
+        return(list(GITHUB_PAT = "<pat>"))
+    })
+
+    # use a named list directly
+    options(renv.auth = list(
+      MyPackage = list(GITHUB_PAT = "<pat>")
+    ))
+
+    # alternatively, set package-specific option
+    options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
+
+References
+
+-   [renv](https://rstudio.github.io/renv/articles/renv.html#authentication)
 
 # Git and GitHub
 
@@ -83,18 +124,22 @@ References
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">git add -A</td>
+<td style="text-align: left;">Add all files</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">git commit</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">git push</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">git pull</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">git rm –cached</td>
 <td style="text-align: left;">stop tracking a file that is currently
 tracked</td>
