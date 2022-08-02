@@ -67,7 +67,7 @@ File and folder structure
 
 Your project may make use of packages which are available from remote sources requiring some form of authentication to access. Usually, either a personal access token (PAT) or username + password combination is required for authentication. renv is able to authenticate when downloading from such sources.
 
-Credentials can be stored in e.g. .Renviron, or can be set in your R session through other means as appropriate.
+Credentials can be stored in .Renviron, or can be set in your R session through other means as appropriate.
 
 If you require custom authentication for different packages (for example, your project makes use of packages available on different GitHub enterprise servers), you can use the renv.auth R option to provide package-specific authentication settings. renv.auth can either be a a named list associating package names with environment variables, or a function accepting a package name + record, and returning a list of environment variables. For example:
 
@@ -85,10 +85,10 @@ If you require custom authentication for different packages (for example, your p
     # alternatively, set package-specific option
     options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
 
----
+
 ## .Rprofile
 
-.Rprofile files are user-controllable files to set options and environment variables. .Rprofile files can be either at the user or project level. User-level .Rprofile files live in the base of the user's home directory, and project-level .Rprofile files live in the base of the project directory. 
+.Rprofile files are user-controllable files to set options and environment variables. `.Rprofile` files can be either at the user or project level. User-level .Rprofile files live in the base of the user's home directory, and project-level .Rprofile files live in the base of the project directory. 
 
 R will source only one .Rprofile file. So if you have both a project-specific .Rprofile file and a user .Rprofile file that you want to use, you explicitly source the user-level .Rprofile at the top of your project-level .Rprofile with source("~/.Rprofile").
 

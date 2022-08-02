@@ -56,14 +56,28 @@ References
 
 # Workflow
 
+Programs
+
+-   R
+-   RStudio
+-   GitHub: git repository
+-   GitBash: command line
+
 New project setup
 
-1.  Clone repository from GitHub
-2.  Create R project
+1.  Create and clone repository from GitHub
+2.  Create .Rproject
 3.  Use `renv::init()` to initialize renv with a new or existing
     project. Enter autorisations needed.
+4.  Set up .gitignore
 
-## Renv
+File and folder structure
+
+-   /code: contains .R files
+-   /graphs: contains graphs
+-   README.md: describe the project
+
+# Renv
 
 Your project may make use of packages which are available from remote
 sources requiring some form of authentication to access. Usually, either
@@ -71,8 +85,8 @@ a personal access token (PAT) or username + password combination is
 required for authentication. renv is able to authenticate when
 downloading from such sources.
 
-Credentials can be stored in e.g. .Renviron, or can be set in your R
-session through other means as appropriate.
+Credentials can be stored in .Renviron, or can be set in your R session
+through other means as appropriate.
 
 If you require custom authentication for different packages (for
 example, your project makes use of packages available on different
@@ -96,9 +110,51 @@ environment variables. For example:
     # alternatively, set package-specific option
     options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
 
+## .Rprofile
+
+.Rprofile files are user-controllable files to set options and
+environment variables. `.Rprofile` files can be either at the user or
+project level. User-level .Rprofile files live in the base of the user’s
+home directory, and project-level .Rprofile files live in the base of
+the project directory.
+
+R will source only one .Rprofile file. So if you have both a
+project-specific .Rprofile file and a user .Rprofile file that you want
+to use, you explicitly source the user-level .Rprofile at the top of
+your project-level .Rprofile with source(“~/.Rprofile”).
+
+.Rprofile files are sourced as regular R code, so setting environment
+variables must be done inside a Sys.setenv(key = “value”) call.
+
+One easy way to edit your .Rprofile file is to use the
+usethis::edit\_r\_profile() function from within an R session. You can
+specify whether you want to edit the user or project level .Rprofile.
+
+## .Renviron
+
+.Renviron is a user-controllable file that can be used to create
+environment variables. This is especially useful to avoid including
+credentials like API keys inside R scripts. This file is written in a
+key-value format, so environment variables are created in the format:
+
+    Key1=value1
+    Key2=value2
+
+And then Sys.getenv(“Key1”) will return “value1” in an R session.
+
+Like with the .Rprofile file, .Renviron files can be at either the user
+or project level. If there is a project-level .Renviron, the user-level
+file will not be sourced. The usethis package includes a helper function
+for editing .Renviron files from an R session with
+`usethis::edit_r_environ()`.
+
 References
 
--   [renv](https://rstudio.github.io/renv/articles/renv.html#authentication)
+-   [renv](https://rstudio.github.io/renv/articles/renv.html#authentication):
+    documentation
+-   [Managing R with .Rprofile, .Renviron, Rprofile.site, Renviron.site,
+    rsession.conf, and
+    repos.conf](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf#:~:text=Rprofile%20files%20are%20user%2Dcontrollable,base%20of%20the%20project%20directory.)
 
 # Git and GitHub
 
@@ -120,6 +176,14 @@ References
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">git status</td>
+<td style="text-align: left;">View project changes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">git diff</td>
+<td style="text-align: left;">View difference in file</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">git add</td>
 <td style="text-align: left;"></td>
 </tr>
@@ -128,7 +192,7 @@ References
 <td style="text-align: left;">Add all files</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">git commit</td>
+<td style="text-align: left;">git commit -m “”</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
@@ -152,7 +216,7 @@ git commands
 References
 
 -   [Happy Git and GitHub for the useR:
-    Installation](https://happygitwithr.com/install-intro.html) (course)
+    Installation](https://happygitwithr.com/install-intro.html): course
 
 ## gitignore
 
@@ -563,6 +627,11 @@ References
 -   [Forcats](https://forcats.tidyverse.org/reference/fct_reorder.html)
 
 # Data import
+
+Workflow
+
+-   If authentification is required to access the data, update
+    `.Renviron` file using `usethis::edit_r_environ()`
 
 References
 
