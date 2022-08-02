@@ -41,7 +41,7 @@ library(viridis) # colorblind friendly colors
 # Set parameters
 # 2 weeks before start of FEQ: June 22
 # Start of FEQ: July 6
-# End of FEQ: July 16
+# End of FEQ: July 17
 # 2 weeks after end of FEQ: July 30
 
 my_user_agent <- Sys.getenv("WIKIMEDIA_USER_AGENT") # E-mail for API user agent
@@ -50,8 +50,8 @@ project <- "fr.wikipedia.org"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
-start <- "2022062200" # YYYYMMDDHH
-end <- "2022073000" # YYYYMMDDHH
+start <- "2022070600" # YYYYMMDDHH
+end <- "2022071700" # YYYYMMDDHH
 
 ## Create dataframe of articles ----
 articles <- data.frame(name = c("Charlotte Cardin",
@@ -135,8 +135,8 @@ refined_data <- data %>%
   # Add concert date
   left_join(., articles) %>%
   # Add festival start and end dates
-  mutate(festival_start = as.Date("2022-07-06")) %>% 
-  mutate(festival_end = as.Date("2022-07-17")) %>% 
+  #mutate(festival_start = as.Date("2022-07-06")) %>% 
+  #mutate(festival_end = as.Date("2022-07-17")) %>% 
   # Rank top articles per day
   group_by(pageviews_date) %>% 
   mutate(rank = min_rank(-views) * 1) %>%
@@ -150,28 +150,28 @@ graph <- refined_data %>%
   ggplot(aes(x = pageviews_date, y = views, group = name, fill = name)) +
   geom_area() +
   scale_fill_viridis(discrete = TRUE) +
-  labs(title = "Wikipédia pageviews des artistes de la FEQ",
-       x = "Date", y = "Pageviews",
+  labs(title = "\"Qui joue au FEQ ce soir?\"",
+       subtitle = "Pages vues des articles des têtes d'affiches du Festival
+d'été de Québec 2022 sur fr.wikipedia.org",
+       caption = "Méthodologie: Données de pages vues par jour de l'API Wikimédia (UTC).
+       NB: L'article Luke Combs a été créé le 10 juillet 2022.",
+       x = "Date", y = "Pages vues",
        linetype = "Lignes") +
-  # Line start FEQ
-  geom_vline(data = refined_data, aes(xintercept = festival_start), linetype = "dotted", show.legend = TRUE) +
-  # Line end FEQ
-  geom_vline(data = refined_data, aes(xintercept = festival_end), linetype = "dotted", show.legend = TRUE) +
   # Concert date
   geom_vline(data = refined_data, aes(xintercept = concert_date), show.legend = TRUE) +
-  # Legend
-  #scale_linetype_manual(name = "Dates", values = c("festival" = "dotted", "concert" = "longdash")) +
-  #theme(legend.position="bottom") +
+  # Change scale
+  # scale_x_continuous(labels, limits)
+  # Facet wrap
   facet_wrap(~fct_reorder(name, concert_date), ncol = 3) +
   # Set theme
-  theme_ipsum() +
+  hrbrthemes::theme_ipsum() +
   theme(
+    plot.background = element_rect(fill = "white"),
     legend.position="none",
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8),
     plot.title = element_text(size=14),
-    axis.text.x = element_text(angle=90)
-  )
+    axis.text.x = element_text(angle=90))
 
 print(graph)
 
