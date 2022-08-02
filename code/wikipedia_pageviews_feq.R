@@ -89,7 +89,8 @@ articles <- data.frame(name = c("Charlotte Cardin",
                                         "2022-07-14",
                                         "2022-07-15",
                                         "2022-07-16",
-                                        "2022-07-17")))
+                                        "2022-07-17")),
+                       concert_timezone = "ET")
 
 ## Create dataframe of pageviews ----
 
@@ -122,6 +123,8 @@ for (i in 1:nrow(articles)) {
   response_content_df$name <- articles$name[i]
   # Clean up date
   response_content_df$date <- as.Date(response_content_df$date, "%Y%m%d")
+  # Specify timezone
+  response_content_df$timestamp_timezone <- "UTC"
   
   # Combine data frames
   data <- rbind(data, response_content_df)
