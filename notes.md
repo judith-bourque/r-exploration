@@ -146,6 +146,11 @@ ignored</td>
 
 .gitignore code
 
+`.gitignore` options
+
+    # Private files
+    _*
+
 To ignore some files in all repositories on your computer, put them in a
 global `.gitignore` file. First, you have to add a setting to Git with
 this command:
@@ -546,13 +551,40 @@ References
 
 # Data visualization
 
-Packages
+<table>
+<caption>data visualization packages</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">package</th>
+<th style="text-align: left;">purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ggplot2</td>
+<td style="text-align: left;">plot</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gganimate</td>
+<td style="text-align: left;">animate plot</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ggrepel</td>
+<td style="text-align: left;">repel labels from overlap</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ggridges</td>
+<td style="text-align: left;">create ridges</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">viridis</td>
+<td style="text-align: left;">colour-blind friendly color maps for
+R</td>
+</tr>
+</tbody>
+</table>
 
--   ggplot2: plot
--   gganimate: animate plot
--   ggrepel: repel labels from overlap
--   ggridges: create ridges
--   viridis: colour-blind friendly color maps for R
+data visualization packages
 
 References
 

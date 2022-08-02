@@ -43,8 +43,8 @@ References
 
 # Workflow
 
-- GitHub
-- Renv
+-   GitHub
+-   Renv
 
 # Git and GitHub
 
@@ -54,6 +54,7 @@ df <- data.frame(
     "cd",
     "cd ..",
     "git add",
+    "git add -A"
     "git commit",
     "git push",
     "git pull",
@@ -62,6 +63,7 @@ df <- data.frame(
     "",
     "",
     "",
+    "Add all files",
     "",
     "",
     "",
@@ -90,6 +92,13 @@ df <- data.frame(
 knitr::kable(df, caption = ".gitignore code")
 ```
 
+`.gitignore` options
+
+```{}
+# Private files
+_*
+```
+
 To ignore some files in all repositories on your computer, put them in a global `.gitignore` file. First, you have to add a setting to Git with this command:
 
 ```{}
@@ -104,7 +113,7 @@ git rm --cached FILENAME
 
 References
 
-- [gitignore](https://git-scm.com/docs/gitignore): official documentation
+-   [gitignore](https://git-scm.com/docs/gitignore): official documentation
 
 # R Markdown
 
@@ -356,7 +365,7 @@ References
 -   [Tidyverse](https://www.tidyverse.org/)
 -   [The Tidyverse Cookbook](https://rstudio-education.github.io/tidyverse-cookbook/index.html)
 -   [Learn to purrr](https://www.rebeccabarter.com/blog/2019-08-19_purrr/#:~:text=Purrr%20is%20one%20of%20those,purrr%20is%20all%20about%20iteration.)
-- [Forcats](https://forcats.tidyverse.org/reference/fct_reorder.html)
+-   [Forcats](https://forcats.tidyverse.org/reference/fct_reorder.html)
 
 # Data import
 
@@ -383,29 +392,38 @@ References
 
 # Data visualization
 
-Packages
-
-- ggplot2: plot
-- gganimate: animate plot
-- ggrepel: repel labels from overlap
-- ggridges: create ridges
-- viridis: colour-blind friendly color maps for R
+```{r echo = FALSE}
+df <- data.frame(
+  package = c(
+    "ggplot2",
+    "gganimate",
+    "ggrepel",
+    "ggridges",
+    "viridis"),
+  purpose = c(
+    "plot",
+    "animate plot",
+    "repel labels from overlap",
+    "create ridges",
+    "colour-blind friendly color maps for R"))
+knitr::kable(df, caption = "data visualization packages")
+```
 
 References
 
 -   [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 -   [Data Visualization](https://socviz.co/index.html#preface)
 -   [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
-- [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
-- [ggridges](https://wilkelab.org/ggridges/index.html)
-- [from Data to Vis](https://www.data-to-viz.com/): choose data visualization format based on data type
+-   [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
+-   [ggridges](https://wilkelab.org/ggridges/index.html)
+-   [from Data to Vis](https://www.data-to-viz.com/): choose data visualization format based on data type
 
 ## Interactive graphs
 
-- leaflet: interactive maps
-- plotly: make any ggplot2 interactive
-- rCharts: switch graph format with one click (ex: grouped vs. stacked barchart)
-- highcharter: show and hide graph elements (and option to download graph)
+-   leaflet: interactive maps
+-   plotly: make any ggplot2 interactive
+-   rCharts: switch graph format with one click (ex: grouped vs. stacked barchart)
+-   highcharter: show and hide graph elements (and option to download graph)
 
 ## Data art
 
