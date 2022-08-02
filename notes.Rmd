@@ -41,14 +41,38 @@ Resources
 -   [Advanced R](https://adv-r.hadley.nz/index.html)
 -   [Efficient R programming](https://csgillespie.github.io/efficientR/)
 
-## Workflow
+# Workflow
 
 - GitHub
 - Renv
 
+## Git and GitHub
+
+```{r echo = FALSE}
+df <- data.frame(
+  command = c(
+    "cd",
+    "cd ..",
+    "git add",
+    "git commit",
+    "git push",
+    "git pull",
+    "git rm --cached"),
+  purpose = c(
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "stop tracking a file that is currently tracked"))
+knitr::kable(df, caption = "git commands")
+```
+
 Resources
 
 -   [Happy Git and GitHub for the useR: Installation](https://happygitwithr.com/install-intro.html) (course)
+- [gitignore](https://git-scm.com/docs/gitignore): official documentation
 
 # R Markdown
 

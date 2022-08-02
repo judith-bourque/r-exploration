@@ -54,15 +54,62 @@ Resources
 -   [Advanced R](https://adv-r.hadley.nz/index.html)
 -   [Efficient R programming](https://csgillespie.github.io/efficientR/)
 
-## Workflow
+# Workflow
 
 -   GitHub
 -   Renv
+
+## Git and GitHub
+
+<table>
+<caption>git commands</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">command</th>
+<th style="text-align: left;">purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">cd</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cd ..</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">git add</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">git commit</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">git push</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">git pull</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">git rm –cached</td>
+<td style="text-align: left;">stop tracking a file that is currently
+tracked</td>
+</tr>
+</tbody>
+</table>
+
+git commands
 
 Resources
 
 -   [Happy Git and GitHub for the useR:
     Installation](https://happygitwithr.com/install-intro.html) (course)
+-   [gitignore](https://git-scm.com/docs/gitignore): official
+    documentation
 
 # R Markdown
 
