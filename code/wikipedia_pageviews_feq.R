@@ -44,7 +44,7 @@ library(viridis) # colorblind friendly colors
 # End of FEQ: July 16
 # 2 weeks after end of FEQ: July 30
 
-my_user_agent <- "" # E-mail for API user agent
+my_user_agent <- Sys.getenv("WIKIMEDIA_USER_AGENT") # E-mail for API user agent
 
 project <- "fr.wikipedia.org"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
