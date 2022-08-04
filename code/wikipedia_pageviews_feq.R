@@ -51,8 +51,8 @@ project <- "fr.wikipedia.org"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
-start <- "2022070600" # YYYYMMDDHH
-end <- "2022071700" # YYYYMMDDHH
+start <- "2022070700" # YYYYMMDDHH
+end <- "2022071800" # YYYYMMDDHH
 
 ## Create dataframe of articles ----
 articles <- data.frame(name = c("Charlotte Cardin",
