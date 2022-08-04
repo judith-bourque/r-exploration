@@ -138,9 +138,8 @@ refined_data <- data %>%
   rename(pageviews_date = date) %>% 
   # Add concert date
   left_join(., articles) %>%
-  # Add festival start and end dates
-  #mutate(festival_start = as.Date("2022-07-06")) %>% 
-  #mutate(festival_end = as.Date("2022-07-17")) %>% 
+  # Correct pageviews date
+  mutate(pageviews_date = pageviews_date - 1) %>% 
   # Rank top articles per day
   group_by(pageviews_date) %>% 
   mutate(rank = min_rank(-views) * 1) %>%
