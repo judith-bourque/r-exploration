@@ -495,6 +495,7 @@ References
 -   [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
 -   [ggridges](https://wilkelab.org/ggridges/index.html)
 -   [from Data to Vis](https://www.data-to-viz.com/): choose data visualization format based on data type
+- [strategies for avoiding the spaghetti graph](https://www.storytellingwithdata.com/blog/2013/03/avoiding-spaghetti-graph): what not to do with line graphs
 
 ## Interactive graphs
 
