@@ -1,13 +1,14 @@
 # Description ----
 #
-# This R script creates an animated graph of the Wikipedia pageviews of
-# the Festival d'été de Québec headliners before and after their
-# performance.
+# This R script creates graphs of the Wikipedia pageviews of the Festival d'été
+# de Québec headliners around the time of their performance.
 #
-# It was created in order to experiment with the Wikimedia API.
+# It was written as part of an experiment with the Wikimedia API.
 #
-# Please note the Wikipedia timestamps are in UTC and the article for Luke Combs
-# was created on July 10th 2022.
+# Please note:
+# The Wikimedia pageviews timestamps correspond with the end of the recorded
+# period in UTC. Dates have been adjusted to reflect the day recorded in UTC. 
+# The article for Luke Combs was created on July 10th 2022.
 #
 # Date: 2022-07-31
 # Author: Judith Bourque (https://github.com/judith-bourque)
@@ -33,8 +34,8 @@ library(jsonlite) # Read API response
 library(tidyjson) # Clean json
 library(ggplot2)
 library(gganimate) # Create animated ggplot
-library(ggrepel) # repel labels and text
-library(viridis) # colorblind friendly colors
+library(ggrepel) # Repel labels and text
+library(viridis) # Colorblind friendly colors
 
 # Load data ----
 
@@ -192,17 +193,6 @@ ggsave(
   limitsize = TRUE,
   bg = NULL
 )
-
-## Ridge plot ----
-
-graph <- ggplot() +
-  geom_density_ridges(data = refined_data, mapping = aes(x = pageviews_date,
-                                                         y = fct_reorder(name, concert_date, .desc = TRUE), 
-                              fill = name, height = views), stat = "identity", scale = 1, alpha = 0.7) +
-  theme_ridges() +
-  theme(legend.position="none")
-
-print(graph)
 
 ## Animated graph ----
 static_graph <- refined_data %>% 
