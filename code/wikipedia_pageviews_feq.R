@@ -40,10 +40,8 @@ library(viridis) # Colorblind friendly colors
 # Load data ----
 
 # Set parameters
-# 2 weeks before start of FEQ: June 22
 # Start of FEQ: July 6
 # End of FEQ: July 17
-# 2 weeks after end of FEQ: July 30
 
 my_user_agent <- Sys.getenv("WIKIMEDIA_USER_AGENT") # E-mail for API user agent
 
@@ -156,7 +154,7 @@ graph <- refined_data %>%
   labs(title = "\"Qui joue au FEQ ce soir?\"",
        subtitle = "Pages vues des articles des têtes d'affiches du Festival
 d'été de Québec 2022 sur fr.wikipedia.org",
-       caption = "Méthodologie: Données de pages vues par jour de l'API Wikimédia (UTC).
+       caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
        NB: L'article Luke Combs a été créé le 10 juillet 2022.",
        x = "Date", y = "Pages vues",
        linetype = "Lignes") +
@@ -198,24 +196,20 @@ static_graph <- refined_data %>%
   ggplot(aes(x = pageviews_date, y = views, group = article)) +
   geom_line(aes(color = article)) +
   scale_color_viridis_d() +
-  labs(title = "Wikipédia pageviews des artistes de la FEQ",
-    x = "Date", y = "Pageviews")#+
+  labs(title = "\"Qui joue au FEQ ce soir?\"",
+       subtitle = "Pages vues des articles des têtes d'affiches du Festival
+d'été de Québec 2022 sur fr.wikipedia.org",
+       caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
+       NB: L'article Luke Combs a été créé le 10 juillet 2022.",
+       x = "Date", y = "Pages vues")#+
   #theme(legend.position = "none")
-  
 
-animated_graph <- static_graph + geom_point() +
-  # Line start FEQ
-  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-06"))), linetype="dotted") +
-  # Line end FEQ
-  geom_vline(aes(xintercept = as.numeric(lubridate::date("2022-07-17"))), linetype="dotted") +
-  # Titre des lignes
-  geom_label_repel(
-    data=refined_data %>% filter(rank == 1), # Filter data first
-    aes(label=name)) +
-  transition_reveal(date)
+animated_graph <- static_graph + 
+  geom_point() +
+  transition_reveal(concert_date)
 
 print(animated_graph)
 
 # Save graph as gif
-gganimate::animate(animated_graph, height = 256, width = 512,#width = 1200, height = 1000, 
+gganimate::animate(animated_graph, height = 512, width = 1024,#width = 1200, height = 1000, 
                    renderer = gifski_renderer("graph/wikipedia_pageviews_by_article_feq.gif"))
