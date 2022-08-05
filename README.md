@@ -14,7 +14,7 @@ This repository provides the codes and the graphs produced through experimentati
 
 ### Wikipedia pageviews by article FEQ
 
-![alt text](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_feq.png)
+![alt text](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_feq_facet.png)
 
 ### Wikipedia pageviews for Category:Musicians from New Brunswick
 
