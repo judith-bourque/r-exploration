@@ -729,6 +729,7 @@ References
     what not to do with line graphs
 -   [GGplot
     cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
+-   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
 
 ## Interactive graphs
 
