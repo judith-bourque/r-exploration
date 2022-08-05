@@ -143,7 +143,7 @@ tidy_data <- data %>%
 # Create graph ----
 
 graph <- tidy_data %>% 
-  ggplot(aes(x = pageviews_date, y = views, group = name)) +
+  ggplot(aes(x = pageviews_date, y = views, group = name), show.legend = FALSE) +
   geom_area(aes(fill = name)) +
   scale_fill_viridis(discrete = TRUE) +
   labs(title = "\"Qui joue au FEQ ce soir?\"",
@@ -166,9 +166,10 @@ d'été de Québec 2022 sur fr.wikipedia.org",
     plot.background = element_rect(fill = "white"),
     legend.position="none",
     panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8),
+    strip.text.x = element_text(size = 10),
     plot.title = element_text(size=14),
-    axis.text.x = element_text(angle=90)) +
+    axis.text.x = element_text(angle=90, size = 8),
+    axis.text.y = element_text(size = 8)) +
   # Facet wrap
   facet_wrap(~fct_reorder(name, concert_date), ncol = 3)
 
