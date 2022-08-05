@@ -727,6 +727,8 @@ References
 -   [strategies for avoiding the spaghetti
     graph](https://www.storytellingwithdata.com/blog/2013/03/avoiding-spaghetti-graph):
     what not to do with line graphs
+-   [GGplot
+    cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 
 ## Interactive graphs
 
