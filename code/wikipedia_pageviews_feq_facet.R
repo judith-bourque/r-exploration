@@ -129,52 +129,31 @@ for (i in 1:nrow(articles)) {
   data <- rbind(data, response_content_df)
 }
 
-# Refine data ----
+# Tidy data ----
 
-# Total pageviews per day
-total_views <- data %>% 
-  group_by(date) %>% 
-  summarise(total_views = sum(views))
-
-refined_data <- data %>% 
-  # Add total pageviews per day
-  left_join(., total_views) %>% 
+tidy_data <- data %>% 
   # Change column name
   rename(pageviews_date = date) %>% 
   # Add concert date
   left_join(., articles) %>%
   # Correct pageviews date
-  mutate(pageviews_date = pageviews_date - 1) %>%
-  group_by(pageviews_date) %>% 
-  # Rank top articles per day
-  mutate(rank = min_rank(-views) * 1) %>%
-  ungroup()
-
-# Find mean concert day pageviews
-concert_pageviews <- refined_data %>% 
-  filter(pageviews_date == concert_date)
-# Luke Combs article excluded as it was created after the concert
-
-mean_pageviews <- mean(concert_pageviews$views)
+  mutate(pageviews_date = pageviews_date - 1)
 
 # Create graph ----
 
-## Facet graph ----
-
-graph <- refined_data %>% 
+graph <- tidy_data %>% 
   ggplot(aes(x = pageviews_date, y = views, group = name, fill = name)) +
   geom_area() +
   scale_fill_viridis(discrete = TRUE) +
   labs(title = "\"Qui joue au FEQ ce soir?\"",
        subtitle = "Pages vues des articles des têtes d'affiches du Festival
-d'été de Québec 2022 sur fr.wikipedia.org", #En moyenne, il y a eu 33 % plus de visites sur l'article Wikipédia en français le jour du concert de la tête d'affiche de la FEQ.
-       # En moyenne, l'article Wikipédia en français de la tête d'affiche a 33 % plus de visites le jour du concert.
+d'été de Québec 2022 sur fr.wikipedia.org",
        caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
        NB: L'article Luke Combs a été créé le 10 juillet 2022.",
        x = "Date", y = "Pages vues",
        linetype = "Lignes") +
   # Concert date
-  geom_vline(data = refined_data, aes(xintercept = concert_date), show.legend = TRUE) +
+  geom_vline(data = tidy_data, aes(xintercept = concert_date), show.legend = TRUE) +
   # Facet wrap
   facet_wrap(~fct_reorder(name, concert_date), ncol = 3) +
   # Set theme
@@ -192,7 +171,7 @@ print(graph)
 # Save the plot
 
 ggsave(
-  "graph/wikipedia_pageviews_feq.png",
+  "graph/wikipedia_pageviews_feq_facet.png",
   plot = last_plot(),
   path = NULL,
   scale = 1,
@@ -203,26 +182,3 @@ ggsave(
   limitsize = TRUE,
   bg = NULL
 )
-
-## Animated graph ----
-static_graph <- refined_data %>% 
-  ggplot(aes(x = pageviews_date, y = views, group = article)) +
-  geom_line(aes(color = article)) +
-  scale_color_viridis_d() +
-  labs(title = "\"Qui joue au FEQ ce soir?\"",
-       subtitle = "Pages vues des articles des têtes d'affiches du Festival
-d'été de Québec 2022 sur fr.wikipedia.org",
-       caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
-       NB: L'article Luke Combs a été créé le 10 juillet 2022.",
-       x = "Date", y = "Pages vues")#+
-  #theme(legend.position = "none")
-
-animated_graph <- static_graph + 
-  geom_point() +
-  transition_reveal(pageviews_date)
-
-print(animated_graph)
-
-# Save graph as gif
-gganimate::animate(animated_graph, height = 512, width = 1024,#width = 1200, height = 1000, 
-                   renderer = gifski_renderer("graph/wikipedia_pageviews_by_article_feq.gif"))
