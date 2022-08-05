@@ -22,6 +22,7 @@
 # gganimate: how to create plots with beautiful animation in R (https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/)
 # Accessing APIs from R (and a little R programming) (https://www.r-bloggers.com/2015/11/accessing-apis-from-r-and-a-little-r-programming/)
 # Customizing time and date scales in ggplot2 (https://www.r-bloggers.com/2018/06/customizing-time-and-date-scales-in-ggplot2/)
+# Adding different annotation to each facet in ggplot (https://www.r-bloggers.com/2018/11/adding-different-annotation-to-each-facet-in-ggplot/)
 #
 ## See also ----
 # How to create animations in R with gganimate (https://anderfernandez.com/en/blog/how-to-create-animations-in-r-with-gganimate/)
@@ -142,20 +143,23 @@ tidy_data <- data %>%
 # Create graph ----
 
 graph <- tidy_data %>% 
-  ggplot(aes(x = pageviews_date, y = views, group = name, fill = name)) +
-  geom_area() +
+  ggplot(aes(x = pageviews_date, y = views, group = name)) +
+  geom_area(aes(fill = name)) +
   scale_fill_viridis(discrete = TRUE) +
   labs(title = "\"Qui joue au FEQ ce soir?\"",
        subtitle = "Pages vues des articles des têtes d'affiches du Festival
 d'été de Québec 2022 sur fr.wikipedia.org",
        caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
        NB: L'article Luke Combs a été créé le 10 juillet 2022.",
-       x = "Date", y = "Pages vues",
-       linetype = "Lignes") +
+       x = "Date", y = "Pages vues") +
   # Concert date
-  geom_vline(data = tidy_data, aes(xintercept = concert_date), show.legend = TRUE) +
-  # Facet wrap
-  facet_wrap(~fct_reorder(name, concert_date), ncol = 3) +
+  geom_point(data = filter(tidy_data, concert_date == pageviews_date),
+             aes(x = concert_date, y = views, group = name),
+             show.legend = TRUE) +
+  # Annotate
+  geom_text(data = filter(tidy_data, concert_date == pageviews_date),
+            aes(x = concert_date, y = views, label = views),
+            nudge_x = 2) +
   # Set theme
   hrbrthemes::theme_ipsum() +
   theme(
@@ -164,7 +168,9 @@ d'été de Québec 2022 sur fr.wikipedia.org",
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8),
     plot.title = element_text(size=14),
-    axis.text.x = element_text(angle=90))
+    axis.text.x = element_text(angle=90)) +
+  # Facet wrap
+  facet_wrap(~fct_reorder(name, concert_date), ncol = 3)
 
 print(graph)
 
