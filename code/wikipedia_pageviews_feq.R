@@ -131,17 +131,31 @@ for (i in 1:nrow(articles)) {
 
 # Refine data ----
 
+# Total pageviews per day
+total_views <- data %>% 
+  group_by(date) %>% 
+  summarise(total_views = sum(views))
+
 refined_data <- data %>% 
+  # Add total pageviews per day
+  left_join(., total_views) %>% 
   # Change column name
   rename(pageviews_date = date) %>% 
   # Add concert date
   left_join(., articles) %>%
   # Correct pageviews date
-  mutate(pageviews_date = pageviews_date - 1) %>% 
-  # Rank top articles per day
+  mutate(pageviews_date = pageviews_date - 1) %>%
   group_by(pageviews_date) %>% 
+  # Rank top articles per day
   mutate(rank = min_rank(-views) * 1) %>%
   ungroup()
+
+# Find mean concert day pageviews
+concert_pageviews <- refined_data %>% 
+  filter(pageviews_date == concert_date)
+# Luke Combs article excluded as it was created after the concert
+
+mean_pageviews <- mean(concert_pageviews$views)
 
 # Create graph ----
 
@@ -153,15 +167,14 @@ graph <- refined_data %>%
   scale_fill_viridis(discrete = TRUE) +
   labs(title = "\"Qui joue au FEQ ce soir?\"",
        subtitle = "Pages vues des articles des têtes d'affiches du Festival
-d'été de Québec 2022 sur fr.wikipedia.org",
+d'été de Québec 2022 sur fr.wikipedia.org", #En moyenne, il y a eu 33 % plus de visites sur l'article Wikipédia en français le jour du concert de la tête d'affiche de la FEQ.
+       # En moyenne, l'article Wikipédia en français de la tête d'affiche a 33 % plus de visites le jour du concert.
        caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
        NB: L'article Luke Combs a été créé le 10 juillet 2022.",
        x = "Date", y = "Pages vues",
        linetype = "Lignes") +
   # Concert date
   geom_vline(data = refined_data, aes(xintercept = concert_date), show.legend = TRUE) +
-  # Change scale
-  # scale_x_continuous(labels, limits)
   # Facet wrap
   facet_wrap(~fct_reorder(name, concert_date), ncol = 3) +
   # Set theme
@@ -206,7 +219,7 @@ d'été de Québec 2022 sur fr.wikipedia.org",
 
 animated_graph <- static_graph + 
   geom_point() +
-  transition_reveal(concert_date)
+  transition_reveal(pageviews_date)
 
 print(animated_graph)
 
