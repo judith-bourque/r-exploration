@@ -149,7 +149,7 @@ graph <- tidy_data %>%
        subtitle = "Pages vues des têtes d'affiches du Festival d'été de Québec
 sur fr.wikipedia.org le jour de leur spectacle",
        caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
-       NB: L'article Luke Combs a été créé le 10 juillet 2022.",
+       NB: L'article Luke Combs a été créé après le spectacle.",
        x = "Date", y = "Pages vues") +
   # Set theme
   hrbrthemes::theme_ipsum() +
