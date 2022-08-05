@@ -712,6 +712,9 @@ data visualization packages
 
 References
 
+-   [ggplot2: elegant graphics for data
+    analysis](https://ggplot2-book.org/index.html)
+-   [R graphics cookbook](https://r-graphics.org/)
 -   [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 -   [Data Visualization](https://socviz.co/index.html#preface)
 -   [Fundamentals of Data
