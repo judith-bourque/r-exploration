@@ -1,6 +1,6 @@
 # Description ----
 #
-# This R script creates graphs of the Wikipedia pageviews of the Festival d'été
+# This R script creates a graph of the Wikipedia pageviews of the Festival d'été
 # de Québec headliners around the time of their performance.
 #
 # It was written as part of an experiment with the Wikimedia API.
@@ -19,14 +19,8 @@
 # FEQ schedule (https://www.feq.ca/Programmation/Affiche)
 #
 ## Code sources ----
-# gganimate: how to create plots with beautiful animation in R (https://www.datanovia.com/en/blog/gganimate-how-to-create-plots-with-beautiful-animation-in-r/)
 # Accessing APIs from R (and a little R programming) (https://www.r-bloggers.com/2015/11/accessing-apis-from-r-and-a-little-r-programming/)
-# Customizing time and date scales in ggplot2 (https://www.r-bloggers.com/2018/06/customizing-time-and-date-scales-in-ggplot2/)
 # Adding different annotation to each facet in ggplot (https://www.r-bloggers.com/2018/11/adding-different-annotation-to-each-facet-in-ggplot/)
-#
-## See also ----
-# How to create animations in R with gganimate (https://anderfernandez.com/en/blog/how-to-create-animations-in-r-with-gganimate/)
-# Animated line chart in R (https://datavizstory.com/animated-line-chart-in-r/)
 #
 # Load packages ----
 library(tidyverse)
@@ -34,9 +28,6 @@ library(httr) # Interact with API
 library(jsonlite) # Read API response
 library(tidyjson) # Clean json
 library(ggplot2)
-library(gganimate) # Create animated ggplot
-library(ggrepel) # Repel labels and text
-library(viridis) # Colorblind friendly colors
 
 # Load data ----
 
@@ -113,8 +104,6 @@ for (i in 1:nrow(articles)) {
                               start, end, sep = "/"),
                   user_agent(my_user_agent))
   
-  # TIDY DATA
-  
   # Convert response to data frame
   response_content_df <- fromJSON(rawToChar(response$content))[["items"]] %>% 
   separate(col = timestamp, c("date", "hour"), sep = 8)
@@ -144,38 +133,38 @@ tidy_data <- data %>%
 
 graph <- tidy_data %>% 
   ggplot(aes(x = pageviews_date, y = views, group = name), show.legend = FALSE) +
+  facet_wrap(~fct_reorder(name, concert_date), ncol = 3) +
   geom_area(aes(fill = name)) +
-  scale_fill_viridis(discrete = TRUE) +
+  viridis::scale_fill_viridis(discrete = TRUE) +
+  # Concert date pageviews
+  geom_point(data = filter(tidy_data, concert_date == pageviews_date),
+             aes(x = concert_date, y = views, group = name),
+             size = 0.75) +
+  geom_text(data = filter(tidy_data, concert_date == pageviews_date),
+            aes(x = concert_date, y = views, label = views),
+            nudge_y = 800,
+            size = 2) +
+  # Labels
   labs(title = "\"Qui joue au FEQ ce soir?\"",
-       subtitle = "Pages vues des articles des têtes d'affiches du Festival
-d'été de Québec 2022 sur fr.wikipedia.org",
+       subtitle = "Pages vues des têtes d'affiches du Festival d'été de Québec
+sur fr.wikipedia.org le jour de leur spectacle",
        caption = "Méthodologie: Pages vues quotidiennes tirées de l'API Wikimédia.
        NB: L'article Luke Combs a été créé le 10 juillet 2022.",
        x = "Date", y = "Pages vues") +
-  # Concert date
-  geom_point(data = filter(tidy_data, concert_date == pageviews_date),
-             aes(x = concert_date, y = views, group = name),
-             show.legend = TRUE) +
-  # Annotate
-  geom_text(data = filter(tidy_data, concert_date == pageviews_date),
-            aes(x = concert_date, y = views, label = views),
-            nudge_x = 2) +
   # Set theme
   hrbrthemes::theme_ipsum() +
   theme(
     plot.background = element_rect(fill = "white"),
     legend.position="none",
     panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 10),
+    strip.text.x = element_text(size = 9),
     plot.title = element_text(size=14),
-    axis.text.x = element_text(angle=90, size = 8),
-    axis.text.y = element_text(size = 8)) +
-  # Facet wrap
-  facet_wrap(~fct_reorder(name, concert_date), ncol = 3)
+    axis.text.x = element_text(angle=90, size = 6),
+    axis.text.y = element_text(size = 6))
 
 print(graph)
 
-# Save the plot
+# Save grah
 
 ggsave(
   "graph/wikipedia_pageviews_feq_facet.png",
