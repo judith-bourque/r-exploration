@@ -12,7 +12,7 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
-### Wikipedia pageviews by article FEQ
+### Wikipedia pageviews by article for FEQ headliners
 
 ![alt text](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_feq_facet.png)
 
