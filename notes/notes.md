@@ -650,6 +650,15 @@ References
     SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
 
+## Wikimedia packages
+
+-   [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf):
+    Wrapper for MediaWiki API
+-   [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html):
+    read and query wikidata. Uses Wikidata and Quickstatements APIs.
+-   [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf):
+    retrieve wikimedia pageviews
+
 # Data analysis
 
 References
