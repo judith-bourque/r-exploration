@@ -652,19 +652,21 @@ References
 
 ## Wikimedia packages
 
--   [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf):
-    Wrapper for MediaWiki API
--   [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html):
-    read and query wikidata. Uses Wikidata and Quickstatements APIs.
 -   [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf):
     retrieve wikimedia pageviews
--   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with
-    Wikimedia data in R
 -   [waxer](https://github.com/wikimedia/waxer): querying Wikimedia
     Analytics Query Service in R.
+-   [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html):
+    read and query wikidata. Uses Wikidata and Quickstatements APIs.
+-   [wikipediatrend](https://cran.r-project.org/package=wikipediatrend):
+    pageviews from 2007 and beyond
+-   [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf):
+    Wrapper for MediaWiki API
 -   [wmfastr](https://github.com/wikimedia/wmfastr): Speedily computes
     various dwelltime and preference-related metrics in the context of
     search sessions.
+-   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with
+    Wikimedia data in R
 
 # Data analysis
 
