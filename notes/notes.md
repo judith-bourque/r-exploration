@@ -658,6 +658,13 @@ References
     read and query wikidata. Uses Wikidata and Quickstatements APIs.
 -   [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf):
     retrieve wikimedia pageviews
+-   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with
+    Wikimedia data in R
+-   [waxer](https://github.com/wikimedia/waxer): querying Wikimedia
+    Analytics Query Service in R.
+-   [wmfastr](https://github.com/wikimedia/wmfastr): Speedily computes
+    various dwelltime and preference-related metrics in the context of
+    search sessions.
 
 # Data analysis
 
