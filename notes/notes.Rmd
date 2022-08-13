@@ -511,6 +511,7 @@ References
 - [GGplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 - [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
 - [patchwork](https://patchwork.data-imaginist.com/): combine ggplots
+- [bbplot](https://github.com/bbc/bbplot/): provides helpful functions for creating and exporting graphics made in ggplot in the style used by the BBC News data team.
 
 ## Interactive graphs
 
