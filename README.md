@@ -1,5 +1,5 @@
 # r-exploration
-Exploratory programming in R
+Exploratory data analysis in R
 
 ## About this repository
 
