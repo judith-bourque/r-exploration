@@ -7,8 +7,9 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Folder structure
 
-* `/code` contains R scripts
-* `/graph` contains graphs produced by the R scripts
+- `/code` contains R scripts
+- `/graph` contains graphs produced by the R scripts
+- `/notes` contains notes on coding and data visualization in R
 
 ## Recent graphs
 
