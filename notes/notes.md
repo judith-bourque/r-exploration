@@ -649,6 +649,8 @@ References
 -   [10 Easy Steps to a Complete Understanding of
     SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
+-   [Spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package
+    for Spotify API
 
 ## Wikimedia packages
 
@@ -749,6 +751,11 @@ References
     cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 -   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
 -   [patchwork](https://patchwork.data-imaginist.com/): combine ggplots
+-   [bbplot](https://github.com/bbc/bbplot/): provides helpful functions
+    for creating and exporting graphics made in ggplot in the style used
+    by the BBC News data team.
+-   [sportyR](https://sportyr.sportsdataverse.org/): package for data
+    visualization on sports fields
 
 ## Interactive graphs
 
@@ -769,6 +776,14 @@ References
     R](https://fronkonstin.com/2018/09/06/tweetable-mathematical-art-with-r/)
 -   [making memes in
     R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
+-   [Data art posters about music (streaming) data for Sony
+    Music](https://www.visualcinnamon.com/2020/06/sony-music-data-art/)
+
+## Data storyteling
+
+-   [How to Tell a Story with Data: Titles, Subtitles, Annotations,
+    Dark/Light Contrast, and Selective
+    Labeling](https://depictdatastudio.com/how-to-tell-a-story-with-data-titles-subtitles-annotations-dark-light-contrast-and-selective-labeling/)
 
 # Other References
 
