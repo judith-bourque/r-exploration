@@ -528,6 +528,7 @@ References
 -   [Tiny Art with R (R studio)](https://alinastepanova.medium.com/tiny-art-with-r-d6d93d110619)
 -   [Tweetable Mathematical Art With R](https://fronkonstin.com/2018/09/06/tweetable-mathematical-art-with-r/)
 -   [making memes in R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
+- [Data art posters about music (streaming) data for Sony Music](https://www.visualcinnamon.com/2020/06/sony-music-data-art/)
 
 ## Data storyteling
 
