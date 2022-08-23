@@ -514,6 +514,8 @@ References
 - [patchwork](https://patchwork.data-imaginist.com/): combine ggplots
 - [bbplot](https://github.com/bbc/bbplot/): provides helpful functions for creating and exporting graphics made in ggplot in the style used by the BBC News data team.
 - [sportyR](https://sportyr.sportsdataverse.org/): package for data visualization on sports fields
+- [roughnet](https://github.com/schochastics/roughnet): hand-drawn network graphs
+- [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
 
 ## Interactive graphs
 
