@@ -650,7 +650,8 @@ References
     SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
 -   [Spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package
-    for Spotify API
+    for Spotify API (In the app settings, fill in Redirect URls with
+    <http://localhost:1410/>)
 
 ## Wikimedia packages
 
@@ -756,6 +757,9 @@ References
     by the BBC News data team.
 -   [sportyR](https://sportyr.sportsdataverse.org/): package for data
     visualization on sports fields
+-   [roughnet](https://github.com/schochastics/roughnet): hand-drawn
+    network graphs
+-   [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
 
 ## Interactive graphs
 

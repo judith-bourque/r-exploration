@@ -71,40 +71,36 @@ Credentials can be stored in .Renviron, or can be set in your R session through 
 
 If you require custom authentication for different packages (for example, your project makes use of packages available on different GitHub enterprise servers), you can use the renv.auth R option to provide package-specific authentication settings. renv.auth can either be a a named list associating package names with environment variables, or a function accepting a package name + record, and returning a list of environment variables. For example:
 
-```{}
-# define a function providing authentication
-options(renv.auth = function(package, record) {
-      if (package == "MyPackage")
-        return(list(GITHUB_PAT = "<pat>"))
-    })
+    # define a function providing authentication
+    options(renv.auth = function(package, record) {
+          if (package == "MyPackage")
+            return(list(GITHUB_PAT = "<pat>"))
+        })
 
-# use a named list directly
-    options(renv.auth = list(
-      MyPackage = list(GITHUB_PAT = "<pat>")
-    ))
+    # use a named list directly
+        options(renv.auth = list(
+          MyPackage = list(GITHUB_PAT = "<pat>")
+        ))
 
-    # alternatively, set package-specific option
-    options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
-```
+        # alternatively, set package-specific option
+        options(renv.auth.MyPackage = list(GITHUB_PAT = "<pat>"))
 
 ## .Rprofile
 
-.Rprofile files are user-controllable files to set options and environment variables. `.Rprofile` files can be either at the user or project level. User-level .Rprofile files live in the base of the user's home directory, and project-level .Rprofile files live in the base of the project directory. 
+.Rprofile files are user-controllable files to set options and environment variables. `.Rprofile` files can be either at the user or project level. User-level .Rprofile files live in the base of the user's home directory, and project-level .Rprofile files live in the base of the project directory.
 
-R will source only one .Rprofile file. So if you have both a project-specific .Rprofile file and a user .Rprofile file that you want to use, you explicitly source the user-level .Rprofile at the top of your project-level .Rprofile with source("~/.Rprofile").
+R will source only one .Rprofile file. So if you have both a project-specific .Rprofile file and a user .Rprofile file that you want to use, you explicitly source the user-level .Rprofile at the top of your project-level .Rprofile with source("\~/.Rprofile").
 
-.Rprofile files are sourced as regular R code, so setting environment variables must be done inside a Sys.setenv(key = "value") call. 
+.Rprofile files are sourced as regular R code, so setting environment variables must be done inside a Sys.setenv(key = "value") call.
 
-One easy way to edit your .Rprofile file is to use the usethis::edit_r_profile() function from within an R session. You can specify whether you want to edit the user or project level .Rprofile.
+One easy way to edit your .Rprofile file is to use the usethis::edit_r\_profile() function from within an R session. You can specify whether you want to edit the user or project level .Rprofile.
 
 ## .Renviron
 
 .Renviron is a user-controllable file that can be used to create environment variables. This is especially useful to avoid including credentials like API keys inside R scripts. This file is written in a key-value format, so environment variables are created in the format:
 
-```{}
-Key1=value1
-Key2=value2
-```
+    Key1=value1
+    Key2=value2
 
 And then Sys.getenv("Key1") will return "value1" in an R session.
 
@@ -113,7 +109,7 @@ Like with the .Rprofile file, .Renviron files can be at either the user or proje
 References
 
 -   [renv](https://rstudio.github.io/renv/articles/renv.html#authentication): documentation
-- [Managing R with .Rprofile, .Renviron, Rprofile.site, Renviron.site, rsession.conf, and repos.conf](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf#:~:text=Rprofile%20files%20are%20user%2Dcontrollable,base%20of%20the%20project%20directory.)
+-   [Managing R with .Rprofile, .Renviron, Rprofile.site, Renviron.site, rsession.conf, and repos.conf](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf#:~:text=Rprofile%20files%20are%20user%2Dcontrollable,base%20of%20the%20project%20directory.)
 
 # Git and GitHub
 
@@ -186,8 +182,8 @@ References
 
 References
 
-- [Writing on GitHub](https://docs.github.com/en/get-started/writing-on-github): tips for GitHub flavored markdown and other writing formats
-- [Github Flavored Markdown cheatsheet](https://gist.github.com/stevenyap/7038119)
+-   [Writing on GitHub](https://docs.github.com/en/get-started/writing-on-github): tips for GitHub flavored markdown and other writing formats
+-   [Github Flavored Markdown cheatsheet](https://gist.github.com/stevenyap/7038119)
 
 # R Markdown
 
@@ -452,17 +448,17 @@ References
 -   [Databases using R](https://db.rstudio.com/getting-started/)
 -   [10 Easy Steps to a Complete Understanding of SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
-- [Spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package for Spotify API
+-   [Spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package for Spotify API (In the app settings, fill in Redirect URls with http://localhost:1410/)
 
 ## Wikimedia packages
 
-- [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf): retrieve wikimedia pageviews
-- [waxer](https://github.com/wikimedia/waxer): querying Wikimedia Analytics Query Service in R.
-- [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html): read and query wikidata. Uses Wikidata and Quickstatements APIs.
-- [wikipediatrend](https://cran.r-project.org/package=wikipediatrend): pageviews from 2007 and beyond
-- [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf): Wrapper for MediaWiki API
-- [wmfastr](https://github.com/wikimedia/wmfastr): Speedily computes various dwelltime and preference-related metrics in the context of search sessions.
-- [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with Wikimedia data in R
+-   [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf): retrieve wikimedia pageviews
+-   [waxer](https://github.com/wikimedia/waxer): querying Wikimedia Analytics Query Service in R.
+-   [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html): read and query wikidata. Uses Wikidata and Quickstatements APIs.
+-   [wikipediatrend](https://cran.r-project.org/package=wikipediatrend): pageviews from 2007 and beyond
+-   [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf): Wrapper for MediaWiki API
+-   [wmfastr](https://github.com/wikimedia/wmfastr): Speedily computes various dwelltime and preference-related metrics in the context of search sessions.
+-   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with Wikimedia data in R
 
 # Data analysis
 
@@ -500,22 +496,22 @@ knitr::kable(df, caption = "data visualization packages")
 
 References
 
-- [ggplot2: elegant graphics for data analysis](https://ggplot2-book.org/index.html)
-- [R graphics cookbook](https://r-graphics.org/)
+-   [ggplot2: elegant graphics for data analysis](https://ggplot2-book.org/index.html)
+-   [R graphics cookbook](https://r-graphics.org/)
 -   [Data Visualization with R](https://rkabacoff.github.io/datavis/)
 -   [Data Visualization](https://socviz.co/index.html#preface)
 -   [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
 -   [R graph gallery](https://r-graph-gallery.com/index.html): overview of R graphs and code
 -   [ggridges](https://wilkelab.org/ggridges/index.html)
 -   [from Data to Vis](https://www.data-to-viz.com/): choose data visualization format based on data type
-- [strategies for avoiding the spaghetti graph](https://www.storytellingwithdata.com/blog/2013/03/avoiding-spaghetti-graph): what not to do with line graphs
-- [GGplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
-- [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
-- [patchwork](https://patchwork.data-imaginist.com/): combine ggplots
-- [bbplot](https://github.com/bbc/bbplot/): provides helpful functions for creating and exporting graphics made in ggplot in the style used by the BBC News data team.
-- [sportyR](https://sportyr.sportsdataverse.org/): package for data visualization on sports fields
-- [roughnet](https://github.com/schochastics/roughnet): hand-drawn network graphs
-- [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
+-   [strategies for avoiding the spaghetti graph](https://www.storytellingwithdata.com/blog/2013/03/avoiding-spaghetti-graph): what not to do with line graphs
+-   [GGplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
+-   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
+-   [patchwork](https://patchwork.data-imaginist.com/): combine ggplots
+-   [bbplot](https://github.com/bbc/bbplot/): provides helpful functions for creating and exporting graphics made in ggplot in the style used by the BBC News data team.
+-   [sportyR](https://sportyr.sportsdataverse.org/): package for data visualization on sports fields
+-   [roughnet](https://github.com/schochastics/roughnet): hand-drawn network graphs
+-   [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
 
 ## Interactive graphs
 
@@ -530,11 +526,11 @@ References
 -   [Tiny Art with R (R studio)](https://alinastepanova.medium.com/tiny-art-with-r-d6d93d110619)
 -   [Tweetable Mathematical Art With R](https://fronkonstin.com/2018/09/06/tweetable-mathematical-art-with-r/)
 -   [making memes in R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
-- [Data art posters about music (streaming) data for Sony Music](https://www.visualcinnamon.com/2020/06/sony-music-data-art/)
+-   [Data art posters about music (streaming) data for Sony Music](https://www.visualcinnamon.com/2020/06/sony-music-data-art/)
 
 ## Data storyteling
 
-- [How to Tell a Story with Data: Titles, Subtitles, Annotations, Dark/Light Contrast, and Selective Labeling](https://depictdatastudio.com/how-to-tell-a-story-with-data-titles-subtitles-annotations-dark-light-contrast-and-selective-labeling/)
+-   [How to Tell a Story with Data: Titles, Subtitles, Annotations, Dark/Light Contrast, and Selective Labeling](https://depictdatastudio.com/how-to-tell-a-story-with-data-titles-subtitles-annotations-dark-light-contrast-and-selective-labeling/)
 
 # Other References
 
