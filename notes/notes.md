@@ -649,11 +649,10 @@ References
 -   [10 Easy Steps to a Complete Understanding of
     SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
--   [Spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package
-    for Spotify API (In the app settings, fill in Redirect URls with
-    <http://localhost:1410/>)
 
-## Wikimedia packages
+## API wrapper packages
+
+Wikipedia
 
 -   [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf):
     retrieve wikimedia pageviews
@@ -670,6 +669,18 @@ References
     search sessions.
 -   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with
     Wikimedia data in R
+
+Spotify
+
+-   [spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package
+    for Spotify API
+
+To set up spotifyr, in the app settings, fill in Redirect URls with
+<http://localhost:1410/>.
+
+Item IDs are the base-62 identifier (string of letters and numbers)
+between `/` and `?` at the end of the Spotify URI for an artist, track,
+album, playlist, etc.
 
 # Data analysis
 
