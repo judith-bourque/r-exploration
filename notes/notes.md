@@ -800,6 +800,31 @@ References
     Dark/Light Contrast, and Selective
     Labeling](https://depictdatastudio.com/how-to-tell-a-story-with-data-titles-subtitles-annotations-dark-light-contrast-and-selective-labeling/)
 
+Examples
+
+-   [In a tight labour market, this is where Canadian workers are
+    going](https://www.cbc.ca/news/canada/canada-labour-worker-changes-charts-1.6556305)
+    by CBC News
+
+## Themes
+
+-   [fivethirtyeight](https://cran.r-project.org/web/packages/fivethirtyeight/vignettes/fivethirtyeight.html):
+    package containing data from the website and theme for similar
+    aesthetic ggplot
+
+-   [Creating quick corporate plot themes with
+    ggplot2](https://austinwehrwein.com/tutorials/corporatethemes/)
+
+## Inspiration
+
+-   [The 56 Best - And Weirdest - Charts We Made In
+    2019](https://fivethirtyeight.com/features/the-56-best-and-weirdest-charts-we-made-in-2019/)
+    by FiveThirtyEight
+
+-   [Over 60 New York Times Graphs for Students to
+    Analyze](https://www.nytimes.com/2020/06/10/learning/over-60-new-york-times-graphs-for-students-to-analyze.html)
+    by the New York Times
+
 # Other References
 
 Other
