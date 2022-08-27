@@ -77,6 +77,11 @@ File and folder structure
 -   /graphs: contains graphs
 -   README.md: describe the project
 
+References
+
+-   [Streamline workflows in
+    R](https://jules32.github.io/streamlined-workflows/#1)
+
 # Renv
 
 Your project may make use of packages which are available from remote
@@ -212,6 +217,9 @@ tracked</td>
 </table>
 
 git commands
+
+    # Initialise git directory
+    use_this::use_git()
 
 References
 
@@ -660,6 +668,8 @@ Wikipedia
     Analytics Query Service in R.
 -   [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html):
     read and query wikidata. Uses Wikidata and Quickstatements APIs.
+-   [tidywikidatar](https://edjnet.github.io/tidywikidatar/index.html):
+    read and query Wikidata in a tidy format
 -   [wikipediatrend](https://cran.r-project.org/package=wikipediatrend):
     pageviews from 2007 and beyond
 -   [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf):
@@ -669,6 +679,10 @@ Wikipedia
     search sessions.
 -   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with
     Wikimedia data in R
+-   
+-   [A new R package for exploring the wealth of information stored by
+    Wikidata:
+    tidywikidatar](https://medium.com/european-data-journalism-network/a-new-r-package-for-exploring-the-wealth-of-information-stored-by-wikidata-fe85e82b6440)
 
 Spotify
 
@@ -771,6 +785,11 @@ References
 -   [roughnet](https://github.com/schochastics/roughnet): hand-drawn
     network graphs
 -   [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
+-   [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html#Installing_magick):
+    Advanced Image-Processing in R
+-   [ggpmisc](): a set of extensions to R package ‘ggplot2’ (&gt;=
+    3.0.0) with emphasis on annotations and highlighting related to
+    fitted models and data summaries.
 
 ## Interactive graphs
 
@@ -794,7 +813,7 @@ References
 -   [Data art posters about music (streaming) data for Sony
     Music](https://www.visualcinnamon.com/2020/06/sony-music-data-art/)
 
-## Data storyteling
+## Data storytelling
 
 -   [How to Tell a Story with Data: Titles, Subtitles, Annotations,
     Dark/Light Contrast, and Selective
@@ -811,19 +830,34 @@ Examples
 -   [fivethirtyeight](https://cran.r-project.org/web/packages/fivethirtyeight/vignettes/fivethirtyeight.html):
     package containing data from the website and theme for similar
     aesthetic ggplot
-
 -   [Creating quick corporate plot themes with
     ggplot2](https://austinwehrwein.com/tutorials/corporatethemes/)
+-   `wesanderson`: Wes Anderson inspired color palette package
 
 ## Inspiration
 
 -   [The 56 Best - And Weirdest - Charts We Made In
     2019](https://fivethirtyeight.com/features/the-56-best-and-weirdest-charts-we-made-in-2019/)
     by FiveThirtyEight
-
 -   [Over 60 New York Times Graphs for Students to
     Analyze](https://www.nytimes.com/2020/06/10/learning/over-60-new-york-times-graphs-for-students-to-analyze.html)
     by the New York Times
+
+# Create an R package
+
+-   [R Packages (2e)](https://r-pkgs.org/)
+-   [Making Your First R
+    Package](https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html)
+
+Packages
+
+-   roxygen2: documentation for individual functions
+-   testthat: unit testing
+
+## Functions
+
+-   [Functions in Advanced R](https://adv-r.hadley.nz/functions.html)
+-   [Functions in R4DS](https://r4ds.had.co.nz/functions.html)
 
 # Other References
 
