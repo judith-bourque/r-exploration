@@ -509,7 +509,7 @@ References
 | wmfdata        | for working with Wikimedia data in R                                                                  |
 | spotifyr       | R package for Spotify API                                                                             |
 
-Theme packages
+API wrapper packages
 
 ### Wikipedia
 
@@ -683,10 +683,13 @@ Theme packages
 -   [Making Your First R
     Package](https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html)
 
-Packages
+| package  | definition                             |
+|:---------|:---------------------------------------|
+| roxygen2 | documentation for individual functions |
+| testthat | unit testing                           |
+| pkgdown  | documentation for packages             |
 
--   roxygen2: documentation for individual functions
--   testthat: unit testing
+Packages for building packages
 
 ## Functions
 

@@ -470,7 +470,7 @@ References
 knitr::kable(
   select(
     filter(packages, category == "API wrapper"),
-    package, definition), caption = "Theme packages")
+    package, definition), caption = "API wrapper packages")
 ```
 
 ### Wikipedia
@@ -584,10 +584,12 @@ knitr::kable(
 - [R Packages (2e)](https://r-pkgs.org/)
 - [Making Your First R Package](https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html)
 
-Packages
-
-- roxygen2: documentation for individual functions
-- testthat: unit testing
+```{r echo = FALSE}
+knitr::kable(
+  select(
+    filter(packages, category == "package"),
+    package, definition), caption = "Packages for building packages")
+```
 
 ## Functions
 
