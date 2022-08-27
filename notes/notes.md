@@ -1,45 +1,23 @@
+r-exploration notes
+================
+Judith Bourque
+2022-08-27
+
+``` r
+# packages <- readr::read_csv("data/packages.csv")
+```
+
 # Description
 
 A collection of quick notes and References for personal use.
 
 # R basics
 
-<table>
-<caption>R file types</caption>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 86%" />
-<col style="width: 6%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">name</th>
-<th style="text-align: left;">purpose</th>
-<th style="text-align: left;">extension</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">R script</td>
-<td style="text-align: left;">analysis mode and want a report as a side
-effect</td>
-<td style="text-align: left;">.R</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R Markdown</td>
-<td style="text-align: left;">writing a report with a lot of R code in
-it</td>
-<td style="text-align: left;">.Rmd</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">R Notebook</td>
-<td style="text-align: left;">R Markdown document with chunks that can
-be executed independently and interactively, with output visible
-immediately beneauth the input</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
+| name       | purpose                                                                                                                                  | extension |
+|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------|:----------|
+| R script   | analysis mode and want a report as a side effect                                                                                         | .R        |
+| R Markdown | writing a report with a lot of R code in it                                                                                              | .Rmd      |
+| R Notebook | R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneauth the input |           |
 
 R file types
 
@@ -126,13 +104,13 @@ the project directory.
 R will source only one .Rprofile file. So if you have both a
 project-specific .Rprofile file and a user .Rprofile file that you want
 to use, you explicitly source the user-level .Rprofile at the top of
-your project-level .Rprofile with source(“~/.Rprofile”).
+your project-level .Rprofile with source(“\~/.Rprofile”).
 
 .Rprofile files are sourced as regular R code, so setting environment
 variables must be done inside a Sys.setenv(key = “value”) call.
 
 One easy way to edit your .Rprofile file is to use the
-usethis::edit\_r\_profile() function from within an R session. You can
+usethis::edit_r\_profile() function from within an R session. You can
 specify whether you want to edit the user or project level .Rprofile.
 
 ## .Renviron
@@ -163,63 +141,25 @@ References
 
 # Git and GitHub
 
-<table>
-<caption>git commands</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">command</th>
-<th style="text-align: left;">purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">cd</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">cd ..</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">git status</td>
-<td style="text-align: left;">View project changes</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">git diff</td>
-<td style="text-align: left;">View difference in file</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">git add</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">git add -A</td>
-<td style="text-align: left;">Add all files</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">git commit -m “”</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">git push</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">git pull</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">git rm –cached</td>
-<td style="text-align: left;">stop tracking a file that is currently
-tracked</td>
-</tr>
-</tbody>
-</table>
+| command          | purpose                                        |
+|:-----------------|:-----------------------------------------------|
+| cd               |                                                |
+| cd ..            |                                                |
+| git status       | View project changes                           |
+| git diff         | View difference in file                        |
+| git add          |                                                |
+| git add -A       | Add all files                                  |
+| git commit -m “” |                                                |
+| git push         |                                                |
+| git pull         |                                                |
+| git rm –cached   | stop tracking a file that is currently tracked |
 
 git commands
 
-    # Initialise git directory
-    use_this::use_git()
+``` r
+# Initialise git directory
+use_this::use_git()
+```
 
 References
 
@@ -235,31 +175,11 @@ you can put it in any folder in the repository and you can also have
 multiple `.gitignore` files. The patterns in the files are relative to
 the location of that `.gitignore` file.
 
-<table>
-<caption>.gitignore code</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">code</th>
-<th style="text-align: left;">purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">*</td>
-<td style="text-align: left;">Matches 0 or more characters, except
-/</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">!</td>
-<td style="text-align: left;">Not ignore a file that would be
-ignored</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">#</td>
-<td style="text-align: left;">Comments</td>
-</tr>
-</tbody>
-</table>
+| code | purpose                                 |
+|:-----|:----------------------------------------|
+| \*   | Matches 0 or more characters, except /  |
+| !    | Not ignore a file that would be ignored |
+| \#   | Comments                                |
 
 .gitignore code
 
@@ -316,23 +236,25 @@ References
 
 Optional header surrounded by `---`
 
-    ---
-    title: "Title of my Document"
-    subtitle: "Subtitle of my Document"
-    author: "Judith Bourque"
-    # Date updates automatically
-    date: '`r Sys.Date()`'
-    output: 
-      github_document:
-      # Table of contents
-        toc: true
-        number_sections: true
-    # Parameters set values automatically
-    params:
-      data: "data"
-    ---
+``` r
+---
+title: "Title of my Document"
+subtitle: "Subtitle of my Document"
+author: "Judith Bourque"
+# Date updates automatically
+date: '`r Sys.Date()`'
+output: 
+  github_document:
+  # Table of contents
+    toc: true
+    number_sections: true
+# Parameters set values automatically
+params:
+  data: "data"
+---
+```
 
-When you put output as github\_document, you will knit a .md. Useful as
+When you put output as github_document, you will knit a .md. Useful as
 it is a GitHub friendly markdown document and quite pleasant to look at.
 
 Parameters are values you can set when you render the report. They help
@@ -379,41 +301,26 @@ Resource
 
 If you don’t want to knit, run the `render` command
 
-    library(rmarkdown)
-    render("example.Rmd")
+``` r
+library(rmarkdown)
+render("example.Rmd")
+```
 
 ## Headers
 
-    # Numbered header
-    # Unnumbered header {-}
-    # Also unnumbered header {.unnumbered}
+``` md
+# Numbered header
+# Unnumbered header {-}
+# Also unnumbered header {.unnumbered}
+```
 
 ## Markdown Syntax
 
-<table>
-<caption>Pandoc’s Markdown</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">syntax</th>
-<th style="text-align: left;">code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Images</td>
-<td
-style="text-align: left;"><code>![alt text or image title](path/to/image)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Footnotes</td>
-<td style="text-align: left;"><code>^[This is a footnote.]</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Horizontal rules</td>
-<td style="text-align: left;">three or more of *, -, _</td>
-</tr>
-</tbody>
-</table>
+| syntax           | code                                        |
+|:-----------------|:--------------------------------------------|
+| Images           | `![alt text or image title](path/to/image)` |
+| Footnotes        | `^[This is a footnote.]`                    |
+| Horizontal rules | three or more of \*, -, \_                  |
 
 Pandoc’s Markdown
 
@@ -430,22 +337,24 @@ Display options for data frames and matrixes
 
 Code for creating a table using a new data frame
 
-    # ```{r echo = FALSE}
-    df <- data.frame(
-      column1 = c(
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"),
-      column2 = c(
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"))
-    knitr::kable(df, caption = "caption")
-    # ```
+``` r
+# ```{r echo = FALSE}
+df <- data.frame(
+  column1 = c(
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"),
+  column2 = c(
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"))
+knitr::kable(df, caption = "caption")
+# ```
+```
 
 ## Code chunks
 
@@ -454,53 +363,19 @@ arrow pointing right.
 
 Code chunks start with ```` ```{} ```` and ends with ```` ``` ````.
 
-    # ```{r}
-    # ```
+``` r
+# ```{r}
+# ```
+```
 
-<table>
-<caption>Code chunk options</caption>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 89%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">option</th>
-<th style="text-align: left;">purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>include = FALSE</code></td>
-<td style="text-align: left;">prevents code and results from appearing
-in the output file. R Markdown still runs the code in the chunk, and the
-results can be used by other chunks</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>echo = FALSE</code></td>
-<td style="text-align: left;">prevents code, but not the results from
-appearing in the finished file. Good to embed figures</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>message = FALSE</code></td>
-<td style="text-align: left;">prevents messages that are generated by
-code from appearing in the finished file</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>warning = FALSE</code></td>
-<td style="text-align: left;">prevents warnings that are generated by
-code from appearing in the finished</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>fig.cap = "..."</code></td>
-<td style="text-align: left;">adds a caption to graphical results</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>eval = FALSE</code></td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
+| option            | purpose                                                                                                                                               |
+|:------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `include = FALSE` | prevents code and results from appearing in the output file. R Markdown still runs the code in the chunk, and the results can be used by other chunks |
+| `echo = FALSE`    | prevents code, but not the results from appearing in the finished file. Good to embed figures                                                         |
+| `message = FALSE` | prevents messages that are generated by code from appearing in the finished file                                                                      |
+| `warning = FALSE` | prevents warnings that are generated by code from appearing in the finished                                                                           |
+| `fig.cap = "..."` | adds a caption to graphical results                                                                                                                   |
+| `eval = FALSE`    |                                                                                                                                                       |
 
 Code chunk options
 
@@ -529,15 +404,17 @@ BibTeX databases: plain-texte file with filename extension `.bib`. Tool
 and a file format which are used to describe and process lists of
 references, mostly in conjunction with LaTeX documents.
 
-    @Manual{R-base,
-      title = {R: A Language and Environment for Statistical
-        Computing},
-      author = {{R Core Team}},
-      organization = {R Foundation for Statistical Computing},
-      address = {Vienna, Austria},
-      year = {2017},
-      url = {https://www.R-project.org/},
-    }
+``` r
+@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2017},
+  url = {https://www.R-project.org/},
+}
+```
 
 References
 
@@ -551,9 +428,11 @@ References
 
 Code
 
-    > "This is a quote that can be long and go until another line."
-    >
-    > --- Author
+``` md
+> "This is a quote that can be long and go until another line."
+>
+> --- Author
+```
 
 Output
 
@@ -584,54 +463,16 @@ References
 
 Core packages loaded automatically with `library(tidyverse)`
 
-<table>
-<caption>tidyverse core packages</caption>
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 91%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">package</th>
-<th style="text-align: left;">purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">ggplot2</td>
-<td style="text-align: left;">create graphics</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">dplyr</td>
-<td style="text-align: left;">manipulate data</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">tidyr</td>
-<td style="text-align: left;">tidy data</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">readr</td>
-<td style="text-align: left;">read rectangular data (csv, tsv)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">purrr</td>
-<td style="text-align: left;">loops</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">tibble</td>
-<td style="text-align: left;">data frame 2.0, they do less and complain
-more forcing you to adress problems earlier</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stringr</td>
-<td style="text-align: left;">functions to work with strings</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">forcats</td>
-<td style="text-align: left;">tools to work with factors</td>
-</tr>
-</tbody>
-</table>
+| package | purpose                                                                               |
+|:--------|:--------------------------------------------------------------------------------------|
+| ggplot2 | create graphics                                                                       |
+| dplyr   | manipulate data                                                                       |
+| tidyr   | tidy data                                                                             |
+| readr   | read rectangular data (csv, tsv)                                                      |
+| purrr   | loops                                                                                 |
+| tibble  | data frame 2.0, they do less and complain more forcing you to adress problems earlier |
+| stringr | functions to work with strings                                                        |
+| forcats | tools to work with factors                                                            |
 
 tidyverse core packages
 
@@ -721,38 +562,13 @@ References
 
 # Data visualization
 
-<table>
-<caption>data visualization packages</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">package</th>
-<th style="text-align: left;">purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">ggplot2</td>
-<td style="text-align: left;">plot</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">gganimate</td>
-<td style="text-align: left;">animate plot</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">ggrepel</td>
-<td style="text-align: left;">repel labels from overlap</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ggridges</td>
-<td style="text-align: left;">create ridges</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">viridis</td>
-<td style="text-align: left;">colour-blind friendly color maps for
-R</td>
-</tr>
-</tbody>
-</table>
+| package   | purpose                                |
+|:----------|:---------------------------------------|
+| ggplot2   | plot                                   |
+| gganimate | animate plot                           |
+| ggrepel   | repel labels from overlap              |
+| ggridges  | create ridges                          |
+| viridis   | colour-blind friendly color maps for R |
 
 data visualization packages
 
@@ -787,9 +603,9 @@ References
 -   [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
 -   [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html#Installing_magick):
     Advanced Image-Processing in R
--   [ggpmisc](): a set of extensions to R package ‘ggplot2’ (&gt;=
-    3.0.0) with emphasis on annotations and highlighting related to
-    fitted models and data summaries.
+-   [ggpmisc](): a set of extensions to R package ‘ggplot2’ (\>= 3.0.0)
+    with emphasis on annotations and highlighting related to fitted
+    models and data summaries.
 
 ## Interactive graphs
 

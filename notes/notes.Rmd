@@ -2,13 +2,17 @@
 title: "r-exploration notes"
 author: "Judith Bourque"
 date: "`r Sys.Date()`"
-output: md_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
+```{r}
+# packages <- readr::read_csv("data/packages.csv")
+```
 # Description
 
 A collection of quick notes and References for personal use.
