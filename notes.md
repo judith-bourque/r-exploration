@@ -9,14 +9,6 @@ A collection of quick notes and References for personal use.
 
 # R basics
 
-| name       | purpose                                                                                                                                  | extension |
-|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------|:----------|
-| R script   | analysis mode and want a report as a side effect                                                                                         | .R        |
-| R Markdown | writing a report with a lot of R code in it                                                                                              | .Rmd      |
-| R Notebook | R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneauth the input |           |
-
-R file types
-
 References
 
 -   [Introduction to R](http://r.sund.ku.dk/index.html)
@@ -50,6 +42,14 @@ File and folder structure
 -   /code: contains .R files
 -   /graphs: contains graphs
 -   README.md: describe the project
+
+| name       | purpose                                                                                                                                  | extension |
+|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------|:----------|
+| R script   | analysis mode and want a report as a side effect                                                                                         | .R        |
+| R Markdown | writing a report with a lot of R code in it                                                                                              | .Rmd      |
+| R Notebook | R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneauth the input |           |
+
+R file types
 
 References
 
@@ -545,7 +545,7 @@ References
 -   [Geocomputation with R](https://geocompr.robinlovelace.net/):
     geographic data analysis
 
-# Text mining
+## Text mining
 
 -   [Welcome to Text Mining with
     R](https://www.tidytextmining.com/index.html)
@@ -574,6 +574,9 @@ References
 | highcharter     | show and hide graph elements (and option to download graph)                     |
 | fivethirtyeight | package containing data from the website and theme for similar aesthetic ggplot |
 | wesanderson     | Wes Anderson inspired color palette package                                     |
+| ggpmisc         | ggplot2 extension which includes tables                                         |
+| gt              | create tables in R                                                              |
+| gtextras        | add-on to gt that lets you add visualizations into tables                       |
 
 data visualization packages
 
@@ -597,6 +600,8 @@ References
 -   [GGplot
     cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 -   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
+-   [How to Make Beautiful Tables in
+    R](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/)
 
 Packages
 

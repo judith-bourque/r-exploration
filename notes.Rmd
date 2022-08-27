@@ -3,6 +3,7 @@ title: "r-exploration notes"
 author: "Judith Bourque"
 date: "`r Sys.Date()`"
 output: github_document
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -18,23 +19,6 @@ packages <- readxl::read_excel("data/packages.xlsx")
 A collection of quick notes and References for personal use.
 
 # R basics
-
-```{r echo = FALSE}
-df <- data.frame(
-  name = c(
-    "R script",
-    "R Markdown",
-    "R Notebook"),
-  purpose = c(
-    "analysis mode and want a report as a side effect",
-    "writing a report with a lot of R code in it",
-    "R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneauth the input"),
-  extension = c(
-    ".R",
-    ".Rmd",
-    ""))
-knitr::kable(df, caption = "R file types")
-```
 
 References
 
@@ -66,6 +50,25 @@ File and folder structure
 -   /code: contains .R files
 -   /graphs: contains graphs
 -   README.md: describe the project
+
+
+```{r echo = FALSE}
+df <- data.frame(
+  name = c(
+    "R script",
+    "R Markdown",
+    "R Notebook"),
+  purpose = c(
+    "analysis mode and want a report as a side effect",
+    "writing a report with a lot of R code in it",
+    "R Markdown document with chunks that can be executed independently and interactively, with output visible immediately beneauth the input"),
+  extension = c(
+    ".R",
+    ".Rmd",
+    ""))
+knitr::kable(df, caption = "R file types")
+```
+
 
 References
 
@@ -492,7 +495,7 @@ References
 -   [Exploratory Data Analysis](https://mgimond.github.io/ES218/Week01.html)
 -   [Geocomputation with R](https://geocompr.robinlovelace.net/): geographic data analysis
 
-# Text mining
+## Text mining
 
 -   [Welcome to Text Mining with R](https://www.tidytextmining.com/index.html)
 -   [Notes for "Text Mining with R: A Tidy Approach"](https://bookdown.org/Maxine/tidy-text-mining/)
@@ -522,6 +525,7 @@ References
 -   [strategies for avoiding the spaghetti graph](https://www.storytellingwithdata.com/blog/2013/03/avoiding-spaghetti-graph): what not to do with line graphs
 -   [GGplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 -   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
+- [How to Make Beautiful Tables in R](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/)
 
 Packages
 
