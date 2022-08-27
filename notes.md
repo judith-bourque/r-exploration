@@ -3,10 +3,6 @@ r-exploration notes
 Judith Bourque
 2022-08-27
 
-``` r
-# packages <- readr::read_csv("data/packages.csv")
-```
-
 # Description
 
 A collection of quick notes and References for personal use.
@@ -463,7 +459,7 @@ References
 
 Core packages loaded automatically with `library(tidyverse)`
 
-| package | purpose                                                                               |
+| package | definition                                                                            |
 |:--------|:--------------------------------------------------------------------------------------|
 | ggplot2 | create graphics                                                                       |
 | dplyr   | manipulate data                                                                       |
@@ -474,7 +470,7 @@ Core packages loaded automatically with `library(tidyverse)`
 | stringr | functions to work with strings                                                        |
 | forcats | tools to work with factors                                                            |
 
-tidyverse core packages
+Theme packages
 
 References
 
@@ -501,34 +497,37 @@ References
 
 ## API wrapper packages
 
-Wikipedia
+| package        | definition                                                                                            |
+|:---------------|:------------------------------------------------------------------------------------------------------|
+| pageviews      | retrieve wikimedia pageviews                                                                          |
+| waxer          | querying Wikimedia Analytics Query Service in R                                                       |
+| WikidataR      | read and query wikidata. Uses Wikidata and Quickstatements APIs.                                      |
+| tidywikidatar  | read and query Wikidata in a tidy format                                                              |
+| wikipediatrend | read and query Wikidata in a tidy format                                                              |
+| WikipediR      | wrapper for MediaWiki API                                                                             |
+| wmfastr        | Speedily computes various dwelltime and preference-related metrics in the context of search sessions. |
+| wmfdata        | for working with Wikimedia data in R                                                                  |
+| spotifyr       | R package for Spotify API                                                                             |
 
--   [pageviews](https://cran.r-project.org/web/packages/pageviews/pageviews.pdf):
-    retrieve wikimedia pageviews
+Theme packages
+
+### Wikipedia
+
 -   [waxer](https://github.com/wikimedia/waxer): querying Wikimedia
     Analytics Query Service in R.
--   [WikidataR](https://cran.r-project.org/web/packages/WikidataR/index.html):
-    read and query wikidata. Uses Wikidata and Quickstatements APIs.
 -   [tidywikidatar](https://edjnet.github.io/tidywikidatar/index.html):
     read and query Wikidata in a tidy format
--   [wikipediatrend](https://cran.r-project.org/package=wikipediatrend):
-    pageviews from 2007 and beyond
--   [WikipediR](https://cran.r-project.org/web/packages/WikipediR/WikipediR.pdf):
-    Wrapper for MediaWiki API
 -   [wmfastr](https://github.com/wikimedia/wmfastr): Speedily computes
     various dwelltime and preference-related metrics in the context of
     search sessions.
 -   [wmfdata](https://github.com/wikimedia/wmfdata-r): for working with
     Wikimedia data in R
--   
+-   WikidataQueryServiceR: R wrapper for Wikidata Query Service
 -   [A new R package for exploring the wealth of information stored by
     Wikidata:
     tidywikidatar](https://medium.com/european-data-journalism-network/a-new-r-package-for-exploring-the-wealth-of-information-stored-by-wikidata-fe85e82b6440)
 
-Spotify
-
--   [spotifyr](https://www.rcharlie.com/spotifyr/index.html): R package
-    for Spotify API
+### Spotify
 
 To set up spotifyr, in the app settings, fill in Redirect URls with
 <http://localhost:1410/>.
@@ -562,13 +561,19 @@ References
 
 # Data visualization
 
-| package   | purpose                                |
-|:----------|:---------------------------------------|
-| ggplot2   | plot                                   |
-| gganimate | animate plot                           |
-| ggrepel   | repel labels from overlap              |
-| ggridges  | create ridges                          |
-| viridis   | colour-blind friendly color maps for R |
+| package         | definition                                                                      |
+|:----------------|:--------------------------------------------------------------------------------|
+| ggplot2         | create graphics                                                                 |
+| gganimate       | animate plot                                                                    |
+| ggrepel         | repel labels from overlap                                                       |
+| ggridges        | create ridges                                                                   |
+| viridis         | colour-blind friendly color maps in R                                           |
+| leaflet         | interactive maps                                                                |
+| plotly          | make any ggplot2 interactive                                                    |
+| rCharts         | switch graph format with one click (ex: grouped vs. stacked barchart)           |
+| highcharter     | show and hide graph elements (and option to download graph)                     |
+| fivethirtyeight | package containing data from the website and theme for similar aesthetic ggplot |
+| wesanderson     | Wes Anderson inspired color palette package                                     |
 
 data visualization packages
 
@@ -592,6 +597,14 @@ References
 -   [GGplot
     cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 -   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
+
+Packages
+
+-   [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html#Installing_magick):
+    Advanced Image-Processing in R
+-   [ggpmisc](): a set of extensions to R package ‘ggplot2’ (\>= 3.0.0)
+    with emphasis on annotations and highlighting related to fitted
+    models and data summaries.
 -   [patchwork](https://patchwork.data-imaginist.com/): combine ggplots
 -   [bbplot](https://github.com/bbc/bbplot/): provides helpful functions
     for creating and exporting graphics made in ggplot in the style used
@@ -601,20 +614,17 @@ References
 -   [roughnet](https://github.com/schochastics/roughnet): hand-drawn
     network graphs
 -   [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
--   [magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html#Installing_magick):
-    Advanced Image-Processing in R
--   [ggpmisc](): a set of extensions to R package ‘ggplot2’ (\>= 3.0.0)
-    with emphasis on annotations and highlighting related to fitted
-    models and data summaries.
 
 ## Interactive graphs
 
--   leaflet: interactive maps
--   plotly: make any ggplot2 interactive
--   rCharts: switch graph format with one click (ex: grouped vs. stacked
-    barchart)
--   highcharter: show and hide graph elements (and option to download
-    graph)
+| package     | definition                                                            |
+|:------------|:----------------------------------------------------------------------|
+| leaflet     | interactive maps                                                      |
+| plotly      | make any ggplot2 interactive                                          |
+| rCharts     | switch graph format with one click (ex: grouped vs. stacked barchart) |
+| highcharter | show and hide graph elements (and option to download graph)           |
+
+Interactive graph packages
 
 ## Data art
 
@@ -643,12 +653,15 @@ Examples
 
 ## Themes
 
--   [fivethirtyeight](https://cran.r-project.org/web/packages/fivethirtyeight/vignettes/fivethirtyeight.html):
-    package containing data from the website and theme for similar
-    aesthetic ggplot
+| package         | definition                                                                      |
+|:----------------|:--------------------------------------------------------------------------------|
+| fivethirtyeight | package containing data from the website and theme for similar aesthetic ggplot |
+| wesanderson     | Wes Anderson inspired color palette package                                     |
+
+Theme packages
+
 -   [Creating quick corporate plot themes with
     ggplot2](https://austinwehrwein.com/tutorials/corporatethemes/)
--   `wesanderson`: Wes Anderson inspired color palette package
 
 ## Inspiration
 
