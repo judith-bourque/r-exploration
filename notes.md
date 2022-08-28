@@ -39,7 +39,7 @@ New project setup
 
 File and folder structure
 
--   /code: contains .R files
+-   /R: contains .R files
 -   /graphs: contains graphs
 -   README.md: describe the project
 
@@ -211,6 +211,14 @@ References
 
 # R Markdown
 
+| package    | definition                                              |
+|:-----------|:--------------------------------------------------------|
+| rmarkdown  | reproducible documents                                  |
+| thesisdown | reproducible thesis                                     |
+| bookdown   | Write HTML, PDF, ePub, and Kindle books with R Markdown |
+
+R markdown packages
+
 References
 
 -   [R Markdown: The Definitive
@@ -227,6 +235,8 @@ References
 -   [bookdown: Authoring Books and Technical Documents with R
     Markdown](https://bookdown.org/yihui/bookdown/)
 -   [Bookdown](https://github.com/rstudio/bookdown)
+-   [Branding and automating your work with R
+    Markdown](https://www.rstudio.com/resources/rstudioconf-2018/branding-and-automating-your-work-with-r-markdown/)
 
 ## YAML
 
@@ -461,14 +471,14 @@ Core packages loaded automatically with `library(tidyverse)`
 
 | package | definition                                                                            |
 |:--------|:--------------------------------------------------------------------------------------|
-| ggplot2 | create graphics                                                                       |
 | dplyr   | manipulate data                                                                       |
-| tidyr   | tidy data                                                                             |
-| readr   | read rectangular data (csv, tsv)                                                      |
-| purrr   | loops                                                                                 |
-| tibble  | data frame 2.0, they do less and complain more forcing you to adress problems earlier |
-| stringr | functions to work with strings                                                        |
 | forcats | tools to work with factors                                                            |
+| ggplot2 | create graphics                                                                       |
+| purrr   | loops                                                                                 |
+| readr   | read rectangular data (csv, tsv)                                                      |
+| stringr | functions to work with strings                                                        |
+| tibble  | data frame 2.0, they do less and complain more forcing you to adress problems earlier |
+| tidyr   | tidy data                                                                             |
 
 Theme packages
 
@@ -500,14 +510,14 @@ References
 | package        | definition                                                                                            |
 |:---------------|:------------------------------------------------------------------------------------------------------|
 | pageviews      | retrieve wikimedia pageviews                                                                          |
+| spotifyr       | R package for Spotify API                                                                             |
+| tidywikidatar  | read and query Wikidata in a tidy format                                                              |
 | waxer          | querying Wikimedia Analytics Query Service in R                                                       |
 | WikidataR      | read and query wikidata. Uses Wikidata and Quickstatements APIs.                                      |
-| tidywikidatar  | read and query Wikidata in a tidy format                                                              |
 | wikipediatrend | read and query Wikidata in a tidy format                                                              |
 | WikipediR      | wrapper for MediaWiki API                                                                             |
 | wmfastr        | Speedily computes various dwelltime and preference-related metrics in the context of search sessions. |
 | wmfdata        | for working with Wikimedia data in R                                                                  |
-| spotifyr       | R package for Spotify API                                                                             |
 
 API wrapper packages
 
@@ -561,24 +571,49 @@ References
 
 # Data visualization
 
-| package         | definition                                                                      |
-|:----------------|:--------------------------------------------------------------------------------|
-| ggplot2         | create graphics                                                                 |
-| gganimate       | animate plot                                                                    |
-| ggrepel         | repel labels from overlap                                                       |
-| ggridges        | create ridges                                                                   |
-| viridis         | colour-blind friendly color maps in R                                           |
-| leaflet         | interactive maps                                                                |
-| plotly          | make any ggplot2 interactive                                                    |
-| rCharts         | switch graph format with one click (ex: grouped vs. stacked barchart)           |
-| highcharter     | show and hide graph elements (and option to download graph)                     |
-| fivethirtyeight | package containing data from the website and theme for similar aesthetic ggplot |
-| wesanderson     | Wes Anderson inspired color palette package                                     |
-| ggpmisc         | ggplot2 extension which includes tables                                         |
-| gt              | create tables in R                                                              |
-| gtextras        | add-on to gt that lets you add visualizations into tables                       |
+| package         | definition                                                                                                         |
+|:----------------|:-------------------------------------------------------------------------------------------------------------------|
+| cowplot         | Streamlined plot theme and plot annotations for ggplot2                                                            |
+| fivethirtyeight | package containing data from the website and theme for similar aesthetic ggplot                                    |
+| geofacet        | geofaceting functionality for ggplot2                                                                              |
+| geogrid         | Turn geospatial polygons like states, counties or local authorities into regular or hexagonal grids automatically. |
+| gganimate       | animate plot                                                                                                       |
+| ggetch          | Tech themes and scales                                                                                             |
+| ggplot2         | create graphics                                                                                                    |
+| ggpmisc         | ggplot2 extension which includes tables                                                                            |
+| ggpomological   | water-colour look for figures                                                                                      |
+| ggrepel         | repel labels from overlap                                                                                          |
+| ggridges        | create ridges                                                                                                      |
+| ggspatial       | Spatial data plus the power of the ggplot2 framework                                                               |
+| ggthemes        | Some extra geoms, scales, and themes for ggplot.                                                                   |
+| gt              | create tables in R                                                                                                 |
+| gtextras        | add-on to gt that lets you add visualizations into tables                                                          |
+| highcharter     | show and hide graph elements (and option to download graph)                                                        |
+| leaflet         | interactive maps                                                                                                   |
+| plotly          | make any ggplot2 interactive                                                                                       |
+| rCharts         | switch graph format with one click (ex: grouped vs. stacked barchart)                                              |
+| viridis         | colour-blind friendly color maps in R                                                                              |
+| wesanderson     | Wes Anderson inspired color palette package                                                                        |
 
 data visualization packages
+
+Use data when
+
+-   The display will be used to look up individual values
+-   It will be used to compare individual values
+-   Precise values are required
+-   Quantitative values include more than one unit of measure
+-   Both detail and summary values are included
+
+Use tables when
+
+-   The display will be used to reveal relationships among whole sets of
+    values
+-   The message is contained in the shape of the values (e.g., patterns,
+    trends, exceptions)
+
+Source: [10+ Guidelines for Better Tables in
+R](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
 
 References
 
@@ -602,6 +637,10 @@ References
 -   [ggrepel](https://ggrepel.slowkow.com/articles/examples.html)
 -   [How to Make Beautiful Tables in
     R](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/)
+-   [10+ Guidelines for Better Tables in
+    R](https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/)
+-   [A ggplot2 tutorial for beautiful plotting in
+    R](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
 
 Packages
 
@@ -624,10 +663,10 @@ Packages
 
 | package     | definition                                                            |
 |:------------|:----------------------------------------------------------------------|
+| highcharter | show and hide graph elements (and option to download graph)           |
 | leaflet     | interactive maps                                                      |
 | plotly      | make any ggplot2 interactive                                          |
 | rCharts     | switch graph format with one click (ex: grouped vs. stacked barchart) |
-| highcharter | show and hide graph elements (and option to download graph)           |
 
 Interactive graph packages
 
@@ -679,15 +718,19 @@ Theme packages
 
 # Create an R package
 
+References
+
 -   [R Packages (2e)](https://r-pkgs.org/)
 -   [Making Your First R
     Package](https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html)
+-   [How to write your own R package and publish it on
+    CRAN](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/r-package/)
 
 | package  | definition                             |
 |:---------|:---------------------------------------|
+| pkgdown  | documentation for packages             |
 | roxygen2 | documentation for individual functions |
 | testthat | unit testing                           |
-| pkgdown  | documentation for packages             |
 
 Packages for building packages
 
