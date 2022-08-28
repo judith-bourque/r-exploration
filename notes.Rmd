@@ -14,9 +14,11 @@ library(tidyverse)
 ```{r include=FALSE}
 packages <- readxl::read_excel("data/packages.xlsx")
 ```
-# Description
+# Overview
 
 A collection of quick notes and References for personal use.
+
+Please note this is a work in progress.
 
 # R basics
 
@@ -520,7 +522,7 @@ knitr::kable(
     package, definition), caption = "data visualization packages")
 ```
 
-Use data when
+Use tables when
 
 - The display will be used to look up individual values
 - It will be used to compare individual values
@@ -528,7 +530,7 @@ Use data when
 - Quantitative values include more than one unit of measure
 - Both detail and summary values are included
 
-Use tables when
+Use graphs when
 
 - The display will be used to reveal relationships among whole sets of values
 - The message is contained in the shape of the values (e.g., patterns, trends, exceptions)
@@ -632,3 +634,12 @@ Other
 -   [R Packages](https://r-pkgs.org/index.html)
 -   [WikipediR](https://github.com/Ironholds/WikipediR)
 -   [Reader expectations approach](https://georgegopen.com/litigation-articles)
+
+# Complete packages list
+
+```{r echo = FALSE}
+packages %>% 
+  group_by(category) %>% 
+  select(package, definition) %>% 
+  gt::gt()
+```
