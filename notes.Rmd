@@ -16,7 +16,7 @@ packages <- readxl::read_excel("data/packages.xlsx")
 ```
 # Overview
 
-A collection of quick notes and References for personal use.
+A collection of quick notes and references.
 
 Please note this is a work in progress.
 
@@ -50,7 +50,7 @@ New project setup
 File and folder structure
 
 -   /R: contains .R files
--   /graphs: contains graphs
+-   /graph: contains graphs
 -   README.md: describe the project
 
 
@@ -634,12 +634,3 @@ Other
 -   [R Packages](https://r-pkgs.org/index.html)
 -   [WikipediR](https://github.com/Ironholds/WikipediR)
 -   [Reader expectations approach](https://georgegopen.com/litigation-articles)
-
-# Complete packages list
-
-```{r echo = FALSE}
-packages %>% 
-  group_by(category) %>% 
-  select(package, definition) %>% 
-  gt::gt()
-```
