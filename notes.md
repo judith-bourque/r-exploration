@@ -686,6 +686,8 @@ Interactive graph packages
     R](http://jenrichmond.rbind.io/post/making-memes-in-r/)
 -   [Data art posters about music (streaming) data for Sony
     Music](https://www.visualcinnamon.com/2020/06/sony-music-data-art/)
+-   [Personal Art Map with
+    R](http://estebanmoro.org/post/2020-10-19-personal-art-map-with-r/)
 
 ## Data storytelling
 
