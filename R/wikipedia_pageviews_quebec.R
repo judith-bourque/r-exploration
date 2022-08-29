@@ -89,16 +89,16 @@ ordered_data %>%
   # Add header
   tab_header(
     title = "Les plus lus",
-    subtitle = "Articles Wikipédia québécois en français"
+    subtitle = "Articles populaires sur le Québec dans Wikipédia en français"
   ) %>% 
   # Specify column labels
   cols_label(
     article = "Article",
-    views_data = "Pages vues"
+    views_data = "Vues"
   ) %>% 
   # Specify source
   tab_source_note(
-    source_note = "Source: Wikimedia REST API"
+    source_note = "Données: Wikimedia REST API"
   ) %>% 
   # Specify author
   tab_source_note(
