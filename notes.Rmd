@@ -564,6 +564,10 @@ Packages
 -   [roughnet](https://github.com/schochastics/roughnet): hand-drawn network graphs
 -   [roughsf](https://github.com/schochastics/roughsf): hand-drawn maps
 
+Insert percentage on y axis tick labels
+```{r}
+scale_y_continuous(labels = paste0(seq(0, 30, by = 10), "%"))
+```
 
 ## Interactive graphs
 
