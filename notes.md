@@ -1,7 +1,7 @@
 r-exploration notes
 ================
 Judith Bourque
-2022-09-01
+2022-09-02
 
 # Overview
 
@@ -738,6 +738,7 @@ Functions
 -   [Over 60 New York Times Graphs for Students to
     Analyze](https://www.nytimes.com/2020/06/10/learning/over-60-new-york-times-graphs-for-students-to-analyze.html)
     by the New York Times
+-   [Edward Tufte](https://www.edwardtufte.com/tufte/)
 
 ## Axis
 

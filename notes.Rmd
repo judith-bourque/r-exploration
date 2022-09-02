@@ -614,6 +614,7 @@ Functions
 
 -   [The 56 Best - And Weirdest - Charts We Made In 2019](https://fivethirtyeight.com/features/the-56-best-and-weirdest-charts-we-made-in-2019/) by FiveThirtyEight
 -   [Over 60 New York Times Graphs for Students to Analyze](https://www.nytimes.com/2020/06/10/learning/over-60-new-york-times-graphs-for-students-to-analyze.html) by the New York Times
+- [Edward Tufte](https://www.edwardtufte.com/tufte/)
 
 ## Axis
 
