@@ -630,6 +630,7 @@ References
 - [R Packages (2e)](https://r-pkgs.org/)
 - [Making Your First R Package](https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html)
 - [How to write your own R package and publish it on CRAN](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/r-package/)
+- [](https://cran.r-project.org/web/packages/ggplot2/vignettes/ggplot2-in-packages.html)
 
 ```{r echo = FALSE}
 knitr::kable(

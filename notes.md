@@ -1,7 +1,7 @@
 r-exploration notes
 ================
 Judith Bourque
-2022-09-02
+2022-09-03
 
 # Overview
 
@@ -219,6 +219,7 @@ References
 | knitr      | create documents                                        |
 | rmarkdown  | reproducible documents                                  |
 | thesisdown | reproducible thesis                                     |
+| learnr     | Interactive tutorials for R                             |
 
 R markdown packages
 
@@ -574,32 +575,34 @@ References
 
 # Data visualization
 
-| package       | definition                                                                                                         |
-|:--------------|:-------------------------------------------------------------------------------------------------------------------|
-| bbplot        | graphics made in ggplot in the style used by the BBC News data team                                                |
-| cowplot       | Streamlined plot theme and plot annotations for ggplot2                                                            |
-| geofacet      | geofaceting functionality for ggplot2                                                                              |
-| geogrid       | Turn geospatial polygons like states, counties or local authorities into regular or hexagonal grids automatically. |
-| gganimate     | animate plot                                                                                                       |
-| ggetch        | Tech themes and scales                                                                                             |
-| ggplot2       | create graphics                                                                                                    |
-| ggpmisc       | ggplot2 extension which includes tables                                                                            |
-| ggpomological | water-colour look for figures                                                                                      |
-| ggrepel       | repel labels from overlap                                                                                          |
-| ggridges      | create ridges                                                                                                      |
-| ggspatial     | Spatial data plus the power of the ggplot2 framework                                                               |
-| ggthemes      | Some extra geoms, scales, and themes for ggplot.                                                                   |
-| gt            | create tables in R                                                                                                 |
-| gtextras      | add-on to gt that lets you add visualizations into tables                                                          |
-| highcharter   | show and hide graph elements (and option to download graph)                                                        |
-| hrbrthemes    | Additional Themes and Theme Components for ‘ggplot2’                                                               |
-| leaflet       | interactive maps                                                                                                   |
-| plotly        | make any ggplot2 interactive                                                                                       |
-| rCharts       | switch graph format with one click (ex: grouped vs. stacked barchart)                                              |
-| viridis       | colour-blind friendly color maps in R                                                                              |
-| wesanderson   | Wes Anderson inspired color palette package                                                                        |
-| ragg          | access to all system fonts                                                                                         |
-| showtext      | set of functions that make it easy to use various types of fonts in R plots                                        |
+| package       | definition                                                                                                                  |
+|:--------------|:----------------------------------------------------------------------------------------------------------------------------|
+| bbplot        | graphics made in ggplot in the style used by the BBC News data team                                                         |
+| cowplot       | Streamlined plot theme and plot annotations for ggplot2                                                                     |
+| geofacet      | geofaceting functionality for ggplot2                                                                                       |
+| geogrid       | Turn geospatial polygons like states, counties or local authorities into regular or hexagonal grids automatically.          |
+| gganimate     | animate plot                                                                                                                |
+| ggetch        | Tech themes and scales                                                                                                      |
+| ggplot2       | create graphics                                                                                                             |
+| ggpmisc       | ggplot2 extension which includes tables                                                                                     |
+| ggpomological | water-colour look for figures                                                                                               |
+| ggrepel       | repel labels from overlap                                                                                                   |
+| ggridges      | create ridges                                                                                                               |
+| ggspatial     | Spatial data plus the power of the ggplot2 framework                                                                        |
+| ggthemes      | Some extra geoms, scales, and themes for ggplot.                                                                            |
+| gt            | create tables in R                                                                                                          |
+| gtextras      | add-on to gt that lets you add visualizations into tables                                                                   |
+| highcharter   | show and hide graph elements (and option to download graph)                                                                 |
+| hrbrthemes    | Additional Themes and Theme Components for ‘ggplot2’                                                                        |
+| leaflet       | interactive maps                                                                                                            |
+| plotly        | make any ggplot2 interactive                                                                                                |
+| rCharts       | switch graph format with one click (ex: grouped vs. stacked barchart)                                                       |
+| viridis       | colour-blind friendly color maps in R                                                                                       |
+| wesanderson   | Wes Anderson inspired color palette package                                                                                 |
+| ragg          | access to all system fonts                                                                                                  |
+| showtext      | set of functions that make it easy to use various types of fonts in R plots                                                 |
+| ggsci         | ggplot2 color palettes inspired by scientific journals, data visualization libraries, science fiction movies, and TV shows. |
+| systemfonts   | Provides system native access to the font catalogue.                                                                        |
 
 data visualization packages
 
@@ -757,6 +760,7 @@ References
     Package](https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html)
 -   [How to write your own R package and publish it on
     CRAN](https://www.mzes.uni-mannheim.de/socialsciencedatalab/article/r-package/)
+-   [](https://cran.r-project.org/web/packages/ggplot2/vignettes/ggplot2-in-packages.html)
 
 | package  | definition                             |
 |:---------|:---------------------------------------|
