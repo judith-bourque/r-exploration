@@ -217,9 +217,9 @@ References
 |:-----------|:--------------------------------------------------------|
 | bookdown   | Write HTML, PDF, ePub, and Kindle books with R Markdown |
 | knitr      | create documents                                        |
+| learnr     | Interactive tutorials for R                             |
 | rmarkdown  | reproducible documents                                  |
 | thesisdown | reproducible thesis                                     |
-| learnr     | Interactive tutorials for R                             |
 
 R markdown packages
 
@@ -579,15 +579,18 @@ References
 |:--------------|:----------------------------------------------------------------------------------------------------------------------------|
 | bbplot        | graphics made in ggplot in the style used by the BBC News data team                                                         |
 | cowplot       | Streamlined plot theme and plot annotations for ggplot2                                                                     |
+| esquisse      | Interactive ggplot creator                                                                                                  |
 | geofacet      | geofaceting functionality for ggplot2                                                                                       |
 | geogrid       | Turn geospatial polygons like states, counties or local authorities into regular or hexagonal grids automatically.          |
 | gganimate     | animate plot                                                                                                                |
+| ggedit        | Interactive ggplot editor                                                                                                   |
 | ggetch        | Tech themes and scales                                                                                                      |
 | ggplot2       | create graphics                                                                                                             |
 | ggpmisc       | ggplot2 extension which includes tables                                                                                     |
 | ggpomological | water-colour look for figures                                                                                               |
 | ggrepel       | repel labels from overlap                                                                                                   |
 | ggridges      | create ridges                                                                                                               |
+| ggsci         | ggplot2 color palettes inspired by scientific journals, data visualization libraries, science fiction movies, and TV shows. |
 | ggspatial     | Spatial data plus the power of the ggplot2 framework                                                                        |
 | ggthemes      | Some extra geoms, scales, and themes for ggplot.                                                                            |
 | gt            | create tables in R                                                                                                          |
@@ -596,13 +599,12 @@ References
 | hrbrthemes    | Additional Themes and Theme Components for ‘ggplot2’                                                                        |
 | leaflet       | interactive maps                                                                                                            |
 | plotly        | make any ggplot2 interactive                                                                                                |
+| ragg          | access to all system fonts                                                                                                  |
 | rCharts       | switch graph format with one click (ex: grouped vs. stacked barchart)                                                       |
+| showtext      | set of functions that make it easy to use various types of fonts in R plots                                                 |
+| systemfonts   | Provides system native access to the font catalogue.                                                                        |
 | viridis       | colour-blind friendly color maps in R                                                                                       |
 | wesanderson   | Wes Anderson inspired color palette package                                                                                 |
-| ragg          | access to all system fonts                                                                                                  |
-| showtext      | set of functions that make it easy to use various types of fonts in R plots                                                 |
-| ggsci         | ggplot2 color palettes inspired by scientific journals, data visualization libraries, science fiction movies, and TV shows. |
-| systemfonts   | Provides system native access to the font catalogue.                                                                        |
 
 data visualization packages
 
