@@ -79,7 +79,11 @@ graph <- ordered_data %>%
   # Slice top 10 articles
   slice(1:70) %>% 
   dplyr::group_by(article) %>% 
-  dplyr::summarise(views_data = list(views), .groups = "drop") %>% 
+  dplyr::summarise(
+    views_data = list(views),
+    end_views = mean(end_views),
+    .groups = "drop") %>% 
+  arrange(desc(end_views)) %>%
   # Create table
   gt() %>% 
   # Add sparkline graph
