@@ -68,9 +68,10 @@ tidy_data <- data %>%
 ordered_data <- tidy_data %>% 
   left_join(., 
             group_by(tidy_data, article) %>% 
-              summarise(total_views = sum(views))
+              #summarise(total_views = sum(views))
+              mutate(end_views = last(views))
             ) %>% 
-  arrange(desc(total_views))
+  arrange(desc(end_views))
 
 # Table -------------------------------------------------------------------
 
@@ -85,7 +86,8 @@ graph <- ordered_data %>%
   gt_plt_sparkline(views_data,
                    type = "shaded",
                    palette = c("black", "black", "blue", "aquamarine", "lightblue"),
-                   same_limit = F) %>% 
+                   same_limit = F,
+                   label = F) %>% 
   # Add header
   tab_header(
     title = "Les plus lus",
@@ -113,6 +115,8 @@ graph <- ordered_data %>%
   ) %>% 
   # Theme
   gt_theme_538() 
+
+graph
 
 graph %>% 
   # Save the graph
