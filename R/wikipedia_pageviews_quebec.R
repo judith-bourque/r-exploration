@@ -22,12 +22,12 @@ library(tidyverse)
 library(pageviews) # Get pageviews data
 library(gtExtras) # Table visualization
 library(gt) # Table customization
+library(lubridate)
 
 # Load data ---------------------------------------------------------------
 
 # Set request parameters
 
-today <- Sys.Date()
 project <- "fr.wikipedia"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
@@ -85,7 +85,7 @@ graph <- ordered_data %>%
   gt_plt_sparkline(views_data,
                    type = "shaded",
                    palette = c("black", "black", "blue", "aquamarine", "lightblue"),
-                   same_limit = F) #%>% 
+                   same_limit = F) %>% 
   # Add header
   tab_header(
     title = "Les plus lus",
@@ -106,8 +106,11 @@ graph <- ordered_data %>%
   ) %>% 
   # Specify date of data
   tab_source_note(
-    source_note = today
-  ) #%>% 
+    source_note = paste(
+      format(today() - days(1)), " - ",
+      format(today() - days(8))
+    )
+  ) %>% 
   # Theme
   gt_theme_538() 
 
