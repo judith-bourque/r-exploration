@@ -1,6 +1,6 @@
 # Description -------------------------------------------------------------
 #
-# This R script creates a graph of the top 10 French Wikipedia articles about 
+# This R script creates a graph of the top 10 French Wikipedia articles about
 # Quebec in the last 7 days.
 #
 # It was written as part of an experiment with data visualization.
@@ -45,11 +45,13 @@ data <- tibble()
 
 for (i in 1:nrow(articles)) {
   response_df <- pageviews::article_pageviews(
-    project = project, articles$title[i],
+    project = project,
+    articles$title[i],
     user_type = agent,
     start = start,
     end = end,
-    granularity = granularity)
+    granularity = granularity
+  )
   
   # Combine data frames
   data <- rbind(data, response_df)
@@ -57,72 +59,60 @@ for (i in 1:nrow(articles)) {
 
 # Tidy data ---------------------------------------------------------------
 
-tidy_data <- data %>% 
+tidy_data <- data %>%
   # Change column name
-  rename(pageviews_date = date) %>% 
-  mutate(
-    # Clean article name
-    article = gsub("_", " ", article)
-    )
+  rename(pageviews_date = date) %>%
+  mutate(# Clean article name
+    article = gsub("_", " ", article))
 
-ordered_data <- tidy_data %>% 
-  left_join(., 
-            group_by(tidy_data, article) %>% 
+ordered_data <- tidy_data %>%
+  left_join(.,
+            group_by(tidy_data, article) %>%
               #summarise(total_views = sum(views))
-              mutate(end_views = last(views))
-            ) %>% 
+              mutate(end_views = last(views))) %>%
   arrange(desc(end_views))
 
 # Table -------------------------------------------------------------------
 
-graph <- ordered_data %>% 
+graph <- ordered_data %>%
   # Slice top 10 articles
-  slice(1:70) %>% 
-  dplyr::group_by(article) %>% 
+  slice(1:70) %>%
+  dplyr::group_by(article) %>%
   dplyr::summarise(
     views_data = list(views),
     end_views = mean(end_views),
-    .groups = "drop") %>% 
+    .groups = "drop"
+  ) %>%
   arrange(desc(end_views)) %>%
   # Create table
-  gt() %>% 
+  gt() %>%
   # Add sparkline graph
-  gt_plt_sparkline(views_data,
-                   type = "shaded",
-                   palette = c("black", "black", "blue", "aquamarine", "lightblue"),
-                   same_limit = F,
-                   label = F) %>% 
+  gt_plt_sparkline(
+    views_data,
+    type = "shaded",
+    palette = c("black", "black", "blue", "aquamarine", "lightblue"),
+    same_limit = F,
+    label = F
+  ) %>%
   # Add header
-  tab_header(
-    title = "Les plus lus",
-    subtitle = "Articles populaires sur le Québec dans Wikipédia en français"
-  ) %>% 
+  tab_header(title = "Les plus lus",
+             subtitle = "Articles populaires sur le Québec dans Wikipédia en français") %>%
   # Specify column labels
-  cols_label(
-    article = "Article",
-    views_data = "Vues",
-    end_views = ""
-  ) %>% 
+  cols_label(article = "Article",
+             views_data = "Vues",
+             end_views = "") %>%
   # Specify source
-  tab_source_note(
-    source_note = "Données: Wikimedia REST API"
-  ) %>% 
+  tab_source_note(source_note = "Données: Wikimedia REST API") %>%
   # Specify author
-  tab_source_note(
-    source_note = "Code: github.com/judith-bourque"
-  ) %>% 
+  tab_source_note(source_note = "Code: github.com/judith-bourque") %>%
   # Specify date of data
-  tab_source_note(
-    source_note = paste(
-      format(today() - days(1)), " - ",
-      format(today() - days(8))
-    )
-  ) %>% 
+  tab_source_note(source_note = paste(format(today() - days(1)), " - ",
+                                      format(today() - days(8)))) %>%
   # Theme
-  gt_theme_538() 
+  gt_theme_538()
 
 graph
 
-graph %>% 
+graph %>%
   # Save the graph
   gtsave("graph/wikipedia_pageviews_quebec.png")
