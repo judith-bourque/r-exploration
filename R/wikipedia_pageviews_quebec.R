@@ -100,7 +100,8 @@ graph <- ordered_data %>%
   # Specify column labels
   cols_label(
     article = "Article",
-    views_data = "Vues"
+    views_data = "Vues",
+    end_views = ""
   ) %>% 
   # Specify source
   tab_source_note(
