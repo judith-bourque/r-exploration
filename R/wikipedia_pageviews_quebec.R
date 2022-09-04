@@ -87,7 +87,8 @@ table_data <- ordered_data %>%
   # Add numbers
   mutate(number = seq(1:10)) %>%
   # Reorder columns
-  select(number, article, views_data, end_views)
+  select(number, article, views_data, #end_views
+         )
 
 graph <- table_data %>%
   # Create table
@@ -107,8 +108,8 @@ graph <- table_data %>%
   cols_label(
     number = "",
     article = "Article",
-    views_data = "Vues",
-    end_views = ""
+    views_data = "Vues"#,
+    #end_views = ""
   ) %>%
   # Specify date of data
   tab_source_note(source_note = paste(format(today() - days(8)), " - ",
