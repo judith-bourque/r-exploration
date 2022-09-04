@@ -32,8 +32,8 @@ project <- "fr.wikipedia"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
-start <- "2022082000" # YYYYMMDDHH
-end <- "2022082700" # YYYYMMDDHH
+start <- "2022082600" # YYYYMMDDHH
+end <- "2022090200" # YYYYMMDDHH
 
 # Get list of articles
 
@@ -74,7 +74,7 @@ ordered_data <- tidy_data %>%
 
 # Table -------------------------------------------------------------------
 
-ordered_data %>% 
+graph <- ordered_data %>% 
   # Slice top 10 articles
   slice(1:70) %>% 
   dplyr::group_by(article) %>% 
@@ -85,7 +85,7 @@ ordered_data %>%
   gt_plt_sparkline(views_data,
                    type = "shaded",
                    palette = c("black", "black", "blue", "aquamarine", "lightblue"),
-                   same_limit = F) %>% 
+                   same_limit = F) #%>% 
   # Add header
   tab_header(
     title = "Les plus lus",
@@ -107,8 +107,10 @@ ordered_data %>%
   # Specify date of data
   tab_source_note(
     source_note = today
-  ) %>% 
+  ) #%>% 
   # Theme
-  gt_theme_538() %>% 
+  gt_theme_538() 
+
+graph %>% 
   # Save the graph
   gtsave("graph/wikipedia_pageviews_quebec.png")
