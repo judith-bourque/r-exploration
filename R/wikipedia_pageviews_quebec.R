@@ -102,8 +102,8 @@ graph <- table_data %>%
     label = T
   ) %>%
   # Add header
-  tab_header(title = "Les plus lus",
-             subtitle = "Articles populaires sur le Québec dans Wikipédia en français") %>%
+  tab_header(title = md("**Les plus lus**"),
+             subtitle = "Sur le Québec dans Wikipédia en français") %>%
   # Specify column labels
   cols_label(
     number = "",
