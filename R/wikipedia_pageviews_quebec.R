@@ -32,8 +32,8 @@ project <- "fr.wikipedia"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
-start <- "2022082600" # YYYYMMDDHH
-end <- "2022090200" # YYYYMMDDHH
+start <- "2022082700" # YYYYMMDDHH
+end <- "2022090300" # YYYYMMDDHH
 
 # Get list of articles
 
@@ -74,9 +74,9 @@ ordered_data <- tidy_data %>%
 
 # Table -------------------------------------------------------------------
 
-graph <- ordered_data %>%
+table_data <- ordered_data %>%
   # Slice top 10 articles
-  slice(1:70) %>%
+  slice(1:80) %>%
   dplyr::group_by(article) %>%
   dplyr::summarise(
     views_data = list(views),
@@ -84,6 +84,12 @@ graph <- ordered_data %>%
     .groups = "drop"
   ) %>%
   arrange(desc(end_views)) %>%
+  # Add numbers
+  mutate(number = seq(1:10)) %>%
+  # Reorder columns
+  select(number, article, views_data, end_views)
+
+graph <- table_data %>%
   # Create table
   gt() %>%
   # Add sparkline graph
@@ -92,22 +98,25 @@ graph <- ordered_data %>%
     type = "shaded",
     palette = c("black", "black", "blue", "aquamarine", "lightblue"),
     same_limit = F,
-    label = F
+    label = T
   ) %>%
   # Add header
   tab_header(title = "Les plus lus",
              subtitle = "Articles populaires sur le Québec dans Wikipédia en français") %>%
   # Specify column labels
-  cols_label(article = "Article",
-             views_data = "Vues",
-             end_views = "") %>%
+  cols_label(
+    number = "",
+    article = "Article",
+    views_data = "Vues",
+    end_views = ""
+  ) %>%
+  # Specify date of data
+  tab_source_note(source_note = paste(format(today() - days(8)), " - ",
+                                      format(today() - days(1)))) %>%
   # Specify source
   tab_source_note(source_note = "Données: Wikimedia REST API") %>%
   # Specify author
   tab_source_note(source_note = "Code: github.com/judith-bourque") %>%
-  # Specify date of data
-  tab_source_note(source_note = paste(format(today() - days(1)), " - ",
-                                      format(today() - days(8)))) %>%
   # Theme
   gt_theme_538()
 
