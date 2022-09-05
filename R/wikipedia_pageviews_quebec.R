@@ -37,7 +37,7 @@ end <- "2022090400" # YYYYMMDDHH
 
 # Get list of articles
 
-articles <- read_csv("data/wikipedia_pages_in_category_quebec.csv")
+articles <- read_csv("data/wikipedia_pages_in_category_quebec.csv") # TODO: automate with query https://meta.wikimedia.org/wiki/PetScan/en 
 
 # Get pageviews data
 
