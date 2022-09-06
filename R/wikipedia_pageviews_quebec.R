@@ -32,8 +32,8 @@ project <- "fr.wikipedia"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
-start <- "2022082800" # YYYYMMDDHH
-end <- "2022090400" # YYYYMMDDHH
+start <- "2022082900" # YYYYMMDDHH
+end <- "2022090500" # YYYYMMDDHH
 
 # Get list of articles
 
