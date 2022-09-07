@@ -40,7 +40,7 @@ articles <- read_csv("data/wikipedia_pages_in_category_quebec_politics.csv") # T
 
 # Get pageviews data
 
-data <- tibble()
+data_list <- list()
 
 for (i in 1:nrow(articles)) {
   response_df <- pageviews::article_pageviews(
@@ -52,9 +52,12 @@ for (i in 1:nrow(articles)) {
     granularity = granularity
   )
   
-  # Combine data frames
-  data <- rbind(data, response_df)
+  # Consolidate
+  data_list[[i]] <- response_df
 }
+
+# Combine data frames
+dataframe <- bind_rows(data_list)
 
 # Tidy data ---------------------------------------------------------------
 
