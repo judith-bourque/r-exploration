@@ -1,7 +1,7 @@
 # Description -------------------------------------------------------------
 #
 # This R script creates a graph of the top 10 French Wikipedia articles about
-# Quebec in the last 7 days.
+# Quebec politics in the last 7 days.
 #
 # It was written as part of an experiment with data visualization.
 #
