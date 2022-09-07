@@ -474,6 +474,8 @@ References
 -   [10 Easy Steps to a Complete Understanding of SQL](https://blog.jooq.org/10-easy-steps-to-a-complete-understanding-of-sql/)
 -   [SQL Query Planning](https://www.sqlite.org/queryplanner.html)
 
+To access data not in directory, go back in path using `..`. Example: `read_csv("../../path/to/file.csv")`
+
 ## API wrapper packages
 
 ```{r echo = FALSE}
