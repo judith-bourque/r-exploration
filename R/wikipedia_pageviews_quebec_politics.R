@@ -68,17 +68,15 @@ ordered_data <- dataframe %>%
   rename(pageviews_date = date) %>%
   mutate(# Clean article name
     article = gsub("_", " ", article)) %>%
-  left_join(.,
-            group_by(tidy_data, article) %>%
+  group_by(., article) %>%
               #summarise(total_views = sum(views))
-              mutate(end_views = last(views))) %>%
+              mutate(end_views = last(views)) %>%
   arrange(desc(end_views))
 
 # Table -------------------------------------------------------------------
 
 table_data <- ordered_data %>%
   # Slice top 10 articles
-  slice(1:80) %>%
   dplyr::group_by(article) %>%
   dplyr::summarise(
     views_data = list(views),
@@ -87,6 +85,7 @@ table_data <- ordered_data %>%
   ) %>%
   arrange(desc(end_views)) %>%
   # Add numbers
+  slice(1:10) %>%
   mutate(number = seq(1:10)) %>%
   # Reorder columns
   select(number, article, views_data, end_views)
