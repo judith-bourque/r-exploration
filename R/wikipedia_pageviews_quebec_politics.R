@@ -63,13 +63,11 @@ dataframe <- bind_rows(data_list)
 
 # Tidy data ---------------------------------------------------------------
 
-tidy_data <- dataframe %>%
+ordered_data <- dataframe %>%
   # Change column name
   rename(pageviews_date = date) %>%
   mutate(# Clean article name
-    article = gsub("_", " ", article))
-
-ordered_data <- tidy_data %>%
+    article = gsub("_", " ", article)) %>%
   left_join(.,
             group_by(tidy_data, article) %>%
               #summarise(total_views = sum(views))
