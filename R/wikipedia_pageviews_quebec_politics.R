@@ -31,8 +31,8 @@ project <- "fr.wikipedia"
 access <- "all-access" # all-access, desktop, mobile-app, mobile-web
 agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
-start <- "2022083000" # YYYYMMDDHH
-end <- "2022090600" # YYYYMMDDHH
+start <- "2022090100" # YYYYMMDDHH
+end <- "2022090800" # YYYYMMDDHH
 
 # Get list of articles
 
@@ -61,7 +61,7 @@ dataframe <- bind_rows(data_list)
 
 # Tidy data ---------------------------------------------------------------
 
-tidy_data <- data %>%
+tidy_data <- dataframe %>%
   # Change column name
   rename(pageviews_date = date) %>%
   mutate(# Clean article name
