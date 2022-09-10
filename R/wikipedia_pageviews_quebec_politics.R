@@ -33,10 +33,12 @@ agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
 start <- "2022090100" # YYYYMMDDHH
 end <- "2022090800" # YYYYMMDDHH
+key <- "quebec_politics" # keywords used to describe
 
 # Get list of articles
 
-articles <- read_csv("data/wikipedia_pages_in_category_quebec_politics.csv") # TODO: automate with query https://meta.wikimedia.org/wiki/PetScan/en 
+articles <-
+  read_csv(paste0("data/wikipedia_pages_in_category_", key, ".csv")) # TODO: automate with query https://meta.wikimedia.org/wiki/PetScan/en
 
 # Get pageviews data
 
@@ -89,8 +91,7 @@ table_data <- ordered_data %>%
   # Add numbers
   mutate(number = seq(1:10)) %>%
   # Reorder columns
-  select(number, article, views_data, #end_views
-         )
+  select(number, article, views_data, end_views)
 
 graph <- table_data %>%
   # Create table
@@ -101,7 +102,7 @@ graph <- table_data %>%
     type = "shaded",
     palette = c("black", "black", "blue", "aquamarine", "lightblue"),
     same_limit = F,
-    label = T
+    label = F
   ) %>%
   # Add header
   tab_header(title = md("**Les plus lus**"),
@@ -110,21 +111,22 @@ graph <- table_data %>%
   cols_label(
     number = "",
     article = "Article",
-    views_data = "Vues"#,
-    #end_views = ""
-  ) %>%
-  # Specify date of data
-  tab_source_note(source_note = paste(format(today() - days(8)), " - ",
-                                      format(today() - days(1)))) %>%
-  # Specify source
-  tab_source_note(source_note = "Données: Wikimedia REST API") %>%
-  # Specify author
-  tab_source_note(source_note = "Code: github.com/judith-bourque") %>%
-  # Theme
-  gt_theme_538()
-
+    views_data = "Vues",
+    end_views = "") %>%
+    # Specify date of data
+    tab_source_note(source_note = paste(
+      format(today() - days(8)), " - ",
+      format(today() - days(1))
+    )) %>%
+      # Specify source
+      tab_source_note(source_note = "Données: Wikimedia REST API") %>%
+      # Specify author
+      tab_source_note(source_note = "Code: github.com/judith-bourque") %>%
+      # Theme
+      gt_theme_538()
+    
 graph
-
+    
 graph %>%
   # Save the graph
-  gtsave("graph/wikipedia_pageviews_quebec_politics.png")
+  gtsave(paste0("graph/wikipedia_pageviews_", key, ".png"))
