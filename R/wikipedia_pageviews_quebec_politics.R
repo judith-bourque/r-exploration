@@ -33,7 +33,7 @@ agent <- "user" # all-agents, user, spider, automated
 granularity <- "daily" # daily, monthly
 start <- "2022090100" # YYYYMMDDHH
 end <- "2022090800" # YYYYMMDDHH
-key <- "quebec_politics" # keywords used to describe
+key <- "quebec_politics" # key to link to data and graph
 
 # Get list of articles
 
