@@ -1,6 +1,7 @@
 # Description -------------------------------------------------------------
 # This script creates a function that retrieves the most viewed wikipedia
-# articles per country.
+# articles per country. It serves as an API wrapper for the Wikimedia REST API
+# (https://wikimedia.org/api/rest_v1/).
 #
 # Author: Judith Bourque
 # Date: 2022-09-10
