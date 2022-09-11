@@ -7,6 +7,10 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
+### Top read Wikipedia articles in Canada
+
+![Lollipop chart of top read articles in Canada](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_top_in_canada.png)
+
 ### Top read Wikipedia articles about Quebec
 ![Table and sparkline visualization of Wikipedia pageviews for articles about Quebec](graph/wikipedia_pageviews_quebec.png?raw=true)
 
