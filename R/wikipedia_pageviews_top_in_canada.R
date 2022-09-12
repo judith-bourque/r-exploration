@@ -27,7 +27,7 @@ exclude <- c("Special:Search", "Main Page", "Wikipédia:Accueil principal")
 
 # Keep top articles
 df_table <- dplyr::filter(df,
-                   rank <= 15,
+                   rank <= 20,
                    !article %in% c("Main Page", "Special:Search", "Wikipédia:Accueil principal", "Wikipedia:Featured pictures", "Spécial:Recherche", "Portal:Current events", "Wikipedia:首页", "Wiktionary:Main Page"))
 
 # Visualize data ----------------------------------------------------------
@@ -36,12 +36,14 @@ df_table <- dplyr::filter(df,
 p <- ggplot(df_table, aes(x = views_ceil, y = reorder(article, -rank))) +
   geom_segment(aes(x=0, xend=views_ceil, yend=article)) +
   geom_point(size = 2, colour = "red") +
+  # TODO: Shorten text labels on Y axis
+  #scale_y_discrete(labels = scales::label_wrap(20)) +
   scale_x_continuous(labels = scales::label_comma()) +
   # Customize
   theme_void() +
   labs(
-    title = "Most read in Canada",
-    subtitle = "",
+    title = "What Canadians are currently reading on Wikipedia",
+    subtitle = "British royalty and Conservative Party of Canada are the most viewed subjects.",
     colour = "Date",
     caption = paste("Data: Daily pageviews for", Sys.Date(), "Wikimedia REST API \n Code: github.com/judith-bourque")
     ) +
