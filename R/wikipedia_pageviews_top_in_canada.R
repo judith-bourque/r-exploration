@@ -9,6 +9,7 @@
 #
 # Load packages and functions ---------------------------------------------
 library(tidyverse)
+library(scales)
 
 # Load function
 source("R/wikipedia_pageviews_top_per_country.R")
@@ -34,14 +35,13 @@ df_table <- dplyr::filter(df,
 # Create graph
 p <- ggplot(df_table, aes(x = views_ceil, y = reorder(article, -rank))) +
   geom_segment(aes(x=0, xend=views_ceil, yend=article)) +
-  geom_point(size = 2, colour = "red")
-
-# Customize graph
-p +
+  geom_point(size = 2, colour = "red") +
+  scale_x_continuous(labels = scales::label_comma()) +
+  # Customize
   theme_void() +
   labs(
     title = "Most read in Canada",
-    subtitle = "Two days after the death of Queen Elizabeth II, the most read articles in Wikipedia are all linked to the British Monarchy.",
+    subtitle = "",
     colour = "Date",
     caption = paste("Data: Daily pageviews for", Sys.Date(), "Wikimedia REST API \n Code: github.com/judith-bourque")
     ) +
@@ -59,4 +59,6 @@ p +
     plot.background = element_rect(fill = "white")
   )
 
-ggsave("graph/wikipedia_pageviews_top_per_country.png", height = 8, width = 12)
+p
+
+ggsave("graph/wikipedia_pageviews_top_in_canada.png", height = 8, width = 12)
