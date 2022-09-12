@@ -22,11 +22,12 @@ df <- rbind(
 # Transform data ----------------------------------------------------------
 
 # TODO: filter list with this
-#exclude <- c("Special:Search", "Main Page", "Wikipédia:Accueil principal")
+exclude <- c("Special:Search", "Main Page", "Wikipédia:Accueil principal")
 
 # Keep top articles
-df_table <- filter(df,
-                   rank <= 20)
+df_table <- dplyr::filter(df,
+                   rank <= 15,
+                   !article %in% c("Main Page", "Special:Search", "Wikipédia:Accueil principal", "Wikipedia:Featured pictures", "Spécial:Recherche", "Portal:Current events", "Wikipedia:首页", "Wiktionary:Main Page"))
 
 # Visualize data ----------------------------------------------------------
 
