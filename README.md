@@ -7,6 +7,10 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
+### Recreate graph: Changes in Voter Sentiment
+
+![](https://github.com/judith-bourque/r-exploration/blob/main/graph/recreate_graph_voter_sentiment.png)
+
 ### Top read Wikipedia articles in Canada
 
 ![Lollipop chart of top read articles in Canada](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_top_in_canada.png)
