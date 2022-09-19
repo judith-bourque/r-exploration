@@ -34,7 +34,7 @@ df_table <- dplyr::filter(df,
 
 # Create graph
 p <- ggplot(df_table, aes(x = views_ceil, y = reorder(article, -rank))) +
-  geom_segment(aes(x=0, xend=views_ceil, yend=article)) +
+  geom_segment(aes(x=0, xend=views_ceil, yend=article), colour = "grey") +
   geom_point(size = 2, colour = "red") +
   # TODO: Shorten text labels on Y axis
   #scale_y_discrete(labels = scales::label_wrap(20)) +
@@ -43,7 +43,7 @@ p <- ggplot(df_table, aes(x = views_ceil, y = reorder(article, -rank))) +
   theme_void() +
   labs(
     title = "What Canadians are currently reading on Wikipedia",
-    subtitle = "British royalty and Conservative Party of Canada are the most viewed subjects.",
+    subtitle = "British royalty and Conservative Party of Canada gather the most attention.",
     colour = "Date",
     caption = paste("Data: Daily pageviews for", Sys.Date(), "Wikimedia REST API \n Code: github.com/judith-bourque")
     ) +
@@ -55,10 +55,9 @@ p <- ggplot(df_table, aes(x = views_ceil, y = reorder(article, -rank))) +
     axis.text.x = element_text(angle = 270, hjust = 0),
     axis.ticks.x = element_line(),
     axis.title = element_text(hjust = 0.9),
-    legend.title = element_text(),
-    legend.background = element_rect(fill = "#494949"),
     plot.caption = element_text(hjust = 0.9),
-    plot.background = element_rect(fill = "white")
+    #plot.background = element_rect(fill = "white"),
+    panel.grid.major.y = element_blank()
   )
 
 p
