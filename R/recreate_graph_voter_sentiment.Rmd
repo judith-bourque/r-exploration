@@ -100,7 +100,7 @@ df2 <- df %>%
   filter(question == "president_performance")
 
 # Create the second plot
-p2 <- ggplot(df1, aes(x = percent, y = group, colour = group)) +
+p2 <- ggplot(df2, aes(x = percent, y = group, colour = group)) +
   # Add thick arrow lines 
   geom_line(size = 1.25) +
   # Add arrow heads
@@ -109,8 +109,8 @@ p2 <- ggplot(df1, aes(x = percent, y = group, colour = group)) +
   scale_x_continuous(breaks = c(0, 50, 100), limits = c(0, 100)) +
   # Specify arrow colours
   scale_colour_manual(values = c("#c43535", "#ababab", "#357dc4")) +
-  labs(title = "The country's direction",
-       subtitle = "Percent of respondents saying they think the United States is on the right track,\nin a July poll and in a September poll") +
+  labs(title = "The president's job performance",
+       subtitle = "Percent saying they approve of President Biden's job performance, either strongly \nor somewhat, in a July poll and in a September poll") +
   geom_text(aes(label = percent), nudge_y = 0.4) +
   # Start with a blank theme
   theme_void() +
