@@ -43,7 +43,7 @@ p <- ggplot(df_table, aes(x = views_ceil, y = reorder(article, -rank))) +
   theme_void() +
   labs(
     title = "What Canadians are currently reading on Wikipedia",
-    subtitle = "",
+    subtitle = "British royalty and Conservative Party of Canada gather the most attention.",
     colour = "Date",
     caption = paste("Data: Daily pageviews for", Sys.Date(), "Wikimedia REST API \n Code: github.com/judith-bourque")
     ) +
