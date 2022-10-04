@@ -12,7 +12,7 @@ library(tidyverse)
 library(scales)
 
 # Load function
-source("R/wikipedia_pageviews_top_per_country.R")
+source("R/wp_pageviews_top_per_country.R")
 
 # Load data ---------------------------------------------------------------
 
