@@ -7,7 +7,7 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
-### Quebec elections: Top read Wikipedia articles in Canada
+### Quebec Elections: Top Read Wikipedia Articles in Canada
 
 ![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wp_pageviews_top_in_ca_2022_10_03.png)
 
