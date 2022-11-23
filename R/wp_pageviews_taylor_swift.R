@@ -53,13 +53,16 @@ views_raw <- pageviews::article_pageviews(
   article = resp$article,
   platform = "all",
   user_type = "user",
-  start = "2022100100",
-  end = NULL,
+  start = "2022111400",
+  end = "2022112100",
   reformat = TRUE,
-  granularity = "monthly"
+  granularity = "daily"
 )
 
 views <- views_raw %>%
+  group_by(article) %>% 
+  summarise(views = sum(views)) %>% 
+  ungroup() %>% 
   mutate(article = gsub("_", " ", article))
 
 # Create table data -------------------------------------------------------
@@ -91,7 +94,7 @@ gt_export <- data_tb %>%
     last_edited = "last edited",
     like = ""
   ) %>%
-  tab_footnote(footnote = "Total for Oct. 2022.",
+  tab_footnote(footnote = "Nov. 14 to 21, 2022.",
                locations = cells_column_labels(columns = views)) %>%
   tab_footnote(footnote = "In bytes.",
                locations = cells_column_labels(columns = length)) %>%
