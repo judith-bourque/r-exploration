@@ -7,6 +7,10 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
+### Popular Taylor Swift Songs on Wikipedia
+
+![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_taylor_swift.png)
+
 ### Quebec Elections: Top Read Wikipedia Articles in Canada
 
 ![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wp_pageviews_top_in_ca_2022_10_03.png)
