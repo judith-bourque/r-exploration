@@ -135,7 +135,7 @@ gt_export <- data_tb %>%
   gt() %>%
   tab_header(.,
              title = "Taylor Swift",
-             subtitle = "Popular songs on English Wikipedia from March 8 to 15, 2023") %>%
+             subtitle = "Popular songs on English Wikipedia from March 8 to 15, 2023.") %>%
   # Relabel columns
   cols_label(
     rank = "#",
@@ -143,8 +143,7 @@ gt_export <- data_tb %>%
     last_edited = "last edited",
     like = ""
   ) %>%
-  tab_footnote(footnote = "In bytes.",
-               locations = cells_column_labels(columns = length)) %>%
+  tab_source_note(., "Length in bytes.") %>%
   tab_source_note(., "Code: github.com/judith-bourque") %>%
   # Add space in numbers
   fmt_number(views, sep_mark = ",", decimals = 0) %>%
