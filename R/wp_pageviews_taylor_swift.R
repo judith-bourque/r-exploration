@@ -143,7 +143,7 @@ gt_export <- data_tb %>%
     last_edited = "last edited",
     like = ""
   ) %>%
-  tab_footnote(footnote = "Mar. 8 to 15, 2023.",
+  tab_footnote(footnote = "March 8 to 15, 2023.",
                locations = cells_column_labels(columns = views)) %>%
   tab_footnote(footnote = "In bytes.",
                locations = cells_column_labels(columns = length)) %>%
@@ -152,10 +152,10 @@ gt_export <- data_tb %>%
   fmt_number(views, sep_mark = ",", decimals = 0) %>%
   fmt_number(length, sep_mark = ",", decimals = 0) %>%
   # Customized version of gtExtras::gt_theme_dark()
-  theme_spotify() %>% 
+  theme_spotify(background_colour = "#3c354d") %>% 
   gt_fa_column(like,
                prefer_type = "solid",
-               palette = "lightgreen",
+               palette = "#e2d5f1",
                align = "center")
 
 # View graph
