@@ -152,10 +152,10 @@ gt_export <- data_tb %>%
   fmt_number(views, sep_mark = ",", decimals = 0) %>%
   fmt_number(length, sep_mark = ",", decimals = 0) %>%
   # Customized version of gtExtras::gt_theme_dark()
-  theme_spotify(background_colour = "#3c354d") %>% 
+  theme_spotify(background_colour = "#282F49") %>% 
   gt_fa_column(like,
                prefer_type = "solid",
-               palette = "#e2d5f1",
+               palette = "#FB85B1",
                align = "center")
 
 # View graph
