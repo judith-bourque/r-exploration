@@ -7,6 +7,10 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
+### Wheat farmed during the Neolithic period
+
+![](https://github.com/judith-bourque/r-exploration/blob/main/graph/tidytuesday_wheat.png)
+
 ### Popular Taylor Swift Songs on Wikipedia
 
 ![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_taylor_swift.png)
