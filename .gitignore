@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # Private files
 _*
+
+# Other
+.DS_Store
