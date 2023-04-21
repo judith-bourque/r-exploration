@@ -9,7 +9,7 @@ This repository provides the codes and the graphs produced through experimentati
 
 ### Top Read Wikipedia Articles in Canada
 
-![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wikipedia_pageviews_top_in_canada.png)
+![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wp_pageviews_top_in_canada.png)
 
 ### Wheat farmed during the Neolithic period
 
