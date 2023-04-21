@@ -63,3 +63,8 @@ gt_export <- df_table %>%
   tab_source_note(caption_1) %>% 
   tab_source_note(caption_2) %>% 
   gt_theme_538()
+  
+  # View graph
+gtsave(gt_export, "graph/graph.png")
+
+knitr::include_graphics('graph/wp_pageviews_top_in_canada.png')
