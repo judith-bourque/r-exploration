@@ -11,8 +11,8 @@
 pageviews_top_per_country <-
   function (country = "CA",
             access = "all-access",
-            year = format(Sys.Date(), "%Y"),
-            month = format(Sys.Date(), "%m"),
+            year = format(Sys.Date()-1, "%Y"),
+            month = format(Sys.Date()-1, "%m"),
             day = format(Sys.Date()-1, "%d"),
             user_agent = Sys.getenv("WIKIMEDIA_USER_AGENT")) {
     # Get response from API
