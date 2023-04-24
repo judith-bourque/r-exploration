@@ -13,7 +13,6 @@ library("nytapi")
 
 json <- get_most_viewed(key = Sys.getenv("NYT_KEY"))
 
-
 ## Tidy data ---------------------------------------------------------------
 
 results <- json[["results"]]
@@ -26,10 +25,32 @@ json <- results %>%
 rect <- tidyjson::spread_all(json) %>%
   janitor::clean_names()
 
+data_table <- rect %>% 
+  as_tibble() %>% 
+  select(section, title)
 
 ## Visualise data ----------------------------------------------------------
 
+today <- Sys.Date()
 
+year <- format(today, "%Y")
+month <- format(today, "%B")
+day <- format(today, "%d")
+
+subtitle <- paste0("Most viewed articles in the US on ", month, " ", day, ",", " ", year, ".")
+
+caption_1 <- paste0("Source: NYT API.")
+caption_2 <- "Code: github.com/judith-bourque"
+
+gt_export <- data_table %>% 
+  gt() %>% 
+  tab_header(
+    title = md("**What are people reading in the NYT?**"),
+    subtitle = subtitle
+  ) %>% 
+  tab_source_note(caption_1) %>% 
+  tab_source_note(caption_2) %>% 
+  gt_theme_538()
 
 
 # Wikipedia ---------------------------------------------------------------
@@ -119,6 +140,6 @@ gt_export <- data_table %>%
 # View graph
 gt_export
 
-gtsave(gt_export, "graph/graph.png")
+#gtsave(gt_export, "graph/graph.png")
 
-knitr::include_graphics('graph/wp_pageviews_top_in_canada.png')
+#knitr::include_graphics('graph/wp_pageviews_top_in_canada.png')
