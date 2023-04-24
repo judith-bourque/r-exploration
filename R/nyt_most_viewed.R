@@ -28,7 +28,8 @@ rect <- tidyjson::spread_all(json) %>%
 data_table <- rect %>%
   as_tibble() %>%
   select(section, title) %>% 
-  arrange(section)
+  arrange(section) %>% 
+  rename(article = title)
 
 ## Visualise data ----------------------------------------------------------
 
@@ -44,15 +45,36 @@ subtitle <-
 caption_1 <- paste0("Source: NYT API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
-gt_export <- data_table %>%
-  gt() %>%
+gt_nyt <- data_table %>%
+  gt(groupname_col = "section") %>%
   tab_header(title = md("**What are people reading in the New York Times?**"),
              subtitle = subtitle) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
-  gt_theme_538()
+  gt_theme_538() %>% 
+  tab_style(
+    style = list(
+      cell_borders(sides = "left", color = "white", weight = px(0)),
+      cell_borders(sides = "bottom", color = "white", weight = px(0))),
+    locations = cells_body(columns = "article")
+  ) %>% 
+  tab_style(
+    style = list(
+      cell_borders(sides = "bottom", color = "black", weight = px(3))),
+    locations = cells_column_labels(columns = "article")
+  ) %>%
+  tab_style(
+    style = list(
+      cell_borders(sides = "top", color = "black", weight = px(3)),
+      cell_borders(sides = "right", color = "white", weight = px(0)),
+    cell_text(align = "right")),
+    locations = cells_row_groups()
+  ) %>%
+  tab_options(row_group.as_column = TRUE)
 
-gt_export
+gt_nyt
+
+gtsave(gt_nyt, "graph/nyt_most_viewed.png")
 
 # Wikipedia ---------------------------------------------------------------
 # install.packages("devtools")
@@ -131,7 +153,7 @@ views_min <- min(data_table$views_ceil)
 views_max <- max(data_table$views_ceil)
 
 # Create graph
-gt_export <- data_table %>%
+gt_wiki <- data_table %>%
   select(c(rank, article, language, views_ceil)) %>%
   gt() %>%
   cols_label(language = "Lang",
@@ -150,8 +172,6 @@ gt_export <- data_table %>%
   gt_theme_538()
 
 # View graph
-gt_export
+gt_wiki
 
-#gtsave(gt_export, "graph/graph.png")
-
-#knitr::include_graphics('graph/wp_pageviews_top_in_canada.png')
+gtsave(gt_wiki, "graph/wp_most_viewed_us.png")
