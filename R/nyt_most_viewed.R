@@ -46,7 +46,7 @@ month <- format(yesterday, "%m")
 day <- format(yesterday, "%d")
 
 
-data <- get_most_viewed_per_country(
+data_raw <- get_most_viewed_per_country(
   country = "US",
   access = "all-access",
   year = year,
@@ -58,13 +58,22 @@ data <- get_most_viewed_per_country(
 
 # Wrangle and tidy data ---------------------------------------------------
 
+# Clean article names
+data_tidy <- data_raw %>% 
+  dplyr::mutate(
+    article = gsub("_", " ", article),
+    date = as.POSIXct(paste(year, month, day, sep = "-"), tz = "UTC"),
+    country = country,
+    access = access
+  )
+
 exclude <- c("Main Page", "Special:Search", "Wikipédia:Accueil principal", 
              "Wikipedia:Featured pictures", "Spécial:Recherche", 
              "Portal:Current events", "Wikipedia:首页", "Wiktionary:Main Page",
              "Wikidata:Copyright")
 
 # Keep top articles
-data_table <- data %>% 
+data_table <- data_tidy %>% 
   # Remove pages that aren't articles
   dplyr::filter(!article %in% exclude) %>% 
   # Create new rank column based on articles
