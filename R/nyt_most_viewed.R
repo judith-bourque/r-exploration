@@ -1,4 +1,6 @@
 library("tidyverse")
+library("gt")
+library("gtExtras")
 
 # NYT ---------------------------------------------------------------------
 
@@ -67,19 +69,18 @@ data_tidy <- data_raw %>%
     access = access
   )
 
-exclude <- paste("Main Page", "Portal:", "Spécial:", "Special", "Wikipedia:", "Wikidata:", "Wikipédia", "Wiktionary:", sep = "|")
-
-dplyr::filter(data_tidy, !grepl(exclude, article))
+exclude <- paste("Main Page", "Portal:", "Spécial:", "Special", "Wikipedia:", 
+                 "Wikidata:", "Wikipédia", "Wiktionary:", sep = "|")
 
 # Keep top articles
 data_table <- data_tidy %>% 
   # Remove pages that aren't articles
-  dplyr::filter(!article %in% exclude) %>% 
+  dplyr::filter(!grepl(exclude, article)) %>% 
   # Create new rank column based on articles
   select(!rank) %>% 
   tibble::rowid_to_column("rank") %>% 
   # Keep top 10
-  filter(rank <= 15) %>% 
+  filter(rank <= 20) %>% 
   # Create language column
   separate(project, c("language", "project"), "\\.")
 
@@ -93,12 +94,11 @@ subtitle <- paste0("Most viewed articles in the US on ", month, " ", day, ",", "
 caption_1 <- paste0("Source: Wikimedia REST API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
-views_min <- min(df_table$views_ceil)
-views_max <- max(df_table$views_ceil)
-
+views_min <- min(data_table$views_ceil)
+views_max <- max(data_table$views_ceil)
 
 # Create graph
-gt_export <- df_table %>% 
+gt_export <- data_table %>% 
   select(c(rank, article, language, views_ceil)) %>% 
   gt() %>% 
   cols_label(
@@ -108,7 +108,7 @@ gt_export <- df_table %>%
   # Add space in numbers
   fmt_number(views_ceil, sep_mark = " ", decimals = 0) %>% 
   tab_header(
-    title = md("**What are Canadians reading on Wikipedia?**"),
+    title = md("**What are Americans reading on Wikipedia?**"),
     subtitle = subtitle
   ) %>% 
   gt_color_rows(views_ceil, palette = "ggsci::red_material", domain = c(views_min, views_max)) %>% 
@@ -117,6 +117,8 @@ gt_export <- df_table %>%
   gt_theme_538()
 
 # View graph
+gt_export
+
 gtsave(gt_export, "graph/graph.png")
 
 knitr::include_graphics('graph/wp_pageviews_top_in_canada.png')
