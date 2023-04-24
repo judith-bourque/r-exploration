@@ -5,7 +5,7 @@ library("gtExtras")
 # NYT ---------------------------------------------------------------------
 
 # install.packages("devtools")
-devtools::install_github("clessn/nytapi")
+# devtools::install_github("clessn/nytapi")
 
 library("nytapi")
 
@@ -42,7 +42,7 @@ day <- format(today, "%d")
 subtitle <-
   paste0("Most viewed articles by section on ", month, " ", day, ",", " ", year, ".")
 
-caption_1 <- paste0("Source: NYT API.")
+caption_1 <- paste0("Source: The New York Times Most Popular API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
 gt_nyt <- data_table %>%
@@ -59,7 +59,7 @@ gt_nyt <- data_table %>%
 
 gt_nyt
 
-gtsave(gt_nyt, "graph/nyt_most_viewed.png")
+gtsave(gt_nyt, "graph/nyt_most_viewed_2023_04_24.png")
 
 # Wikipedia ---------------------------------------------------------------
 # install.packages("devtools")
@@ -85,7 +85,6 @@ data_raw <- get_most_viewed_per_country(
   day = day,
   tidy = TRUE
 )
-
 
 # Wrangle and tidy data ---------------------------------------------------
 
@@ -150,7 +149,7 @@ gt_wiki <- data_table %>%
     subtitle = subtitle
   ) %>%
   gt_color_rows(views_ceil,
-                palette = "ggsci::red_material",
+                palette = "ggsci::green_material",
                 domain = c(views_min, views_max)) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
@@ -159,4 +158,4 @@ gt_wiki <- data_table %>%
 # View graph
 gt_wiki
 
-gtsave(gt_wiki, "graph/wp_most_viewed_us.png")
+gtsave(gt_wiki, "graph/wp_pageviews_top_in_us_2024-04-23.png")
