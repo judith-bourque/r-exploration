@@ -28,8 +28,9 @@ rect <- tidyjson::spread_all(json) %>%
 data_table <- rect %>%
   as_tibble() %>%
   select(section, title) %>% 
-  #arrange(section) %>% 
-  rename(article = title)
+  arrange(section) %>% 
+  rename(article = title) %>% 
+  group(section)
 
 ## Visualise data ----------------------------------------------------------
 
@@ -46,28 +47,16 @@ caption_1 <- paste0("Source: NYT API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
 gt_nyt <- data_table %>%
-  gt(groupname_col = "section") %>%
+  gt() %>%
   tab_header(title = md("**What are people reading in the New York Times?**"),
              subtitle = subtitle) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
-  gt_theme_538() %>% 
-  tab_style(
-    style = list(
-      cell_borders(sides = "all", color = "white", weight = px(0))),
-    locations = cells_body(columns = "article")
-  ) %>% 
-  tab_style(
-    style = list(
-      cell_borders(sides = "bottom", color = "black", weight = px(3))),
-    locations = cells_column_labels(columns = "article")
-  ) %>%
-  tab_style(
-    style = list(
-      cell_borders(sides = "top", weight = px(0)),
-      cell_borders(sides = "right", color = "none", weight = px(0))),
-    locations = cells_row_groups()
-  )
+  tab_style(style = list(cell_text(align = "right")),
+            location = cells_body(columns = "section")) %>% 
+  tab_style(style = list(cell_text(align = "right")),
+            location = cells_column_labels(columns = section)) %>% 
+  gt_theme_538()
 
 gt_nyt
 
