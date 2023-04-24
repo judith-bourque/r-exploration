@@ -28,8 +28,7 @@ rect <- tidyjson::spread_all(json) %>%
 data_table <- rect %>%
   as_tibble() %>%
   select(section, title) %>% 
-  #arrange(section) %>%
-  group_by(section)
+  arrange(section)
 
 ## Visualise data ----------------------------------------------------------
 
@@ -51,39 +50,9 @@ gt_export <- data_table %>%
              subtitle = subtitle) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
-  gt_theme_538() %>%
-  # tab_style(style = list(
-  #   cell_text(weight = "bold"),
-  #   cell_borders(sides = "all", color = "white", style = "solid", weight = px(0))
-  # ),
-  # locations = cells_row_groups(groups = everything())) %>%
-  tab_style(style = list(
-    cell_text(indent = px(30))#,
-    #cell_borders(sides = "bottom", color = "white", style = "solid", weight = px(1))
-  ),
-  locations = cells_body(columns = title)) %>%
-  # Edit group section
-  tab_style(
-    style = list(
-      cell_borders(
-        sides = "bottom", color = "black", weight = px(0)
-      ),
-      cell_text(
-        font = google_font("Chivo"),
-        transform = "uppercase",
-        v_align = "bottom",
-        size = px(14),
-        weight = 200
-      ),
-      cell_borders(sides = "bottom", color = "black", weight = px(3))
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) %>% 
-  #
-  tab_options(column_labels.hidden = TRUE)
+  gt_theme_538()
 
 gt_export
-
 
 # Wikipedia ---------------------------------------------------------------
 # install.packages("devtools")
