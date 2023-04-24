@@ -29,8 +29,7 @@ data_table <- rect %>%
   as_tibble() %>%
   select(section, title) %>% 
   arrange(section) %>% 
-  rename(article = title) %>% 
-  group(section)
+  rename(article = title)
 
 ## Visualise data ----------------------------------------------------------
 
