@@ -27,7 +27,7 @@ rect <- tidyjson::spread_all(json) %>%
 
 data_table <- rect %>%
   as_tibble() %>%
-  select(section, title) %>%
+  select(section, title) %>% 
   #arrange(section) %>%
   group_by(section)
 
@@ -58,15 +58,15 @@ gt_export <- data_table %>%
   # ),
   # locations = cells_row_groups(groups = everything())) %>%
   tab_style(style = list(
-    cell_text(indent = px(30)),
-    cell_borders(sides = "bottom", color = "white", style = "solid", weight = px(1))
+    cell_text(indent = px(30))#,
+    #cell_borders(sides = "bottom", color = "white", style = "solid", weight = px(1))
   ),
   locations = cells_body(columns = title)) %>%
   # Edit group section
   tab_style(
     style = list(
       cell_borders(
-        sides = "top", color = "black", weight = px(0)
+        sides = "bottom", color = "black", weight = px(0)
       ),
       cell_text(
         font = google_font("Chivo"),
@@ -74,7 +74,8 @@ gt_export <- data_table %>%
         v_align = "bottom",
         size = px(14),
         weight = 200
-      )
+      ),
+      cell_borders(sides = "bottom", color = "black", weight = px(3))
     ),
     locations = cells_row_groups(groups = everything())
   ) %>% 
