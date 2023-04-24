@@ -27,7 +27,8 @@ rect <- tidyjson::spread_all(json) %>%
 
 data_table <- rect %>% 
   as_tibble() %>% 
-  select(section, title)
+  select(section, title) %>% 
+  arrange(section)
 
 ## Visualise data ----------------------------------------------------------
 
@@ -37,7 +38,7 @@ year <- format(today, "%Y")
 month <- format(today, "%B")
 day <- format(today, "%d")
 
-subtitle <- paste0("Most viewed articles in the US on ", month, " ", day, ",", " ", year, ".")
+subtitle <- paste0("Most viewed articles on ", month, " ", day, ",", " ", year, ".")
 
 caption_1 <- paste0("Source: NYT API.")
 caption_2 <- "Code: github.com/judith-bourque"
@@ -51,6 +52,8 @@ gt_export <- data_table %>%
   tab_source_note(caption_1) %>% 
   tab_source_note(caption_2) %>% 
   gt_theme_538()
+
+gt_export
 
 
 # Wikipedia ---------------------------------------------------------------
