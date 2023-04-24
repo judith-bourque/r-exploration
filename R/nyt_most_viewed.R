@@ -12,11 +12,16 @@ json <- get_most_viewed(key = Sys.getenv("NYT_KEY"))
 
 # Tidy data ---------------------------------------------------------------
 
-article <- json[["results"]][[1]]
+results <- json[["results"]]
 
-article[["title"]]
-article[["byline"]]
-article[["published_date"]]
+# Convert to json
+json <- results %>%
+  tidyjson::as.tbl_json()
+
+# Rectangle JSON into tibble
+rect <- tidyjson::spread_all(json) %>%
+  janitor::clean_names()
+
 
 # Visualise data ----------------------------------------------------------
 
