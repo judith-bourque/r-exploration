@@ -7,6 +7,10 @@ This repository provides the codes and the graphs produced through experimentati
 
 ## Recent graphs
 
+### Most viewed articles in the New York Times
+
+![](https://github.com/judith-bourque/r-exploration/blob/main/graph/nyt_most_viewed_2023_04_24.png)
+
 ### Top Read Wikipedia Articles in Canada
 
 ![](https://github.com/judith-bourque/r-exploration/blob/main/graph/wp_pageviews_top_in_canada.png)
