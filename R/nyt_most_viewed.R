@@ -41,7 +41,7 @@ month <- format(today, "%B")
 day <- format(today, "%d")
 
 subtitle <-
-  paste0("Most viewed articles on ", month, " ", day, ",", " ", year, ".")
+  paste0("Most viewed articles by section on ", month, " ", day, ",", " ", year, ".")
 
 caption_1 <- paste0("Source: NYT API.")
 caption_2 <- "Code: github.com/judith-bourque"
@@ -52,8 +52,7 @@ gt_export <- data_table %>%
              subtitle = subtitle) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
-  tab_style(style = list(cell_fill(color = "lightgrey"),
-                         cell_text(weight = "bold")),
+  tab_style(style = list(cell_text(weight = "bold")),
             cells_row_groups(groups = everything())) %>%
   gt_theme_538()
 
