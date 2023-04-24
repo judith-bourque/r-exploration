@@ -47,20 +47,38 @@ caption_2 <- "Code: github.com/judith-bourque"
 
 gt_export <- data_table %>%
   gt() %>%
-  tab_header(title = md("**What are people reading in the NYT?**"),
+  tab_header(title = md("**What are people reading in the New York Times?**"),
              subtitle = subtitle) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
   gt_theme_538() %>%
-  tab_style(style = list(
-    cell_text(weight = "bold")
-  ),
-  locations = cells_row_groups(groups = everything())) %>%
+  # tab_style(style = list(
+  #   cell_text(weight = "bold"),
+  #   cell_borders(sides = "all", color = "white", style = "solid", weight = px(0))
+  # ),
+  # locations = cells_row_groups(groups = everything())) %>%
   tab_style(style = list(
     cell_text(indent = px(30)),
-    cell_borders(sides = "all", color = "white", style = "solid", weight = px(1))
+    cell_borders(sides = "bottom", color = "white", style = "solid", weight = px(1))
   ),
   locations = cells_body(columns = title)) %>%
+  # Edit group section
+  tab_style(
+    style = list(
+      cell_borders(
+        sides = "top", color = "black", weight = px(0)
+      ),
+      cell_text(
+        font = google_font("Chivo"),
+        transform = "uppercase",
+        v_align = "bottom",
+        size = px(14),
+        weight = 200
+      )
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>% 
+  #
   tab_options(column_labels.hidden = TRUE)
 
 gt_export
