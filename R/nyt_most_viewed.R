@@ -28,9 +28,8 @@ rect <- tidyjson::spread_all(json) %>%
 data_table <- rect %>%
   as_tibble() %>%
   select(section, title) %>%
-  arrange(section) %>%
-  group_by(section) %>%
-  arrange(title)
+  #arrange(section) %>%
+  group_by(section)
 
 ## Visualise data ----------------------------------------------------------
 
@@ -54,7 +53,8 @@ gt_export <- data_table %>%
   tab_source_note(caption_2) %>%
   tab_style(style = list(cell_text(weight = "bold")),
             cells_row_groups(groups = everything())) %>%
-  gt_theme_538()
+  gt_theme_538() %>% 
+  tab_options(column_labels.hidden = TRUE)
 
 gt_export
 
