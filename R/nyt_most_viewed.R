@@ -67,10 +67,9 @@ data_tidy <- data_raw %>%
     access = access
   )
 
-exclude <- c("Main Page", "Special:Search", "Wikipédia:Accueil principal", 
-             "Wikipedia:Featured pictures", "Spécial:Recherche", 
-             "Portal:Current events", "Wikipedia:首页", "Wiktionary:Main Page",
-             "Wikidata:Copyright")
+exclude <- paste("Main Page", "Portal:", "Spécial:", "Special", "Wikipedia:", "Wikidata:", "Wikipédia", "Wiktionary:", sep = "|")
+
+dplyr::filter(data_tidy, !grepl(exclude, article))
 
 # Keep top articles
 data_table <- data_tidy %>% 
