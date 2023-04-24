@@ -28,7 +28,7 @@ rect <- tidyjson::spread_all(json) %>%
 data_table <- rect %>%
   as_tibble() %>%
   select(section, title) %>% 
-  arrange(section) %>% 
+  #arrange(section) %>% 
   rename(article = title)
 
 ## Visualise data ----------------------------------------------------------
@@ -54,8 +54,7 @@ gt_nyt <- data_table %>%
   gt_theme_538() %>% 
   tab_style(
     style = list(
-      cell_borders(sides = "left", color = "white", weight = px(0)),
-      cell_borders(sides = "bottom", color = "white", weight = px(0))),
+      cell_borders(sides = "all", color = "white", weight = px(0))),
     locations = cells_body(columns = "article")
   ) %>% 
   tab_style(
@@ -65,12 +64,10 @@ gt_nyt <- data_table %>%
   ) %>%
   tab_style(
     style = list(
-      cell_borders(sides = "top", color = "black", weight = px(3)),
-      cell_borders(sides = "right", color = "white", weight = px(0)),
-    cell_text(align = "right")),
+      cell_borders(sides = "top", weight = px(0)),
+      cell_borders(sides = "right", color = "none", weight = px(0))),
     locations = cells_row_groups()
-  ) %>%
-  tab_options(row_group.as_column = TRUE)
+  )
 
 gt_nyt
 
