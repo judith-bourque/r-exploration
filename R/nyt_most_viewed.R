@@ -51,9 +51,16 @@ gt_export <- data_table %>%
              subtitle = subtitle) %>%
   tab_source_note(caption_1) %>%
   tab_source_note(caption_2) %>%
-  tab_style(style = list(cell_text(weight = "bold")),
-            cells_row_groups(groups = everything())) %>%
-  gt_theme_538() %>% 
+  gt_theme_538() %>%
+  tab_style(style = list(
+    cell_text(weight = "bold")
+  ),
+  locations = cells_row_groups(groups = everything())) %>%
+  tab_style(style = list(
+    cell_text(indent = px(30)),
+    cell_borders(sides = "all", color = "white", style = "solid", weight = px(1))
+  ),
+  locations = cells_body(columns = title)) %>%
   tab_options(column_labels.hidden = TRUE)
 
 gt_export
