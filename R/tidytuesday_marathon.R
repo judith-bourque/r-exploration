@@ -14,7 +14,7 @@ winners_tidy <- janitor::clean_names(winners)
 
 # Analyse data ------------------------------------------------------------
 
-data <- winners_tidy %>% 
+wins_by_nationality <- winners_tidy %>% 
   count(nationality)
 
 # Compute the centroid as the mean longitude and lattitude
@@ -24,22 +24,18 @@ region_lab_data <- world_maps %>%
   group_by(region) %>%
   summarise(longitude = mean(long), latitude = mean(lat))
 
+graph_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationality" = "region"))
+
 # Visualise data ----------------------------------------------------------
 
 graph <-
-  ggplot() +
+  ggplot(graph_data, aes(longitude, latitude, size = n)) +
   borders(
     fill = "lightgrey",
     colour = "white"
   ) +
   geom_point(alpha = 0.5) +
   theme_void() +
-  ggrepel::geom_text_repel(
-    data = region_lab_data,
-    aes(longitude, latitude, label = region),
-    size = 3,
-    colour = "black"
-  ) +
   scale_color_manual(values = colours) +
   labs(title = "Title",
        colour = "",
