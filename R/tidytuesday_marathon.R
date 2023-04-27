@@ -23,17 +23,22 @@ region_lab_data <- world_maps %>%
   group_by(region) %>%
   summarise(longitude = mean(long), latitude = mean(lat))
 
-graph_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationality" = "region"))
+point_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationality" = "region"))
 
+label_data <- point_data %>% 
+  arrange(desc(n)) %>% 
+  head(5)
+  
 # Visualise data ----------------------------------------------------------
 
 graph <-
-  ggplot(graph_data, aes(longitude, latitude, size = n)) +
+  ggplot(point_data, aes(longitude, latitude, size = n)) +
   borders(
     fill = "lightgrey",
     colour = "white"
   ) +
   geom_point(alpha = 0.5) +
+  geom_text(aes(longitude, latitude, label = nationality), label_data) +
   theme_void() +
   scale_color_manual(values = colours) +
   labs(title = "Title",
