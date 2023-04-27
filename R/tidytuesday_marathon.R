@@ -26,18 +26,18 @@ region_lab_data <- world_maps %>%
 point_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationality" = "region")) %>% 
   arrange(desc(n)) %>% 
   mutate(rank = row_number(),
-         colour = case_when(rank == "1" ~ "gold",
-                            rank == "2" ~ "grey",
-                            rank == "3" ~ "brown",
-                            .default = "white"
+         colour = case_when(rank == "1" ~ "1st place",
+                            rank == "2" ~ "2nd place",
+                            rank == "3" ~ "3rd place",
+                            .default = ""
                             ))
 
 # Visualise data ----------------------------------------------------------
 
 colours <-
-  c("gold" = "gold",
-    "grey" = "grey",
-    "brown" = "brown",
+  c("1st place" = "gold",
+    "2nd place" = "grey",
+    "3rd place" = "brown",
     "white" = "white")
 
 graph <-
