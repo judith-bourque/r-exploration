@@ -59,21 +59,19 @@ graph <-
     aes(longitude, latitude, size = n, fill = colour, stroke = 1),
     data = points,
     pch = 21,
-    alpha = 0.5
+    alpha = 0.75
   ) +
   geom_label(aes(longitude, latitude, label = nationality), data = labels, nudge_x = 25) +
   theme_minimal() +
   scale_fill_manual(name = "Ranking", values = colours) +
   scale_size_identity(guide = "legend", name = "Number of winners") +
-  labs(title = "Title",
-       caption = "Data:Source\nGraphic: github.com/judith-bourque") +
+  labs(title = "London Marathon Winners by Nationality",
+       caption = "Data: Wikipedia via the LondonMarathon R package\nGraphic: github.com/judith-bourque") +
   theme(
-    #legend.position = "bottom",
     panel.background = element_rect(fill = "lightblue"),
     panel.grid = element_line(colour = "#d1f4ff"),
     plot.title = element_text(hjust = 0.5),
-    plot.background = element_rect(fill = "white"),
-    #plot.caption = element_text(hjust = 0.5, margin = margin(b = 5))
+    plot.background = element_rect(fill = "white")
   )
 
 graph
