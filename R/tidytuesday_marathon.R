@@ -34,7 +34,7 @@ point_data <-
       rank == "1" ~ "1st place",
       rank == "2" ~ "2nd place",
       rank == "3" ~ "3rd place",
-      .default = "not on podium"
+      .default = "other"
     )
   )
 
@@ -43,9 +43,9 @@ point_data <-
 colours <-
   c(
     "1st place" = "gold",
-    "2nd place" = "black",
+    "2nd place" = "#7d7d7d",
     "3rd place" = "brown",
-    "not on podium" = "white"
+    "other" = "white"
   )
 
 graph <-
@@ -53,22 +53,24 @@ graph <-
   borders(fill = "#f7dc99",
           colour = "white") +
   geom_point(
-    aes(longitude, latitude, size = n, fill = colour, stroke = 3),
+    aes(longitude, latitude, size = n, fill = colour, stroke = 1),
     data = point_data,
     pch = 21,
     alpha = 0.5
   ) +
-  theme_void() +
-  scale_fill_manual(values = colours) +
+  theme_minimal() +
+  scale_fill_manual(name = "Ranking", values = colours) +
+  scale_size_identity(guide = "legend", name = "Number of winners") +
   labs(title = "Title",
-       colour = "",
+       colour = "position",
        caption = "Data:Source\nGraphic: github.com/judith-bourque") +
   theme(
-    legend.position = "top",
+    #legend.position = "bottom",
     panel.background = element_rect(fill = "lightblue"),
+    panel.grid = element_line(colour = "#d1f4ff"),
     plot.title = element_text(hjust = 0.5),
     plot.background = element_rect(fill = "white"),
-    plot.caption = element_text(hjust = 0.5, margin = margin(b = 5))
+    #plot.caption = element_text(hjust = 0.5, margin = margin(b = 5))
   )
 
 graph
