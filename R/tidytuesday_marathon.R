@@ -1,6 +1,6 @@
 library("tidyverse")
 
-# Get tidyverse data
+# Get tidytuesday data
 tuesdata <- tidytuesdayR::tt_load('2023-04-25')
 
 winners <- tuesdata$winners
@@ -23,7 +23,7 @@ region_lab_data <- world_maps %>%
   group_by(region) %>%
   summarise(longitude = mean(long), latitude = mean(lat))
 
-point_data <-
+points <-
   inner_join(wins_by_nationality,
              region_lab_data,
              by = c("nationality" = "region")) %>%
@@ -57,7 +57,7 @@ graph <-
           colour = "white") +
   geom_point(
     aes(longitude, latitude, size = n, fill = colour, stroke = 1),
-    data = point_data,
+    data = points,
     pch = 21,
     alpha = 0.5
   ) +
@@ -66,7 +66,6 @@ graph <-
   scale_fill_manual(name = "Ranking", values = colours) +
   scale_size_identity(guide = "legend", name = "Number of winners") +
   labs(title = "Title",
-       colour = "position",
        caption = "Data:Source\nGraphic: github.com/judith-bourque") +
   theme(
     #legend.position = "bottom",
