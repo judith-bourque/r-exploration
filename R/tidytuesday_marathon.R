@@ -29,7 +29,7 @@ point_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationali
          colour = case_when(rank == "1" ~ "1st place",
                             rank == "2" ~ "2nd place",
                             rank == "3" ~ "3rd place",
-                            .default = ""
+                            .default = "not on podium"
                             ))
 
 # Visualise data ----------------------------------------------------------
@@ -38,7 +38,7 @@ colours <-
   c("1st place" = "gold",
     "2nd place" = "grey",
     "3rd place" = "brown",
-    "white" = "white")
+    "not on podium" = NA)
 
 graph <-
   ggplot() +
@@ -46,7 +46,8 @@ graph <-
     fill = "lightgrey",
     colour = "white"
   ) +
-  geom_point(aes(longitude, latitude, size = n, colour = colour), data = point_data, alpha = 0.5) +
+  geom_point(aes(longitude, latitude, size = n, fill = colour), data = point_data, pch=21, alpha = 0.5) +
+  #geom_point(aes(longitude, latitude, size = n, colour = "black"), data = point_data, shape = 1, alpha = 0.5) +
   #geom_text(aes(longitude, latitude, label = nationality), top_5) +
   theme_void() +
   scale_color_manual(values = colours) +
