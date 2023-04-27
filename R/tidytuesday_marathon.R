@@ -38,6 +38,9 @@ point_data <-
     )
   )
 
+labels <- point_data %>% 
+  filter(rank <= 3)
+
 # Visualise data ----------------------------------------------------------
 
 colours <-
@@ -58,6 +61,7 @@ graph <-
     pch = 21,
     alpha = 0.5
   ) +
+  geom_label(aes(longitude, latitude, label = nationality), data = labels, nudge_x = 25) +
   theme_minimal() +
   scale_fill_manual(name = "Ranking", values = colours) +
   scale_size_identity(guide = "legend", name = "Number of winners") +
