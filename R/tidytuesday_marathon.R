@@ -36,26 +36,25 @@ point_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationali
 
 colours <-
   c("1st place" = "gold",
-    "2nd place" = "grey",
+    "2nd place" = "black",
     "3rd place" = "brown",
-    "not on podium" = NA)
+    "not on podium" = "white")
 
 graph <-
   ggplot() +
   borders(
-    fill = "lightgrey",
+    fill = "#f7dc99",
     colour = "white"
   ) +
   geom_point(aes(longitude, latitude, size = n, fill = colour), data = point_data, pch=21, alpha = 0.5) +
-  #geom_point(aes(longitude, latitude, size = n, colour = "black"), data = point_data, shape = 1, alpha = 0.5) +
-  #geom_text(aes(longitude, latitude, label = nationality), top_5) +
-  theme_void() +
-  scale_color_manual(values = colours) +
+  theme_minimal() +
+  scale_fill_manual(values = colours) +
   labs(title = "Title",
        colour = "",
        caption = "Data:Source\nGraphic: github.com/judith-bourque") +
   theme(
     legend.position = "top",
+    panel.background = element_rect(fill = "lightblue"),
     plot.title = element_text(hjust = 0.8),
     plot.background = element_rect(fill = "white"),
     plot.caption = element_text(hjust = 0.5, margin = margin(b = 5))
