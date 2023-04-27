@@ -47,7 +47,7 @@ graph <-
     colour = "white"
   ) +
   geom_point(aes(longitude, latitude, size = n, fill = colour), data = point_data, pch=21, alpha = 0.5) +
-  theme_minimal() +
+  theme_void() +
   scale_fill_manual(values = colours) +
   labs(title = "Title",
        colour = "",
@@ -55,7 +55,7 @@ graph <-
   theme(
     legend.position = "top",
     panel.background = element_rect(fill = "lightblue"),
-    plot.title = element_text(hjust = 0.8),
+    plot.title = element_text(hjust = 0.5),
     plot.background = element_rect(fill = "white"),
     plot.caption = element_text(hjust = 0.5, margin = margin(b = 5))
   )
