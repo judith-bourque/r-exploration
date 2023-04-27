@@ -24,14 +24,21 @@ region_lab_data <- world_maps %>%
   summarise(longitude = mean(long), latitude = mean(lat))
 
 point_data <- inner_join(wins_by_nationality, region_lab_data, by = c("nationality" = "region")) %>% 
-  arrange(desc(n))
+  arrange(desc(n)) %>% 
+  mutate(rank = row_number(),
+         colour = case_when(rank == "1" ~ "gold",
+                            rank == "2" ~ "grey",
+                            rank == "3" ~ "brown",
+                            .default = "white"
+                            ))
 
-top_5 <- point_data %>% 
-  head(5)
-
-bottom_16 <- point_data %>% 
-  tail(16)
 # Visualise data ----------------------------------------------------------
+
+colours <-
+  c("gold" = "gold",
+    "grey" = "grey",
+    "brown" = "brown",
+    "white" = "white")
 
 graph <-
   ggplot() +
@@ -39,9 +46,8 @@ graph <-
     fill = "lightgrey",
     colour = "white"
   ) +
-  geom_point(aes(longitude, latitude, size = n), data = bottom_16, alpha = 0.5) +
-  geom_point(aes(longitude, latitude, size = n), data = top_5, alpha = 0.5, colour = "yellow") +
-  geom_text(aes(longitude, latitude, label = nationality), top_5) +
+  geom_point(aes(longitude, latitude, size = n, colour = colour), data = point_data, alpha = 0.5) +
+  #geom_text(aes(longitude, latitude, label = nationality), top_5) +
   theme_void() +
   scale_color_manual(values = colours) +
   labs(title = "Title",
@@ -49,7 +55,7 @@ graph <-
        caption = "Data:Source\nGraphic: github.com/judith-bourque") +
   theme(
     legend.position = "top",
-    plot.title = element_text(hjust = 0.5),
+    plot.title = element_text(hjust = 0.8),
     plot.background = element_rect(fill = "white"),
     plot.caption = element_text(hjust = 0.5, margin = margin(b = 5))
   )
