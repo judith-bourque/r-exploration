@@ -20,7 +20,6 @@ wins_by_nationality <- winners_tidy %>%
 # Compute the centroid as the mean longitude and lattitude
 # Used as label coordinate for country's names
 region_lab_data <- world_maps %>%
-  filter(region %in% winners_tidy$nationality) %>%
   group_by(region) %>%
   summarise(longitude = mean(long), latitude = mean(lat))
 
