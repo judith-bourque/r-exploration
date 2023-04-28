@@ -1,7 +1,7 @@
 library("tidyverse")
 
 # Get tidytuesday data
-tuesdata <- tidytuesdayR::tt_load('2023-04-25')
+tuesdata <- tidytuesdayR::tt_load("2023-04-25")
 
 winners <- tuesdata$winners
 
@@ -54,7 +54,8 @@ colours <-
 graph <-
   ggplot() +
   borders(fill = "#f7dc99",
-          colour = "white") +
+          colour = "white",
+          size = 0.3) +
   geom_point(
     aes(longitude, latitude, size = n, fill = colour, stroke = 1),
     data = points,
@@ -63,15 +64,22 @@ graph <-
   ) +
   geom_label(aes(longitude, latitude, label = nationality), data = labels, nudge_x = 25) +
   theme_minimal() +
-  scale_fill_manual(name = "Ranking", values = colours) +
+  scale_fill_manual(name = "Ranking", values = colours, aesthetics = c("colour", "fill")) +
   scale_size_identity(guide = "legend", name = "Number of winners") +
   labs(title = "London Marathon Winners by Nationality",
        caption = "Data: Wikipedia via the LondonMarathon R package\nGraphic: github.com/judith-bourque") +
   theme(
     panel.background = element_rect(fill = "lightblue"),
     panel.grid = element_line(colour = "#d1f4ff"),
-    plot.title = element_text(hjust = 0.5),
     plot.background = element_rect(fill = "white")
   )
 
 graph
+
+ggsave(
+  "graph/tidytuesday_london_marathon.png",
+  width = 10,
+  height = 6,
+  units = "in"
+)
+
