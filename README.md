@@ -6,16 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of r-exploration is to …
-
-# r-exploration
-
-Exploratory data analysis in R
-
-## About this repository
-
-This repository provides the codes and the graphs produced through
-experimentation with R.
+The goal of r-exploration is to share data visualisation experiments in
+R.
 
 ## Recent graphs
 
