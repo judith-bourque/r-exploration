@@ -76,7 +76,8 @@ caption_2 <- "Code: github.com/judith-bourque"
 
 ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
   geom_line() +
-  gghighlight::gghighlight(max(views_ceil) > 100000, use_direct_label = FALSE) +
+  gghighlight::gghighlight(max(views_ceil) > 30000, use_direct_label = FALSE) +
+  geom_point() +
   facet_wrap(~ article) +
   labs(title = "What are Canadians reading on Wikipedia?",
        subtitle = subtitle) +
