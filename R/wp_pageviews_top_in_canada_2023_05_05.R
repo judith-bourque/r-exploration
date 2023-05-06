@@ -15,7 +15,7 @@ day <- format(yesterday, "%d")
 
 
 data_raw <- get_most_viewed_per_country(
-  country = "US",
+  country = "CA",
   access = "all-access",
   year = year,
   month = month,
@@ -65,7 +65,7 @@ data_table <- data_tidy %>%
 month <- format(yesterday, "%B")
 
 subtitle <-
-  paste0("Most viewed articles in the US on ", month, " ", day, ",", " ", year, ".")
+  paste0("Most viewed articles in Canada on ", month, " ", day, ",", " ", year, ".")
 
 caption_1 <- paste0("Source: Wikimedia REST API.")
 caption_2 <- "Code: github.com/judith-bourque"
@@ -82,7 +82,7 @@ gt_wiki <- data_table %>%
   # Add space in numbers
   fmt_number(views_ceil, sep_mark = " ", decimals = 0) %>%
   tab_header(
-    title = md("**What are Americans reading on Wikipedia?**"),
+    title = md("**What are Canadians reading on Wikipedia?**"),
     subtitle = subtitle
   ) %>%
   gt_color_rows(views_ceil,
@@ -95,4 +95,4 @@ gt_wiki <- data_table %>%
 # View graph
 gt_wiki
 
-gtsave(gt_wiki, "graph/wp_pageviews_top_in_us_2024-04-23.png")
+gtsave(gt_wiki, "graph/wp_pageviews_top_in_canada_2023-05-05.png")
