@@ -8,7 +8,7 @@ library("tidyverse")
 # Get data ----------------------------------------------------------------
 
 # Set parameters
-date <- as.Date("2023-04-01")
+date <- as.Date("2023-05-01")
 
 start_date <- floor_date(date %m-% months(1), 'month')
 end_date <- ceiling_date(date %m-% months(1), 'month') %m-% days(1)
