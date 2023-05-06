@@ -65,7 +65,8 @@ data_table <- data_tidy %>%
 # Visualise data ----------------------------------------------------------
 
 ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
-  geom_line()
+  geom_line() +
+  gghighlight::gghighlight(max(views_ceil) > 40000)
 
 
 # Visualise data ----------------------------------------------------------
