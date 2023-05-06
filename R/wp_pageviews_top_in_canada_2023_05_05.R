@@ -74,10 +74,12 @@ subtitle <-
 caption_1 <- paste0("Source: Wikimedia REST API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
-ggplot(data_table, aes(x = date, y = views_ceil, group = article, colour = article)) +
+ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
   geom_line() +
-  gghighlight::gghighlight(max(views_ceil) > 100000) +
+  gghighlight::gghighlight(max(views_ceil) > 100000, use_direct_label = FALSE) +
+  facet_wrap(~ article) +
   labs(title = "What are Canadians reading on Wikipedia?",
-       subtitle = subtitle)
+       subtitle = subtitle) +
+  theme(legend.position = "none") 
 
 # ggsave("graph/wp_pageviews_top_in_canada_2023-05-05.png")
