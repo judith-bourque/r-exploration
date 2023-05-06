@@ -1,0 +1,98 @@
+# Wikipedia ---------------------------------------------------------------
+# install.packages("devtools")
+# devtools::install_github("clessn/wikirest")
+
+library("wikirest")
+
+# Get data ----------------------------------------------------------------
+
+# Set parameters
+yesterday <- Sys.Date() - 1
+
+year <- format(yesterday, "%Y")
+month <- format(yesterday, "%m")
+day <- format(yesterday, "%d")
+
+
+data_raw <- get_most_viewed_per_country(
+  country = "US",
+  access = "all-access",
+  year = year,
+  month = month,
+  day = day,
+  tidy = TRUE
+)
+
+# Wrangle and tidy data ---------------------------------------------------
+
+# Clean article names
+data_tidy <- data_raw %>%
+  dplyr::mutate(
+    article = gsub("_", " ", article),
+    date = as.POSIXct(paste(year, month, day, sep = "-"), tz = "UTC"),
+    country = country,
+    access = access
+  )
+
+exclude <-
+  paste(
+    "Main Page",
+    "Portal:",
+    "Spécial:",
+    "Special",
+    "Wikipedia:",
+    "Wikidata:",
+    "Wikipédia",
+    "Wiktionary:",
+    sep = "|"
+  )
+
+# Keep top articles
+data_table <- data_tidy %>%
+  # Remove pages that aren't articles
+  dplyr::filter(!grepl(exclude, article)) %>%
+  # Create new rank column based on articles
+  select(!rank) %>%
+  tibble::rowid_to_column("rank") %>%
+  # Keep top 10
+  filter(rank <= 20) %>%
+  # Create language column
+  separate(project, c("language", "project"), "\\.")
+
+
+# Visualise data ----------------------------------------------------------
+
+month <- format(yesterday, "%B")
+
+subtitle <-
+  paste0("Most viewed articles in the US on ", month, " ", day, ",", " ", year, ".")
+
+caption_1 <- paste0("Source: Wikimedia REST API.")
+caption_2 <- "Code: github.com/judith-bourque"
+
+views_min <- min(data_table$views_ceil)
+views_max <- max(data_table$views_ceil)
+
+# Create graph
+gt_wiki <- data_table %>%
+  select(c(rank, article, language, views_ceil)) %>%
+  gt() %>%
+  cols_label(language = "Lang",
+             views_ceil = "Views ceiling") %>%
+  # Add space in numbers
+  fmt_number(views_ceil, sep_mark = " ", decimals = 0) %>%
+  tab_header(
+    title = md("**What are Americans reading on Wikipedia?**"),
+    subtitle = subtitle
+  ) %>%
+  gt_color_rows(views_ceil,
+                palette = "ggsci::green_material",
+                domain = c(views_min, views_max)) %>%
+  tab_source_note(caption_1) %>%
+  tab_source_note(caption_2) %>%
+  gt_theme_538()
+
+# View graph
+gt_wiki
+
+gtsave(gt_wiki, "graph/wp_pageviews_top_in_us_2024-04-23.png")
