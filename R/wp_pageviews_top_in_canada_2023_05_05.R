@@ -3,6 +3,7 @@
 # devtools::install_github("clessn/wikirest")
 
 library("wikirest")
+library("tidyverse")
 
 # Get data ----------------------------------------------------------------
 
@@ -13,14 +14,16 @@ year <- format(yesterday, "%Y")
 month <- format(yesterday, "%m")
 day <- format(yesterday, "%d")
 
+timeline <- seq(yesterday - 7, yesterday, by = '1 day')
 
-
-data_raw <- get_most_viewed_per_country(
+data_raw <- map(timeline, ~ get_most_viewed_per_country(
   country = "CA",
   access = "all-access",
-  date = yesterday,
+  date = .x,
   tidy = TRUE
-)
+))
+
+data_binded <- bind_rows(data_raw)
 
 # Wrangle and tidy data ---------------------------------------------------
 
