@@ -64,44 +64,17 @@ data_table <- data_tidy %>%
 
 # Visualise data ----------------------------------------------------------
 
-ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
-  geom_line() +
-  gghighlight::gghighlight(max(views_ceil) > 40000)
-
-
-# Visualise data ----------------------------------------------------------
-
 month <- format(yesterday, "%B")
 
 subtitle <-
   paste0("Most viewed articles in Canada on ", month, " ", day, ",", " ", year, ".")
-
 caption_1 <- paste0("Source: Wikimedia REST API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
-views_min <- min(data_table$views_ceil)
-views_max <- max(data_table$views_ceil)
+ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
+  geom_line() +
+  gghighlight::gghighlight(max(views_ceil) > 40000) +
+  labs(title = "What are Canadians reading on Wikipedia?",
+       subtitle = subtitle)
 
-# Create graph
-gt_wiki <- data_table %>%
-  select(c(rank, article, language, views_ceil)) %>%
-  gt() %>%
-  cols_label(language = "Lang",
-             views_ceil = "Views ceiling") %>%
-  # Add space in numbers
-  fmt_number(views_ceil, sep_mark = " ", decimals = 0) %>%
-  tab_header(
-    title = md("**What are Canadians reading on Wikipedia?**"),
-    subtitle = subtitle
-  ) %>%
-  gt_color_rows(views_ceil,
-                palette = "ggsci::green_material",
-                domain = c(views_min, views_max)) %>%
-  tab_source_note(caption_1) %>%
-  tab_source_note(caption_2) %>%
-  gt_theme_538()
-
-# View graph
-gt_wiki
-
-gtsave(gt_wiki, "graph/wp_pageviews_top_in_canada_2023-05-05.png")
+# ggsave("graph/wp_pageviews_top_in_canada_2023-05-05.png")
