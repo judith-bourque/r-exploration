@@ -8,13 +8,16 @@ library("tidyverse")
 # Get data ----------------------------------------------------------------
 
 # Set parameters
-yesterday <- Sys.Date() - 1
+date <- as.Date("2023-04-01")
+
+start_date <- floor_date(date %m-% months(1), 'month')
+end_date <- ceiling_date(date %m-% months(1), 'month') %m-% days(1)
 
 year <- format(yesterday, "%Y")
 month <- format(yesterday, "%m")
 day <- format(yesterday, "%d")
 
-timeline <- seq(yesterday - 7, yesterday, by = '1 day')
+timeline <- seq(start_date, end_date, by = '1 day')
 
 data_raw <- map(timeline, ~ get_most_viewed_per_country(
   country = "CA",
@@ -64,16 +67,16 @@ data_table <- data_tidy %>%
 
 # Visualise data ----------------------------------------------------------
 
-month <- format(yesterday, "%B")
+month <- format(date, "%B")
 
 subtitle <-
   paste0("Most viewed articles in Canada on ", month, " ", day, ",", " ", year, ".")
 caption_1 <- paste0("Source: Wikimedia REST API.")
 caption_2 <- "Code: github.com/judith-bourque"
 
-ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
+ggplot(data_table, aes(x = date, y = views_ceil, group = article, colour = article)) +
   geom_line() +
-  gghighlight::gghighlight(max(views_ceil) > 40000) +
+  gghighlight::gghighlight(max(views_ceil) > 100000) +
   labs(title = "What are Canadians reading on Wikipedia?",
        subtitle = subtitle)
 
