@@ -14,12 +14,11 @@ month <- format(yesterday, "%m")
 day <- format(yesterday, "%d")
 
 
+
 data_raw <- get_most_viewed_per_country(
   country = "CA",
   access = "all-access",
-  year = year,
-  month = month,
-  day = day,
+  date = yesterday,
   tidy = TRUE
 )
 
