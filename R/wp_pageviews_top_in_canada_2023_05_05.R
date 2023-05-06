@@ -23,7 +23,7 @@ data_raw <- map(timeline, ~ get_most_viewed_per_country(
   tidy = TRUE
 ))
 
-data_binded <- bind_rows(data_raw)
+data_raw <- bind_rows(data_raw)
 
 # Wrangle and tidy data ---------------------------------------------------
 
@@ -57,9 +57,15 @@ data_table <- data_tidy %>%
   select(!rank) %>%
   tibble::rowid_to_column("rank") %>%
   # Keep top 10
-  filter(rank <= 20) %>%
+  #filter(rank <= 20) %>%
   # Create language column
   separate(project, c("language", "project"), "\\.")
+
+
+# Visualise data ----------------------------------------------------------
+
+ggplot(data_table, aes(x = date, y = views_ceil, group = article)) +
+  geom_line()
 
 
 # Visualise data ----------------------------------------------------------
